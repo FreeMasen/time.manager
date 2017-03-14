@@ -35,25 +35,7 @@ function createWindow () {
     win = null
   });
 
-  var menu = Menu.buildFromTemplate([{
-    label: 'File',
-    accelerator: 'CmdOrCtrl+R',
-    click (item, focusedWindow) {
-      focusedWindow.loadUrl(__dirname + '/index.html');
-    }
-  },{
-      label: 'Close Window',
-      accelerator: 'CmdOrCtrl+W',
-      click(item, focusedWindow) {
-        focusedWindow.close();
-      }
-    },{
-      label: 'Quit',
-      accelerator: 'CmdOrCtrl+Q',
-      click(item, focusedWindow) {
-        app.quit();
-      }
-    }])
+  // var menu = Menu.buildFromTemplate()
     if (!icon) {
       icon = new Tray(__dirname + '/assets/img/icon.png')
       icon.on('click', _ => {
