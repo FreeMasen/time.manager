@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "tsc && istanbul cover node_modules/mocha/bin/_mocha && codecov",
-    "localtest":"tsc && mocha test",
+    "localtest": "tsc && mocha test",
     "start": "tsc && concurrently  \"tsc -w\" \"node index.js\""
   },
   "author": "",
@@ -30,7 +30,7 @@
     "rxjs": "5.0.2",
     "systemjs": "0.19.41",
     "zone.js": "^0.7.4",
-    "debug":"2.6.0"
+    "debug": "2.6.0"
   },
   "devDependencies": {
     "@types/core-js": "0.9.35",
@@ -41,7 +41,7 @@
     "istanbul": "0.4.5",
     "lite-server": "^2.2.2",
     "mocha": "^3.2.0",
-    "nightmare": "2.9.0",
+    "nightmare": "^2.9.0",
     "request": "^2.79.0",
     "typescript": "^2.1.4"
   }
