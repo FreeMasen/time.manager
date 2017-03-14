@@ -1,25 +1,31 @@
-const {app, BrowserWindow, Menu, Tray} = require('electron')
-const path = require('path')
-const url = require('url')
+const {app, BrowserWindow, Menu, Tray} = require('electron');
+const path = require('path');
+const url = require('url');
+const Positioner = require('electron-positioner')
+
+const db = require('./src/data');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
-let icon
+let win;
+let icon;
+let positioner;
+
+let blurring = false;
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({width: 300, height: 400, show: false});
 
   // and load the index.html of the app.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  }));
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -27,7 +33,7 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null
-  })
+  });
 
   var menu = Menu.buildFromTemplate([{
     label: 'File',
@@ -49,7 +55,32 @@ function createWindow () {
       }
     }])
     if (!icon) {
-      icon = new Tray(__dirname + '/assets/icon.png')
+      icon = new Tray(__dirname + '/assets/img/icon.png')
+      icon.on('click', _ => {
+        if (!blurring) {
+          toggleWindow();
+        }
+      })
+      
+    }
+    if (!positioner) {
+      positioner = new Positioner(win);
+
+    }
+    positioner.move('trayBottomRight', icon.getBounds());
+
+    win.on('blur', e => {
+      blurring = true;
+      win.hide()
+      setTimeout(_ => {blurring = false;}, 500);
+    })
+
+    function toggleWindow() {
+      console.log('toggleWindow')
+      if (win.isVisible()) {
+        return win.hide();
+      }
+      win.show();
     }
 }
 
