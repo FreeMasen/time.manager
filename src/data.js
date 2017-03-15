@@ -1,4 +1,5 @@
 const Ned = require('nedb');
+const FunctionSerializer = require('./functionSerializer');
 
 const work = new Ned({
     filename: `assets/data/time.manager.work.db`,
@@ -22,84 +23,49 @@ class Database {
     constructor(name, collections) {
         this.collections = [];
         collections.forEach(col => {
-           this.collections.push(new Ned({filename: `assets/data/${name}.${col}.db`,
-                                    autoLoad) 
+           this.collections.push(new collection(`assets/data/${name}, ${col}.db`));
         });
     }
 }
 
 class Collection {
     constructor(filename) {
-        // this.store = new Ned({filename: filename, autoLoad: true})
-        this.strings = []
-        filename.forEach(test => {
-            for (var k in test) {
-                if (typeof test[k] == 'function') {
-                    test[k] = this._serialize(test[k], test)
-                    console.log(test[k])
-                    test[k] = this._deserialize(test[k])
-                    console.log(test[k])
-                }
+        this.store = new Ned({filename: filename, autoLoad: true})
+    }
+
+    add(obj, cb) {
+        for (var k in obj) {
+            if (typeof obj[k] == 'function') {
+                this.obj[k] = FunctionSerializer.serialize(obj[k]);
             }
-            
+        }
+        this.store.insert(obj, (err, doc) => {
+            if (err) return (err);
+            cb(null);
+        });
+    }
+
+    find(query, cb) {
+        this.store.find(query, (err, docs) => {
+            if (err) return cb(err);
+            docs.forEach(doc => {
+                for (var k in doc) {
+                    if (typeof doc[k] == 'object' && doc[k].name && doc[k].body && doc[k].args) {
+                        doc[k] = FunctionSerializer.deserialize(doc[k]);
+                    }
+                }
+            })
+            cb(null, docs);
         })
     }
 
-    add(obj) {
-        for (var k in obj) {
-            if (typeof obj[k] == 'function') {
-                this.obj[k] = JSON.stringify(obj[k])
-            }
-        }
+    findOne(query, cb) {
+        this.find(query, (err, docs) => {
+            if (err) return cb(err);
+            if (docs && docs.length > 0) return cb(null, docs[0]);
+            (null, null);
+        })
     }
 
-    _serialize(func, owner) {
-        var signature
-        var body
-        
-        return JSON.stringify({ signature: func.toString(), owner: owner})
-    }
-
-    _deserialize(str) {
-        var parsed = JSON.parse(str);
-        return this._createFunction(parsed.func, parsed.owner);
-    }
-
-    _createFunction(func, owner) {
-        return (new Function(this._createFunctionBody(func, owner))(owner));
-    }
-
-    _createFunctionBody(func, owner) {
-        return Object.keys(owner).reduceRight(this._addVar, 'return ' + func + ';');
-    }
-
-    _addVar(s, k) {
-        return 'var ' + k + '= argument[0].' + k + ';\n' + s
-    }
-
+    //TODO: update, insert, delete
 }
-
-const testArrat = [{
-        label: 'File',
-        accelerator: 'CmdOrCtrl+R',
-        click (item, focusedWindow) {
-        focusedWindow.loadUrl(__dirname + '/index.html');
-        }
-    },{
-        label: 'Close Window',
-        accelerator: 'CmdOrCtrl+W',
-        click(item, focusedWindow) {
-            focusedWindow.close();
-        }
-        },{
-        label: 'Quit',
-        accelerator: 'CmdOrCtrl+Q',
-        click(item, focusedWindow) {
-            app.quit();
-        }
-    }]
-    
-function t() {
-    var c = new Collection(testArrat)
-}
-t()
