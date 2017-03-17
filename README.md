@@ -7,11 +7,15 @@
 
 #### Angular2 and Material2
 
-``` yml 
-    There are two main windows:
-      - Taskbar window for quickly switching the user's current workflow 
-      - Task Manager window for adding todo's and assigning them to the billable category
-```
+
+###### Main windows
+
+ - [ ] Taskbar window for quickly switching the user's current workflow 
+
+ - [ ] Task Manager window for adding todo's and assigning them to the billable category
+
+ - [ ] Category/Client manager window for adding/removing/modifying Categories and Clients
+
 
 ## Backend
 
@@ -57,5 +61,4 @@
             - _id: string
             - name: string
             - active: boolean
-      
 ```
