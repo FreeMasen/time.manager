@@ -1,5 +1,7 @@
 # Time Manager
 
+[![Build Status](https://travis-ci.org/FreeMasen/time.manager.svg?branch=master)](https://travis-ci.org/FreeMasen/time.manager)
+
 #### An electron application for managing todo's and billable client hours 
 
 
