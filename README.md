@@ -32,7 +32,7 @@
 
 ## Shared
 
-> Writen in Typescript, _id property assigned by MongoDb
+> Writen in Typescript, _id property assigned by Nedb
 
 ###### Models
 
