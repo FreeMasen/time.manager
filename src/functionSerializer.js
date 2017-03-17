@@ -8,12 +8,14 @@ class FunctionSerializer {
         ret.name = this._getFuncName(text);
         ret.args = this._getArgs(text);
         ret.body = this._getBody(text);
+        ret.isFunc = true;
         return ret;
     }
 
     _getFuncName(text) {
         var nameEnd = text.indexOf('(');
-        return text.substring(0, nameEnd);
+        var nameStart = text.indexOf(' ') + 1;
+        return text.substring(nameStart, nameEnd);
     }
 
     _getArgs(text) {
@@ -26,11 +28,16 @@ class FunctionSerializer {
     _getBody(text) {
         var bodyStart = text.indexOf('{') + 1;
         var bodyEnd = text.trim().lastIndexOf('}') - 1;
-        return text.substring(bodyStart, bodyEnd).replace('\n', '');
+        return text.substring(bodyStart, text.length - 1);
     }
 
-    deserialize(func) {
-        return new Function(func.args, func.body);
+    deserialize(func, parent) {
+            console.log('func:')
+            console.log(func)
+        var ret = new Function(func.args, func.body);
+            console.log('ret:')
+            console.log(ret)
+        return ret;
     }
 }
 

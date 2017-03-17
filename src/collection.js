@@ -11,7 +11,7 @@ class Collection {
     insert(obj, cb) {
         debug('colletion insert')
         debug('begining serialization');
-        this._serializeAnyFuncs(obj);
+        obj = this._serializeAnyFuncs(obj);
         debug('serialization complete');
         debug('inserting into ned store');
         this.store.insert(obj, (err, doc) => {
@@ -32,14 +32,20 @@ class Collection {
     }
 
     _serialize(obj) {
+        var ret = {}
         for (var k in obj) {
             debug(k);
             debug(typeof obj[k])
             if (typeof obj[k] == 'function') {
-                obj[k] = FunctionSerializer.serialize(obj[k]);
+                console.log('found function')
+                console.log(obj[k]);
+                ret[k] = FunctionSerializer.serialize(obj[k]);
+                console.log(ret[k])
+            } else {
+                ret[k] = obj[k];
             }
         }
-        return obj;
+        return ret;
     }
 
     find(query, cb) {
@@ -51,7 +57,7 @@ class Collection {
             debug(docs.length)
             docs = docs.map(doc => {
                 for (var k in doc) {
-                    if (typeof doc[k] == 'object' && doc[k].name && doc[k].body && doc[k].args) {
+                    if (doc[k].isFunc) {
                         debug('found func');
                         debug(doc[k]);
                         doc[k] = FunctionSerializer.deserialize(doc[k]);
