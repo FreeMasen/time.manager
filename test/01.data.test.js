@@ -1,6 +1,5 @@
 const assert = require('assert');
 const Database = require('../src/database.js');
-process.env.DEBUG="data.database,data.collection";
 
 const testOne = {
     _id: "0",
