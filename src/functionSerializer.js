@@ -32,11 +32,11 @@ class FunctionSerializer {
     }
 
     deserialize(func, parent) {
-            console.log('func:')
-            console.log(func)
+            debug('func:')
+            debug(func)
         var ret = new Function(func.args, func.body);
-            console.log('ret:')
-            console.log(ret)
+            debug('ret:')
+            debug(ret)
         return ret;
     }
 }

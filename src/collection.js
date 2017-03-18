@@ -37,10 +37,10 @@ class Collection {
             debug(k);
             debug(typeof obj[k])
             if (typeof obj[k] == 'function') {
-                console.log('found function')
-                console.log(obj[k]);
+                debug('found function')
+                debug(obj[k]);
                 ret[k] = FunctionSerializer.serialize(obj[k]);
-                console.log(ret[k])
+                debug(ret[k])
             } else {
                 ret[k] = obj[k];
             }
