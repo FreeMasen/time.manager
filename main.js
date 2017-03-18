@@ -3,7 +3,7 @@ const path = require('path');
 const url = require('url');
 const Positioner = require('electron-positioner')
 
-const db = require('./src/data');
+const db = require('./src/dataBase.js');
 
 let win;
 let icon;
