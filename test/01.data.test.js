@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Database = require('../src/database.js');
+const Database = require('../src/dataBase.js');
 
 const testOne = {
     _id: "0",
