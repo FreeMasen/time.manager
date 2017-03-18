@@ -104,7 +104,7 @@ class Collection {
     }
 
     delete(query, cb) {
-        this.remove(query, {multi: true}
+        this.store.remove(query, {multi: true}
                     , (err, num) => {
             if (err) return cb(err);
             cb(null, num)
