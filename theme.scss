@@ -1,0 +1,14 @@
+@import './node_modules/@angular/material/core/theming/all-theme';
+
+@include mat-core();
+
+
+$time-primary: mat-palette($mat-deep-purple, 200);
+
+$time-accent: mat-palette($mat-pink, 400);
+
+$time-warn: mat-palette($mat-yellow, 900);
+
+$time-theme: mat-dark-theme($time-primary, $time-accent, $time-warn);
+
+@include angular-material-theme($time-theme);
