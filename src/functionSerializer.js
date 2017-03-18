@@ -1,3 +1,4 @@
+const debug = require('debug')('FunctionSerializer');
 
 class FunctionSerializer {
     constructor() {}
