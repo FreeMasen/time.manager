@@ -1,7 +1,8 @@
-const {app, BrowserWindow, Menu, Tray} = require('electron');
+const {app, BrowserWindow, Menu, Tray, ipcMain} = require('electron');
 const path = require('path');
 const url = require('url');
 const Positioner = require('electron-positioner')
+const debug = require('debug')('main')
 
 const Database = require('./src/dataBase.js');
 const db = new Database('time.manager', ['menu']);
@@ -13,7 +14,7 @@ let positioner;
 let blurring = false;
 
 function createWindow (menuTemplate) {
-  win = new BrowserWindow({width: 300, height: 400, show: false});
+  win = new BrowserWindow({width: 800, height: 800, show: true});
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -21,7 +22,7 @@ function createWindow (menuTemplate) {
     slashes: true
   }));
 
-  win.webContents.openDevTools();
+  win.webContents.openDevTools('bottom');
 
   win.on('closed', () => {
     win = null
@@ -46,7 +47,6 @@ function createWindow (menuTemplate) {
     })
   }
 
-
   win.on('blur', e => {
     blurring = true;
     win.hide()
@@ -54,7 +54,7 @@ function createWindow (menuTemplate) {
   })
 
   function toggleWindow() {
-    console.log('toggleWindow')
+    debug('toggleWindow')
     if (win.isVisible()) {
       return win.hide();
     }
@@ -64,7 +64,7 @@ function createWindow (menuTemplate) {
 
 app.on('ready', () => {
   db.menu.find({}, (err, docs) => {
-    if (err) console.log(err);
+    if (err) return debug(err);
     createWindow(docs);
   })
 })
