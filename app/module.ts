@@ -10,7 +10,7 @@ import { AppComponent } from './component';
 
 //Components
 import { Dashboard } from './dashboard/component';
-
+import { TaskDetail } from './taskDetail/component';
 //Services
 import { Tasks } from './tasks/service';
 
@@ -26,7 +26,8 @@ import './rxjs'
     ],
     declarations: [
         AppComponent,
-        Dashboard
+        Dashboard,
+        TaskDetail
     ],
     providers: [
         Tasks
