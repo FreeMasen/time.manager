@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Task } from '../models/task';
 import { Tasks } from '../tasks/service';
@@ -13,10 +14,12 @@ export class Dashboard implements OnInit {
     taskList: Task[] = [];
     expandedList: string[] = [];
 
-    constructor(private tasks: Tasks) {}
+    constructor(private tasks: Tasks,
+                private router: Router) {}
     
     ngOnInit():void {
-        this.tasks.getUncomplete().then(taskList => {
+        this.tasks.getUncomplete()
+        .then(taskList => {
             this.taskList = taskList;
         })
     }
@@ -29,5 +32,9 @@ export class Dashboard implements OnInit {
         } else {
             this.expandedList.push(_id);
         }
+    }
+
+    goTo(id: string): void {
+        this.router.navigate(['taskDetail', id])
     }
 }
