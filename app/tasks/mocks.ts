@@ -19,7 +19,7 @@ function getMocks(): Task[] {
             work.push(new Work(`${i}${j}`, workDate, Math.floor(Math.random() * (30 -1) + 1)))
         }
         var objective: number = Math.floor(Math.random() * (3 - 0));
-        _mocks.push(new Task(`${i}`, _objectives[objective], [], work));
+        _mocks.push(new Task(`${i}`,_objectives[objective], null, null, work));
     }
     return _mocks;
 }

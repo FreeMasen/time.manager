@@ -4,17 +4,36 @@ export class Task {
     objective: string;
     notes: string[];
     work: Work[];
-    isComplete: boolean;
-    
+    created: Date;
+    private _completed?: Date;
+    get completed(): string {
+        if (this.isComplete) {
+            return this._completed.toLocaleDateString();
+        } 
+        return "Not yet complete"
+    }
+    get isComplete(): boolean {
+        return this._completed != null;
+    }
+
     constructor(id: string = '-1',
                 objective: string = '',
+                created: Date = new Date(),
                 notes: string[] = [],
                 work: Work[] = [],
-                isComplete: boolean = false) {
+                completed?: Date) {
         this._id = id;
         this.objective = objective;
+        this.created = created;
         this.notes = notes;
         this.work = work;
-        this.isComplete = isComplete;
+    }
+
+    complete() {
+        this._completed = new Date();
+    }
+
+    uncomplete() {
+        this._completed = null;
     }
 }
