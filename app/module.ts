@@ -8,7 +8,11 @@ import { Router } from './router/module';
 
 import { AppComponent } from './component';
 
+//Components
 import { Dashboard } from './dashboard/component';
+
+//Services
+import { Tasks } from './tasks/service';
 
 import './rxjs'
 
@@ -25,7 +29,7 @@ import './rxjs'
         Dashboard
     ],
     providers: [
-
+        Tasks
     ],
     bootstrap: [
         AppComponent
