@@ -11,7 +11,7 @@ var menuTemplate = [
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
                 click(item, focusedWindow) {
-                    focusedWindow.loadUrl(__dirname + '/index.html');
+                    focusedWindow.loadURL('/index.html');
                 }
             },
             {
@@ -39,6 +39,8 @@ var menuTemplate = [
         ]
     }
 ]
+
+module.exports = menuTemplate;
 
 db.menu.insert(menuTemplate, (err, doc) => {
     if (err) return console.log('Menu Seed Error: ', err);
