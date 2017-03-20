@@ -12,4 +12,14 @@ export class Tasks {
             resolve(Mocks);
         })
     }
+
+    getWithId(id: string): Promise<Task> {
+        return new Promise((resolve, reject) => {
+            Mocks.forEach(mock => {
+                if (mock._id = id) return resolve(mock);
+                
+            })
+            reject(new Error('No task found for ID'));
+        })
+    }
 }
