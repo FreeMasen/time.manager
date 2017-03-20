@@ -1,3 +1,42 @@
 <md-card id="dashboard">
-
+    <md-card-title-group class="page-title-group">
+        <md-card-title id="dashboard-title" class="page-title">
+            Tasks
+        </md-card-title>
+        <md-card-subtitle id="dashboard-subtitle" class="page-subtitle">
+            uncomplete
+        </md-card-subtitle>
+    </md-card-title-group>
+    <md-card-content id="dashboard-content" class="page-content, task-list">
+        <md-card *ngFor="let task of taskList" class="task-list-element" (click)="toggle(task._id)">
+            <md-card-title>
+                <md-checkbox type="checkbox" name="isSelected" id="task {{ task._id }}" [(ngModel)]="task.isComplete">
+                {{task.objective}}
+                </md-checkbox>
+            </md-card-title>
+            <md-card-content *ngIf="expandedList.includes(task._id)" class="task-description">
+                <md-card>
+                    <md-card-title>
+                        Work
+                    </md-card-title>
+                    <md-card-content>
+                        <div *ngFor="let work of task.work" class="sub-list-item">
+                            <span class="work-date">{{ work.start.toDateString() }} </span>
+                            <span class="work-duration">{{ work.duration }} minutes</span>
+                        </div>
+                    </md-card-content>
+                </md-card>
+                <md-card>
+                    <md-card-title>
+                        Notes
+                    </md-card-title>
+                    <md-card-content>
+                        <div *ngFor="let note of task.notes" class="sub-list-item">
+                            <span class="note">{{ note }}</span>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </md-card-content>
+        </md-card>
+    </md-card-content>
 </md-card>
