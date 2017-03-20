@@ -1,0 +1,62 @@
+#dashboard {
+
+}
+
+.page-title {
+
+}
+
+.page-subtitle {
+
+}
+
+.task-list {
+
+}
+
+.task-description {
+    margin-left: 15px;
+}
+
+.task-list-element {
+    width: 100%;
+    border: ghostwhite 1px solid;
+    margin: 5px 0;
+    border-radius: 12px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.task-list-element > * {
+    font-size: 18pt;
+    padding: 10pt 0;
+}
+
+.section-title {
+    font-size: 14pt;
+    background-color: white;
+}
+
+.task-section {
+    display: flex;
+    flex-flow: column;
+    flex-direction: column;
+}
+
+.task-sub-card {
+    margin-bottom: 10px;
+}
+
+.add-sub-item {
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    background-color: dark-grey;
+    color: white;
+    border-radius: 50%;
+}
+
+.sub-list-item  > *{
+    font-size: 12pt;
+    margin-left: 25px;
+}
