@@ -4,5 +4,5 @@ html, html > * {
     border: 0;
     margin: 0;
     padding: 0;
-    background-color: #311b92;
+    font: sans-serif;
 }
