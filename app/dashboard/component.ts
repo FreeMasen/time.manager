@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Task } from '../models/task';
-import { Tasks } from '../tasks/service';
+import { Task } from '../models';
+import { Tasks } from '../services';
 
 declare var electron: any;
 @Component({

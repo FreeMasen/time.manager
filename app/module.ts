@@ -12,7 +12,7 @@ import { AppComponent } from './component';
 import { Dashboard } from './dashboard/component';
 import { TaskDetail } from './taskDetail/component';
 //Services
-import { Tasks } from './tasks/service';
+import { Tasks } from './services';
 
 import './rxjs'
 

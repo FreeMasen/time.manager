@@ -1,5 +1,5 @@
-import { Task } from '../models/task';
-import { Work } from '../models/work';
+import { Task } from '../models';
+import { Work } from '../models';
 
 function getMocks(): Task[] {
     var _mocks = [];

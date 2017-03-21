@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Task } from '../models/task';
+import { Task } from '../models';
 import { Mocks } from './mocks';
 declare var electron: any;
 
