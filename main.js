@@ -20,7 +20,7 @@ let positioner;
 
 let blurring = false;
 
-function createWindow (menuTemplate) {
+function createWindow(menuTemplate) {
   win = new BrowserWindow({width: 800, height: 800, show: true});
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
