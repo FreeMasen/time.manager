@@ -5,8 +5,9 @@ var menuTemplate = [
             {
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
-                click(item, focusedWindow) {
-                    focusedWindow.loadUrl('/index.html');
+                click(item, win) {
+                    var url = 'file://' + global.dir + '/index.html'
+                    win.loadURL(url);
                 }
             },
             {
