@@ -4,8 +4,15 @@ const url = require('url');
 const Positioner = require('electron-positioner')
 const debug = require('debug')('main')
 
+global.dir = app.getAppPath();
+
 const Database = require('./src/dataBase.js');
-const db = new Database('time.manager', ['menu']);
+const db = new Database('time.manager', 
+                        ['menu',
+                        'work', 
+                        'tasks', 
+                        'clients', 
+                        'categories']);
 
 let win;
 let icon;
@@ -15,7 +22,6 @@ let blurring = false;
 
 function createWindow (menuTemplate) {
   win = new BrowserWindow({width: 800, height: 800, show: true});
-
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
@@ -64,7 +70,7 @@ function createWindow (menuTemplate) {
 
 app.on('ready', () => {
   db.menu.find({}, (err, docs) => {
-    if (err) return debug(err);
+    if (err) return createWindow([]);
     createWindow(docs);
   })
 })

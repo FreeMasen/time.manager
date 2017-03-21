@@ -3,6 +3,8 @@ const FunctionSerializer = require('../../src/functionSerializer');
 const db = new Database('time.manager', ['menu', 'work']);
 const { MenuItem } = require('electron');
 
+
+
 var menuTemplate = [
     {
         label: 'File',
@@ -10,8 +12,9 @@ var menuTemplate = [
             {
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
-                click(item, focusedWindow) {
-                    focusedWindow.loadURL('/index.html');
+                click(item, win) {  
+                    var url = 'file://' + global.dir + '/index.html';
+                    win.webContents.loadURL(url);
                 }
             },
             {
