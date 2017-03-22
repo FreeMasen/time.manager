@@ -1,14 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,trigger, state, style, 
+            transition, animate } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Task } from '../models';
 import { Tasks } from '../services';
-import { TaskListItem } from '../taskListItem/component'
 
 declare var electron: any;
 @Component({
     selector:'<dashboard>',
-    outputs: ["task"],
+    animations: [
+    trigger('displayToggle', [
+      state('displayed', style({
+        transform: 'rotate(90)'
+      })),
+      state('hidden',   style({
+        transform: 'rotate(-90)'
+      })),
+      transition('displayed => hidden', animate('100ms ease-in')),
+      transition('hidden => displayed', animate('100ms ease-out'))
+    ])],
     templateUrl: 'app/dashboard/template.html',
     styleUrls: ['app/dashboard/style.css']
 })

@@ -8,14 +8,12 @@
         </md-card-subtitle>
     </md-card-title-group>
     <md-card-content id="dashboard-content" class="page-content, task-list">
-        <task-list-item *ngFor="let task of taskList" [task]="task"></task-list-item>
-        <!--<md-card *ngFor="let task of taskList" class="task-list-element" >
-            <span (click)="toggleExpanded(task._id)">+</span>
-            <md-card-title>
+        <div *ngFor="let task of taskList" class="task-list-element">
+            <div class="task-title">
+                <md-icon [@displayToggle]="expandedList.includes(task._id)" (click)="toggleExpanded(task._id)" class="material-icons display-toggle">chevron_right</md-icon>
                 <div class="checkbox" id="task {{ task._id }}" [ngClass]="{checked: selected.includes(task._id)}" (click)="toggleSelected(task._id)"></div>
-                {{task.objective}}
-                <span (click)="goTo(task._id)">...</span>
-            </md-card-title>
+                <span (click)="goTo(task._id)">{{task.objective}}</span>
+            </div>
             <md-card-content *ngIf="expandedList.includes(task._id)" class="task-description">
                 <md-card>
                     <md-card-title>
@@ -39,6 +37,6 @@
                     </md-card-content>
                 </md-card>
             </md-card-content>
-        </md-card>-->
+        </div>
     </md-card-content>
 </md-card>

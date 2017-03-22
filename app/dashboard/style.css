@@ -14,19 +14,35 @@
 
 }
 
-.task-description {
-    margin-left: 15px;
-}
-
 .task-list-element {
     width: 100%;
     border: ghostwhite 1px solid;
     margin: 5px 0;
     border-radius: 12px;
     padding-left: 10px;
-    padding-top: 5px;
     display: flex;
     flex-flow: row;
+}
+
+.task-title {
+    display: flex;
+    flex-flow: row;
+    margin: auto 0;
+    line-height: 1;
+}
+
+.task-title > * + * {
+    margin: auto auto auto 10px;
+    cursor: pointer;
+}
+
+.hidden
+.displayed {
+    transition: toggle-selected 0.5s;
+}
+
+@keyframes toggle-selected {
+    25% { transform: rotate(90);}
 }
 
 .task-list-element > * {
