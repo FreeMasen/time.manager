@@ -9,22 +9,42 @@ import { Task } from '../models';
     styleUrls: ['app/taskListItem/style.css'],
     inputs: ['task'],
     animations: [
-        trigger('displayToggle', [
-            state('expanded', style({
-                transfor: 'rotate(90)'
+        trigger('expanded', [
+            state('collapsed', style({
+                transition: 'rotate(0)'
             })),
-            state('!expanded', style({
-                transition: 'rotate(-90)'
+            transition('collapsed => expanded', [
+                style({
+                    
+                }),
+                animate(250, style({
+                    transition: 'rotate(90)'
+                }))
+            ])
+        ]),
+        trigger('drawer', [
+            state('closed', style({
+                height: 0
             })),
-            transition('collapsed => expanded', animate('100ms')),
-            transition('expanded => collapsed', animate('100ms'))
+            transition('void => *', [
+                style({
+                    height: 0
+                }),
+                animate(250, style({height: '*'}))
+            ]),
+            transition('* => void', [
+                style({
+                    height: '*'
+                }),
+                animate(250, style({height: 0}))
+            ])
         ])
     ]
 })
 export class TaskListItem {
 
     expanded: string = 'collapsed';
-    
+    drawer: string = 'closed';
     @Input() task: Task;
 
     constructor() {
@@ -36,6 +56,14 @@ export class TaskListItem {
             this.expanded = 'expanded'
         } else {
             this.expanded = 'collapsed'
+        }
+    }
+
+    toggleDrawer(): string {
+        if (this.expanded == 'expanded') {
+            return 'open';
+        } else {
+            return 'closed';
         }
     }
 }
