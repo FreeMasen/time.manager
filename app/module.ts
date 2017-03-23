@@ -11,6 +11,7 @@ import { AppComponent } from './component';
 //Components
 import { Dashboard } from './dashboard/component';
 import { TaskDetail } from './taskDetail/component';
+import { TaskListItem } from './taskListItem/component';
 
 import { Tasks } from './services';
 
@@ -28,6 +29,7 @@ import './rxjs'
         AppComponent,
         Dashboard,
         TaskDetail,
+        TaskListItem
     ],
     providers: [
         Tasks
