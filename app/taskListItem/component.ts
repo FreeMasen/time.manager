@@ -9,34 +9,14 @@ import { Task } from '../models';
     styleUrls: ['app/taskListItem/style.css'],
     inputs: ['task'],
     animations: [
-        trigger('expanded', [
-            state('collapsed', style({
-                transition: 'rotate(0)'
-            })),
-            transition('collapsed => expanded', [
-                style({
-                    
-                }),
-                animate(250, style({
-                    transition: 'rotate(90)'
-                }))
-            ])
-        ]),
         trigger('drawer', [
-            state('closed', style({
-                height: 0
-            })),
             transition('void => *', [
-                style({
-                    height: 0
-                }),
-                animate(250, style({height: '*'}))
+                animate(250, style({
+                    height: '75px'}))
             ]),
             transition('* => void', [
-                style({
-                    height: '*'
-                }),
-                animate(250, style({height: 0}))
+                animate(250, style({
+                    height: 0}))
             ])
         ])
     ]
@@ -65,5 +45,9 @@ export class TaskListItem {
         } else {
             return 'closed';
         }
+    }
+
+    toggleSelected() {
+
     }
 }

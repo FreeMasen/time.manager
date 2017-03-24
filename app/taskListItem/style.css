@@ -1,0 +1,59 @@
+.task-title {
+    display: flex;
+    flex-flow: row;
+    font-size: 14pt;
+}
+
+.task-title > * {
+    margin: auto 5px auto 0;
+}
+
+.task-list-item {
+    display: flex;
+    flex-flow: column;
+}
+
+.task-details {
+    margin-left: 10px;
+}
+
+.task-detail-section {
+    display: flex;
+    flex-flow: column;
+    margin-left: 10px;
+}
+
+.task-section-title {
+    font-size: 14pt;
+    text-underline-position: below;
+}
+
+.task-detail-section > * > span {
+    margin-left: 5px;
+    font: 0.5em;
+}
+
+.detail-list {
+    min-height: 25px;
+    display: flex;
+    flex-flow: column;
+}
+
+.detail-list-item {
+    display: flex;
+    flex-flow: row;
+    margin-left: 15px;
+}
+
+.detail-list-item > * {
+    margin: 5px;
+}
+
+.work-details {
+    display: flex;
+    flex-flow: row;
+}
+
+.work-details > * + * {
+    margin-left: 5px;
+}
