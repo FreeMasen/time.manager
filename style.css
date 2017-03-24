@@ -12,6 +12,8 @@ html, html > * {
     height: 0.5em;
     border: #304ffe 0.125em solid;
     display: block;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .checked {
