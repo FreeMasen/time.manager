@@ -1,39 +1,15 @@
-var menuTemplate = [
-    {
-        label: 'File',
-        submenu: [
-            {
-                label: 'Reload',
-                accelerator: 'CmdOrCtrl+R',
-                click(item, win) {
-                    var url = 'file://' + global.dir + '/index.html'
-                    win.loadURL(url);
-                }
-            },
-            {
-                role: 'close'
-            },
-            {
-                role: 'quit'
-            }
-        ]
-    },
-    {
-        label: 'Edit',
-        submenu: [
-            {
-                role: 'undo'
-            },
-            {
-                role: 'redo'
-            }
-        ]
-    },
-    {
-        label: 'View',
-        submenu: [
-        ]
-    }
-]
+const { Menu } = require('electron');
+const db = require('./dataBase.js');
 
-module.exports = menuTemplate;
+var menuList;
+
+function getMenu(cb) {
+    db.menu.find({}, (err, docs) => {
+        if (err) throw err;
+        cb(docs);
+    })
+}
+
+module.exports = getMenu;
+
+// /Users/RFM/Documents/Projects/time.manager/src/dataBase.js

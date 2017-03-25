@@ -12,9 +12,9 @@ var menuTemplate = [
             {
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
-                click(item, win) {  
-                    var url = 'file://' + global.dir + '/index.html';
-                    win.webContents.loadURL(url);
+                click(item, win) {
+                    console.log(win.baseURl);
+                    win.webContents.loadURL(win.baseURL);
                 }
             },
             {
