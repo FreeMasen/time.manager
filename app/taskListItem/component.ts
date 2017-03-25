@@ -9,66 +9,49 @@ import { Task } from '../models';
     styleUrls: ['app/taskListItem/style.css'],
     inputs: ['task'],
     animations: [
+        trigger('direction', [
+            state('collapsed', style({ transform: 'rotate(0)' })),
+            state('expanded', style({ transform: 'rotate(90deg)' })),
+            transition('expanded -> collapsed', animate('300ms 500ms')),
+            transition('collapsed => expanded', animate('300ms'))
+        ]), 
         trigger('drawer', [
-            transition('void => *', [
-                animate('250ms ease-in', style({
-                    height: '75px'}))
-            ]),
-            transition('* => void', [
-                animate('250ms ease-out', style({
-                    height: 0}))
-            ])
+            state('void', style({ height: 0 })),
+            state('open', style({ height: '*' })),
+            transition('void => open', animate('250ms ease-in')),
+            transition('* => void', animate('250ms 250ms ease-out'))
         ]),
-        trigger('expanded', [
-            state('collapsed', style({transform: 'rotate(0)'})),
-            transition('collapsed => expanded', [
-                animate(250, style({
-                    transform: 'rotate(90deg)'}))
-            ]),
-            state('expanded', style({transform: 'rotate(90deg)'})),
-            transition('expanded => collapsed', [
-                animate(250, style({
-                    transform: 'rotate(0)'}))
-            ])
+        trigger('notesFader', [
+            state('expanded', style({ opacity: 1 })),
+            state('void', style({ opacity: 0 })),
+            transition('* => expanded', animate('250ms ease-in')),
+            transition('expanded => *', animate('250ms 125ms ease-out'))
+        ]),
+        trigger('workFader', [
+            state('expanded', style({ opacity: 1 })),
+            state('void', style({ opacity: 0 })),
+            transition('* => expanded', animate('250ms 125ms ease-in')),
+            transition('expanded => *', animate('250ms ease-out'))
         ])
     ]
 })
 export class TaskListItem {
 
-    expanded: string = 'collapsed';
+    state: boolean = false;
     
     @Input() task: Task;
 
-    constructor() {
-    
+    constructor() {}
+
+    get currentState() {
+        return this.state ? 'expanded' : 'collapsed';
     }
 
-    toggleExpanded(): void {
-        console.log(`updating from: ${this.expanded}, ${this.drawer}`);
-        if (this.expanded == 'collapsed') {
-            this.expanded = 'expanded';
-        } else {
-            this.expanded = 'collapsed';
-        }
-        console.log(`to: ${this.expanded}, ${this.drawer}`);
-    }
-
-    get drawer(): string {
-        if (this.expanded == 'collapsed') {
-            return 'closed'
-        }
-        return 'open'
-    }
-
-    toggleDrawer(): string {
-        if (this.expanded == 'expanded') {
-            return 'open';
-        } else {
-            return 'closed';
-        }
+    toggleExpanded() {
+        this.state = !this.state;
     }
 
     toggleSelected() {
-
+        
     }
 }
