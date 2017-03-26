@@ -1,5 +1,5 @@
-import { Component, OnInit, Input,trigger, state, style, 
-            transition, animate } from '@angular/core';
+import { Component, OnInit, Input, Output, trigger, state, style, 
+            transition, animate, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Task } from '../models';
@@ -39,8 +39,9 @@ import { Task } from '../models';
 export class TaskListItem {
 
     state: boolean = false;
-    
+    selected: boolean = false;
     @Input() task: Task;
+    @Output() onSelectionChange = new EventEmitter<[string, boolean]>();
 
     constructor(
             private router: Router
@@ -55,7 +56,8 @@ export class TaskListItem {
     }
 
     toggleSelected() {
-        
+        this.selected = !this.selected;
+        this.onSelectionChange.emit([this.task._id, this.selected]);
     }
 
     goTo(id: string): void {
