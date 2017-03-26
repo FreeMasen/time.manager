@@ -14,7 +14,6 @@
             <span class="task-section-title">Notes</span>
             <div class="detail-list">
             <div *ngFor="let note of task.notes; let i = index" class="detail-list-item">
-                <div class="checkbox" [ngClass]="{checked: false}" (click)="selectNote(i)"></div>
                     <span class="note">{{note}}</span>
                 </div>
             </div>
@@ -24,7 +23,6 @@
             <span class="task-section-title">Work</span>
             <div class="detail-list">
                 <div *ngFor="let work of task.work; let j = index" class="detail-list-item">
-                    <div class="checkbox" [ngClass]="{checked: false}"></div>
                     <div class="work-details">
                         <span>start: {{ work.start.toLocaleString() }}</span>
                         <span>duration: {{ work.duration }} minutes</span>
