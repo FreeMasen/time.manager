@@ -2,13 +2,16 @@
 
 @include mat-core();
 
+$time-primary: mat-palette($mat-indigo);
+$time-accent: mat-palette($mat-pink, A200, A100, A400);
 
-$time-primary: mat-palette($mat-deep-purple, 200);
+// The warn palette is optional (defaults to red).
+$time-warn: mat-palette($mat-red);
 
-$time-accent: mat-palette($mat-pink, 400);
+// Create the theme object (a Sass map containing all of the palettes).
+$time-theme: mat-light-theme($time-primary, $time-accent, $time-warn);
 
-$time-warn: mat-palette($mat-yellow, 900);
-
-$time-theme: mat-dark-theme($time-primary, $time-accent, $time-warn);
-
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
 @include angular-material-theme($time-theme);

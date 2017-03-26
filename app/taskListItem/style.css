@@ -1,0 +1,92 @@
+.task-list-item {
+    display: flex;
+    flex-flow: column;
+    margin: 5px 0;
+    padding: 2px;
+    border: 2px whitesmoke solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.task-list-item > *{
+    background-color: white;
+}
+
+.task-title {
+    display: flex;
+    flex-flow: row;
+    font-size: 14pt;
+}
+
+.task-title > * {
+    margin: auto 5px auto 0;
+}
+
+.title-text {
+    cursor: pointer;
+}
+
+.display-toggle {
+    cursor: pointer;
+}
+.task-details {
+    margin-left: 10px;
+}
+
+.task-detail-section {
+    display: flex;
+    flex-flow: column;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    min-height: 50px;
+}
+
+.task-detail-section > * {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 5px;
+}
+
+.task-section-title {
+    font-size: 1em;
+    border-bottom: solid 1px white;
+    margin: 0 auto 5px auto;
+}
+
+.task-detail-section > * > span {
+    margin-left: 5px;
+    font: 1.25em;
+}
+
+.detail-list {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 5px;
+}
+
+.detail-list-item {
+    display: flex;
+    flex-flow: row;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    border: 2px solid ghostwhite;
+}
+
+.detail-list-item > * {
+    margin-left: 5px;
+}
+
+.work-details {
+    display: flex;
+    flex-flow: row;
+}
+
+.work-details > * + * {
+    margin-left: 5px;
+}

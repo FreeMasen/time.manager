@@ -8,7 +8,12 @@ import { Router } from './router/module';
 
 import { AppComponent } from './component';
 
+//Components
 import { Dashboard } from './dashboard/component';
+import { TaskDetail } from './taskDetail/component';
+import { TaskListItem } from './taskListItem/component';
+
+import { Tasks } from './services';
 
 import './rxjs'
 
@@ -22,10 +27,12 @@ import './rxjs'
     ],
     declarations: [
         AppComponent,
-        Dashboard
+        Dashboard,
+        TaskDetail,
+        TaskListItem
     ],
     providers: [
-
+        Tasks
     ],
     bootstrap: [
         AppComponent

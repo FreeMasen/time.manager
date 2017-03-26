@@ -14,4 +14,8 @@ class Database {
     }
 }
 
-module.exports = Database;
+var database = new Database('time.manager', [
+    'menu'
+])
+
+module.exports = database;

@@ -1,0 +1,80 @@
+#dashboard {
+
+}
+
+.page-title {
+
+}
+
+.page-subtitle {
+
+}
+
+.task-list {
+
+}
+
+.task-list-element {
+    width: 100%;
+    border: ghostwhite 1px solid;
+    margin: 5px 0;
+    border-radius: 12px;
+    padding-left: 10px;
+    display: flex;
+    flex-flow: row;
+}
+
+.task-title {
+    display: flex;
+    flex-flow: row;
+    margin: auto 0;
+    line-height: 1;
+}
+
+.task-title > * + * {
+    margin: auto auto auto 10px;
+    cursor: pointer;
+}
+
+.hidden
+.displayed {
+    transition: toggle-selected 0.5s;
+}
+
+@keyframes toggle-selected {
+    25% { transform: rotate(90);}
+}
+
+.task-list-element > * {
+    font-size: 18pt;
+    padding: 10pt 0;
+}
+
+.section-title {
+    font-size: 14pt;
+    background-color: white;
+}
+
+.task-section {
+    display: flex;
+    flex-flow: column;
+    flex-direction: column;
+}
+
+.task-sub-card {
+    margin-bottom: 10px;
+}
+
+.add-sub-item {
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    background-color: dark-grey;
+    color: white;
+    border-radius: 50%;
+}
+
+.sub-list-item  > *{
+    font-size: 12pt;
+    margin-left: 25px;
+}

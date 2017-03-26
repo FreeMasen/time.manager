@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/21a11ab7d96f315cbbcf8e3e7bdfbdd3c91cfe36/nedb/index.d.ts",
+    "raw": "registry:dt/nedb#1.8.0+20170314191230",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/21a11ab7d96f315cbbcf8e3e7bdfbdd3c91cfe36/nedb/index.d.ts"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "nedb": "registry:dt/nedb#1.8.0+20170314191230"
+  }
+}

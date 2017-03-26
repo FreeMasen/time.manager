@@ -1,6 +1,9 @@
 const Database = require('../../src/dataBase.js');
+const FunctionSerializer = require('../../src/functionSerializer');
 const db = new Database('time.manager', ['menu', 'work']);
 const { MenuItem } = require('electron');
+
+
 
 var menuTemplate = [
     {
@@ -9,8 +12,9 @@ var menuTemplate = [
             {
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
-                click (item, focusedWindow) {
-                    focusedWindow.loadUrl(__dirname + '/index.html');
+                click(item, win) {
+                    console.log(win.baseURl);
+                    win.webContents.loadURL(win.baseURL);
                 }
             },
             {
@@ -24,6 +28,12 @@ var menuTemplate = [
     {
         label: 'Edit',
         submenu: [
+            {
+                role: 'undo'
+            },
+            {
+                role: 'redo'
+            }
         ]
     },
     {
@@ -32,6 +42,8 @@ var menuTemplate = [
         ]
     }
 ]
+
+module.exports = menuTemplate;
 
 db.menu.insert(menuTemplate, (err, doc) => {
     if (err) return console.log('Menu Seed Error: ', err);

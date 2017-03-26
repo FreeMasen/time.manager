@@ -1,3 +1,13 @@
 <md-card id="dashboard">
-
+    <md-card-title-group class="page-title-group">
+        <md-card-title id="dashboard-title" class="page-title">
+            Tasks
+        </md-card-title>
+        <md-card-subtitle id="dashboard-subtitle" class="page-subtitle">
+            uncomplete
+        </md-card-subtitle>
+    </md-card-title-group>
+    <md-card-content id="dashboard-content" class="page-content, task-list">
+        <task-list-item *ngFor="let task of taskList" [task]="task"></task-list-item>
+    </md-card-content>
 </md-card>

@@ -12,9 +12,6 @@ describe('FunctionSerializer', function() {
         serializedFuncs.forEach((func, i) => {
             assert(func != undefined, `${targetNames[i]} was undefined`)
             assert(typeof func == 'object', `${targetNames[i]} was not an object`);
-            assert(func.name != undefined, `${targetNames[i]} name == undefind`);
-            assert(typeof func.name == 'string', `${targetNames[i]} name was not a string`);
-            assert(func.name = 'firstTest', `${targetNames[i]} name not correctly serialized`);
             assert(typeof func.args == 'object', `${targetNames[i]} args was not an object`);
             assert(Array.isArray(func.args), `${targetNames[i]} args was not an array`);
             assert(func.args.length == targetLengths[i], `${targetNames[i]} args was not ${targetLengths[i]}: ${func.args}`);
@@ -34,7 +31,7 @@ describe('FunctionSerializer', function() {
         })
         var args = [undefined, 'arg1', ['arg1', 'arg2', 'arg3']]
         deserializedFuncs.forEach((func, i) => {
-            assert(func != undefined, `${serializedFuncs[i].name} was undefined`);
+            assert(func != undefined, `${serializedFuncs[i]} was undefined`);
             assert(typeof func == 'function', `${serializedFuncs[i].name} was not a function`);
             assert(func.length == funcs[i].length, `${serializedFuncs[i].name}'s args.length did not match funcs[${i}]`);
             assert(func.displayName == funcs[i].displayName, `Displayname's did not match`)

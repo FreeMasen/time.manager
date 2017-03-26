@@ -32,38 +32,47 @@
     - args: array of argument names
     - body: the function body not including the curly braces
 
-## Shared
+## Models
 
 > Writen in Typescript, _id property assigned by Nedb
 
-###### Models
-
-- [ ] Work:
+- Task:
   - properties:
-      - _id: string
-      - start: Date
-      - duration: number
+      - _id: string (Nedb assigned)
+      - objective: string (actual task description)
+      - notes: string[] (any notes about the task)
+      - work: Work[] (time spent working on this task)
+  - computed properties
+    - get completed(): string (returns the date completed as a string or "Not yet complete")
+    - isComplete(): boolean (returns if the task is complete or not)
+  - methods
+    - complete(): void (sets the completion date)
+    - uncomplete(): void (removes the completion date)
+  - TODO:
+    - define the Client/Category relationship
+    - define method for returning total time of all work
+- Work:
+  - properties:
+      - _id: string (Nedb assigned)
+      - start: Date (start date and time)
+      - duration: number (number of minutes spent working)
+- Category:
+  - properties:
+      - _id: string (Nedb assigned)
+      - name: string (category name)
+      - tasks: Task[] (list of all task in this category)
+      - isQuickCategory: boolean (if displayed on the quick choice menu)
   - computed properties
   - methods
-- [ ] Task:
-  - properties:
-      - _id: string
-      - description: string
-      - work: Work[]
-      - category: Category
-  - computed properties
-  - methods
-- [ ] Category:
-  - properties:
-      - _id: string
-      - name: string
-      - client: Client
-  - computed properties
-  - methods
+  - TODO
+    - implement a method for getting the total of work per day
 - [ ] Client:
   - properties:
       - _id: string
       - name: string
-      - active: boolean
+      - categories: Category[] (list of categories for this client)
+      - isQuickClient: boolean (if this client should appear in the quick client menu)
   - computed properties
   - methods
+  - TODO
+    - implement a method for getting a total of work per category per day
