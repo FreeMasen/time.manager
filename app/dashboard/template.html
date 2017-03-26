@@ -1,13 +1,13 @@
-<md-card id="dashboard">
-    <md-card-title-group class="page-title-group">
-        <md-card-title id="dashboard-title" class="page-title">
-            Tasks
-        </md-card-title>
-        <md-card-subtitle id="dashboard-subtitle" class="page-subtitle">
+<div id="dashboard">
+    <div class="page-title-group">
+        <div  class="page-title-line">
+            <span id="dashboard-title">Tasks</span><button md-mini-fab id="delete-button" (click)="deleteSelected()"><md-icon>delete</md-icon></button>
+        </div>
+        <div id="dashboard-subtitle" class="page-subtitle">
             uncomplete
-        </md-card-subtitle>
-    </md-card-title-group>
-    <md-card-content id="dashboard-content" class="page-content, task-list">
-        <task-list-item *ngFor="let task of taskList" [task]="task"></task-list-item>
-    </md-card-content>
-</md-card>
+        </div>
+    </div>
+    <div id="dashboard-content" class="page-content, task-list">
+        <task-list-item *ngFor="let task of taskList" [task]="task" (onSelectionChange)="toggleSelected($event)"></task-list-item>
+    </div>
+</div>

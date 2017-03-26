@@ -7,9 +7,11 @@ declare var electron: any;
 @Injectable()
 export class Tasks {
 
+    mocks = Mocks;
+
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
-            resolve(Mocks);
+            resolve(this.mocks);
         })
     }
 
@@ -21,5 +23,15 @@ export class Tasks {
             })
             reject(new Error('No task found for ID'));
         })
+    }
+
+    delete(listOfIds: string[]) {
+        return new Promise((resolve, reject) => {
+            this.mocks = this.mocks.filter(mock => {
+                return !listOfIds.includes(mock._id);
+            })
+            resolve()
+        })
+
     }
 }

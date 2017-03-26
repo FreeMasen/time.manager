@@ -24,35 +24,37 @@ declare var electron: any;
 })
 export class Dashboard implements OnInit {
     taskList: Task[] = [];
-    expandedList: string[] = [];
     selected: string[] = []
     constructor(private tasks: Tasks,
                 private router: Router) {}
     
     ngOnInit():void {
+        this.getUncomplete();
+    }
+
+    toggleSelected(change: [string, boolean]) {
+        console.log(change)
+        if (change[1]) {
+            this.selected.push(change[0])
+        } else {
+            this.selected = this.selected.filter(selectedId => {
+                return change[0] != selectedId;
+            })
+        }
+    }
+
+    getUncomplete() {
         this.tasks.getUncomplete()
         .then(taskList => {
             this.taskList = taskList;
         })
     }
 
-    toggleExpanded(_id: string) {
-        if (this.expandedList.includes(_id)) {
-            this.expandedList = this.expandedList.filter(id => {
-                return id != _id;
+    deleteSelected() {
+        this.tasks.delete(this.selected)
+            .then(_ => {
+                this.selected = [];
+                this.getUncomplete()
             })
-        } else {
-            this.expandedList.push(_id);
-        }
-    }
-
-    toggleSelected(id: string) {
-        if (this.selected.includes(id)) {
-            this.selected = this.selected.filter(selectedId => {
-                return id != selectedId;
-            })
-        } else {
-            this.selected.push(id);
-        }
     }
 }
