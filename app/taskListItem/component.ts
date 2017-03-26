@@ -1,5 +1,6 @@
 import { Component, OnInit, Input,trigger, state, style, 
             transition, animate } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Task } from '../models';
 
@@ -41,7 +42,9 @@ export class TaskListItem {
     
     @Input() task: Task;
 
-    constructor() {}
+    constructor(
+            private router: Router
+    ) {}
 
     get currentState() {
         return this.state ? 'expanded' : 'collapsed';
@@ -53,5 +56,10 @@ export class TaskListItem {
 
     toggleSelected() {
         
+    }
+
+    goTo(id: string): void {
+        console.log(`goTo(${id})`)
+        this.router.navigate(['taskDetail', id])
     }
 }

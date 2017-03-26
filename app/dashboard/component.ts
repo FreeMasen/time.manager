@@ -55,8 +55,4 @@ export class Dashboard implements OnInit {
             this.selected.push(id);
         }
     }
-
-    goTo(id: string): void {
-        this.router.navigate(['taskDetail', id])
-    }
 }
