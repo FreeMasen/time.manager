@@ -1,6 +1,7 @@
 <md-card id="full-content">
     <md-toolbar color="primary">
-        <span>Time Manager</span>
+        <md-icon id="back" *ngIf="canGoBack" (click)="goBack()">chevron_left</md-icon>
+        <span id="app-title">Time Manager</span>
     </md-toolbar>
     <router-outlet></router-outlet>
 </md-card>
