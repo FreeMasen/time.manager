@@ -1,13 +1,57 @@
-<md-card id="task-detail" *ngIf="task != undefined">
-    <md-card-title-group id="task-detail-title-group">
-        <md-card-title id="task-detail-title">
-            {{task.objective}}
-        </md-card-title>
-        <md-card-subtitle id="task-detail-subtitle">
-            {{task.created}}
-        </md-card-subtitle>
-        <md-card-content id="task-detail-content">
-            
-        </md-card-content>
-    </md-card-title-group>
-</md-card>
+<div id="task-detail" *ngIf="task != undefined">
+    <div id="header">
+        <div id="title-group">
+            <span id="task-title">
+                {{task.objective}}
+            </span>
+            <span id="task-subtitle">
+                {{task.created}} - 
+            </span>
+        </div>
+        <button md-mini-fab (click)="deleteSelected()"><md-icon>delete</md-icon></button>
+    </div>
+    <div id="task-details">
+        <div class="detail-section">
+            <div class="section-title">
+            <span>Notes</span><div class="add" (click)="addNote"><md-icon class="add-text" (click)="addNote()">add</md-icon></div>
+            </div>
+            <div class="section-item" *ngFor="let note of task.notes; let i = index">
+                <div class="checkbox" (click)='toggleNote(i)' [ngClass]="{checked : selectedNotes.includes(i)}"></div>
+                <span class="item-title">{{note}}</span>
+            </div>
+            <div class="pending-note section-item" *ngIf="pendingNote != null">
+                <md-input-container>
+                    <input mdInput
+                        type="text" 
+                        id="pending-note" 
+                        [(ngModel)]="pendingNote" 
+                        placeholder="Note" />
+                </md-input-container>
+                <div class="add" (click)="addNote">
+                    <md-icon class="add-text" 
+                            (click)="finalizeNote()">done</md-icon>
+                </div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <div class="section-title">
+                <span>Work</span><div class="add"><md-icon class="add-text" (click)="addWork()">add</md-icon></div>
+            </div>
+            <div class="section-item" *ngFor="let work of task.work;let i = index">
+                <div class="checkbox" (click)='toggleWork(i)' [ngClass]="{checked: selectedWork.includes(i)}"></div>
+                <span class="item-title">{{work.start}} {{work.duration}}</span>
+            </div>
+            <div class="pending-work section-item" *ngIf="pendingWorkDate != null && pendingWorkDuration != null">
+                <!--<label for="pending-start">Start: </label>-->
+                <md-input-container>
+                    <input id="pending-start" md-input type="date" [(ngModel)]="pendingDate" />
+                </md-input-container>
+                <!--<label for="pending-duration">Duration: </label>-->
+                <md-input-container>
+                    <input id="pending-duration" md-input type="number" [(ngModel)]="pendingWorkDuration" />
+                </md-input-container>
+                <div class="add" (click)="addNote"><md-icon class="add-text" (click)="finalizeNote()">done</md-icon></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,19 +9,34 @@ function getMocks(): Task[] {
         'Develop working model',
         'Implement new feature'
     ];
+    var _notes: string[] = [
+        'This is a note',
+        'Notes are a great way to add more information to a task',
+        'Some things to keep in mind...',
+        `Don't for get about this!`,
+        'More information is important'
+    ]
     for (var i = 0;i<25;i++) {
-        var workNumber = Math.floor(Math.random() * (5 - 0));
+        var workNumber = rnd(0, 5);
         var work: Work[] = [];
+        var notes: string[] = [];
         for (var j = 0;j<workNumber;j++) {
-            var daysInPast = Math.floor(Math.random() * (5 - 0) + 0)
+            var daysInPast = rnd(0, 5)
             var workDate = new Date()
             workDate.setDate(workDate.getDate() - daysInPast);   
-            work.push(new Work(`${i}${j}`, workDate, Math.floor(Math.random() * (30 -1) + 1)))
+            work.push(new Work(`${i}${j}`, workDate, rnd(1, 30)));
         }
-        var objective: number = Math.floor(Math.random() * (3 - 0));
-        _mocks.push(new Task(`${i}`,_objectives[objective], null, null, work));
+        for (var h = 0; h < rnd(0, 10); h++) {
+            notes.push(_notes[rnd(0, _notes.length)]);
+        }
+        var objective: number = rnd(0, 3);
+        _mocks.push(new Task(`${i}`,_objectives[objective], null, notes, work));
     }
     return _mocks;
+}
+
+function rnd(min, max) {
+    return Math.floor(Math.random() * (max - min) + min)
 }
 
 export var Mocks: Task[] = getMocks();
