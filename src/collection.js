@@ -1,6 +1,7 @@
 const Ned = require('nedb');
 const FunctionSerializer = require('./functionSerializer');
-const debug = require('debug')('data.collection')
+const Debug = require('debug');
+const debug = Debug('data.collection');
 
 class Collection {
     constructor(filename) {
@@ -34,17 +35,23 @@ class Collection {
     _serialize(obj) {
         var ret = {}
         for (var k in obj) {
+            var prop = obj[k]
             debug(k);
-            debug(typeof obj[k])
-            if (typeof obj[k] == 'function') {
+            debug(typeof prop)
+            if (typeof prop == 'function') {
                 debug('found function')
-                debug(obj[k]);
-                ret[k] = FunctionSerializer.serialize(obj[k]);
+                debug(prop);
+                ret[k] = FunctionSerializer.serialize(prop);
                 debug(ret[k])
+            } else if (typeof prop == 'object') {
+                debug('found object, recursing')
+                ret[k] = this._serializeAnyFuncs(prop);
             } else {
-                ret[k] = obj[k];
+                debug('setting standard');
+                ret[k] = prop;
             }
         }
+        debug('complete returning')
         return ret;
     }
 
@@ -55,19 +62,9 @@ class Collection {
             if (err) return cb(err);
             debug('no error in ned store find cb, deserializing');
             debug(docs.length)
-            docs = docs.map(doc => {
-                for (var k in doc) {
-                    if (doc[k].isFunc) {
-                        debug('found func');
-                        debug(doc[k]);
-                        doc[k] = FunctionSerializer.deserialize(doc[k]);
-                        debug(doc[k])
-                    }
-                }
-                return doc;
-            })
+            var results = this._deserializeAnyFuncs(docs);
             debug('deserializing complete, sending docs')
-            cb(null, docs);
+            cb(null, results);
         })
     }
 
@@ -80,16 +77,37 @@ class Collection {
         })
     }
 
-    update(query, update, cb) {
-        for (var k in update) {
-            if (typeof update[k] == 'function') {
-                try {
-                    update[k] = FunctionSerializer.serialize(update[k]);
-                } catch (e) {
-                    return cb(e);
+    _deserializeAnyFuncs(obj) {
+        debug('_serializeAnyFuncs')
+        if (!Array.isArray(obj)) return this._deserialize(obj);
+            debug('not array')
+            return obj.map(o => {
+                return this._deserialize(o);
+        })
+    }
+
+    _deserialize(obj) {
+        var ret = {}
+        for (var k in obj) {
+            var prop = obj[k]
+            debug(k);
+            debug(typeof prop)
+            if (typeof prop == 'object') {
+                if (prop.isFunc) {
+                    ret[k] = FunctionSerializer.deserialize(prop, ret);
+                } else {
+                    debug('found object recursing');
+                    ret[k] = this._deserializeAnyFuncs(prop);
                 }
+            } else {
+                ret[k] = prop;
             }
         }
+        return ret;
+    }
+
+    update(query, update, cb) {
+        update = this._serializeAnyFuncs(update);
         var opts = {
             multi: true,
             upsert: true,

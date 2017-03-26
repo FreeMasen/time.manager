@@ -1,0 +1,1402 @@
+{
+    "expand": "schema,names",
+    "startAt": 0,
+    "maxResults": 50,
+    "total": 9,
+    "issues": [
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13103",
+            "self": "http://jira.server.com/rest/api/2/issue/13103",
+            "key": "TFFACT-1643",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10318
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10100",
+                    "id": "10100",
+                    "key": "TFFACT",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10100&avatarId=10501",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10100&avatarId=10501",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10100&avatarId=10501",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10100&avatarId=10501"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T14:51:04.213-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/TFFACT-1643/watchers",
+                    "watchCount": 1,
+                    "isWatching": false
+                },
+                "created": "2017-03-21T10:46:16.000-0500",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T14:33:32.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/3",
+                    "description": "This issue is being actively worked on at the moment by the assignee.",
+                    "iconUrl": "http://jira.server.com/images/icons/statuses/inprogress.png",
+                    "name": "In Progress",
+                    "id": "3",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/4",
+                        "id": 4,
+                        "key": "indeterminate",
+                        "colorName": "Person",
+                        "name": "In Progress"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": "Need to create:\r\n * a board with all of the projects we are working on\r\n * a simple \"onboarding checklist\" for adding new projects\r\n * a way to include multiple project tickets in sprints/releases",
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007ex:",
+                "aggregatetimeestimate": null,
+                "summary": "JIRA - Multiple Projects in main board",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "ID10406",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?avatarId=10102",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&avatarId=10102",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&avatarId=10102",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&avatarId=10102"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "ID10406",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?avatarId=10102",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&avatarId=10102",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&avatarId=10102",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&avatarId=10102"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@eb04ffb[id=37,rapidViewId=1,state=ACTIVE,name=Next Release,startDate=2017-03-17T17:45:49.131-05:00,endDate=2017-03-25T05:40:00.000-05:00,completeDate=<null>,sequence=37]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/TFFACT-1643/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13059",
+            "self": "http://jira.server.com/rest/api/2/issue/13059",
+            "key": "TFFACT-1624",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10318
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10100",
+                    "id": "10100",
+                    "key": "TFFACT",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10100&avatarId=10501",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10100&avatarId=10501",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10100&avatarId=10501",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10100&avatarId=10501"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-17T10:06:55.278-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/TFFACT-1624/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2017-03-08T15:29:28.000-0600",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-08T15:29:28.000-0600",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/10100",
+                    "description": "",
+                    "iconUrl": "http://jira.server.com/images/icons/subtask.gif",
+                    "name": "To Do",
+                    "id": "10100",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/2",
+                        "id": 2,
+                        "key": "new",
+                        "colorName": "blue-gray",
+                        "name": "To Do"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": "Prospective project request for Barr includes generating reports dynamically using T-SQL data to create both PDF and PowerPoint reports. \r\n\r\nCurrently there is support via SASS, however this is cumbersome. Are there any working solutions to do this built into .NET or a robust framework?",
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007b5:",
+                "aggregatetimeestimate": null,
+                "summary": "Research Report to .ppt",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": null,
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/TFFACT-1624/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13031",
+            "self": "http://jira.server.com/rest/api/2/issue/13031",
+            "key": "TFFACT-1596",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/1",
+                    "id": "1",
+                    "description": "A problem which impairs or prevents the functions of the product.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10303
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10100",
+                    "id": "10100",
+                    "key": "TFFACT",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10100&avatarId=10501",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10100&avatarId=10501",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10100&avatarId=10501",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10100&avatarId=10501"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T15:01:36.545-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/TFFACT-1596/watchers",
+                    "watchCount": 3,
+                    "isWatching": true
+                },
+                "created": "2017-02-23T12:17:19.000-0600",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T14:16:18.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/10300",
+                    "description": "",
+                    "iconUrl": "http://jira.server.com/images/icons/statuses/generic.png",
+                    "name": "Info Needed",
+                    "id": "10300",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/2",
+                        "id": 2,
+                        "key": "new",
+                        "colorName": "blue-gray",
+                        "name": "To Do"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": "[http://qa.tffact.com/client/profile/888]\r\n\r\nI deleted this client in one tab, then refreshed the profile in another and got a blank profile page.  I think this should return a 404 or 403 instead:\r\n\r\n!image-2017-02-23-12-16-15-443.png!\r\n\r\n ",
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|hzzxyy:m",
+                "aggregatetimeestimate": null,
+                "summary": "Client - Navigating to non-existent Client URL",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "ID10406",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?avatarId=10102",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&avatarId=10102",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&avatarId=10102",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&avatarId=10102"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "ID10406",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?avatarId=10102",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&avatarId=10102",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&avatarId=10102",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&avatarId=10102"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@3479ff7[id=36,rapidViewId=1,state=CLOSED,name=Release - March 17 2017,startDate=2017-03-01T18:06:09.302-06:00,endDate=2017-03-09T06:01:00.000-06:00,completeDate=2017-03-17T17:45:19.471-05:00,sequence=36]",
+                    "com.atlassian.greenhopper.service.sprint.Sprint@eb04ffb[id=37,rapidViewId=1,state=ACTIVE,name=Next Release,startDate=2017-03-17T17:45:49.131-05:00,endDate=2017-03-25T05:40:00.000-05:00,completeDate=<null>,sequence=37]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/TFFACT-1596/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13111",
+            "self": "http://jira.server.com/rest/api/2/issue/13111",
+            "key": "CIQ-5",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10318
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10103",
+                    "id": "10103",
+                    "key": "CIQ",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10103&avatarId=10011",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10103&avatarId=10011",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10103&avatarId=10011",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10103&avatarId=10011"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T15:31:07.567-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-5/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2017-03-23T15:19:05.000-0500",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T15:31:07.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/10100",
+                    "description": "",
+                    "iconUrl": "http://jira.server.com/images/icons/subtask.gif",
+                    "name": "To Do",
+                    "id": "10100",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/2",
+                        "id": 2,
+                        "key": "new",
+                        "colorName": "blue-gray",
+                        "name": "To Do"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": null,
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007fe:",
+                "aggregatetimeestimate": null,
+                "summary": "Clinic User Reports",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@7ab107d4[id=39,rapidViewId=4,state=ACTIVE,name=CallItQu Sprint 1,startDate=2017-03-26T15:17:00.000-05:00,endDate=2017-04-09T15:17:00.000-05:00,completeDate=<null>,sequence=39]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-5/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13110",
+            "self": "http://jira.server.com/rest/api/2/issue/13110",
+            "key": "CIQ-4",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10318
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10103",
+                    "id": "10103",
+                    "key": "CIQ",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10103&avatarId=10011",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10103&avatarId=10011",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10103&avatarId=10011",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10103&avatarId=10011"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T15:31:17.755-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-4/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2017-03-23T15:18:44.000-0500",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T15:31:17.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/10100",
+                    "description": "",
+                    "iconUrl": "http://jira.server.com/images/icons/subtask.gif",
+                    "name": "To Do",
+                    "id": "10100",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/2",
+                        "id": 2,
+                        "key": "new",
+                        "colorName": "blue-gray",
+                        "name": "To Do"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": null,
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007ff:",
+                "aggregatetimeestimate": null,
+                "summary": "Clinic User Landing Page",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@7ab107d4[id=39,rapidViewId=4,state=ACTIVE,name=CallItQu Sprint 1,startDate=2017-03-26T15:17:00.000-05:00,endDate=2017-04-09T15:17:00.000-05:00,completeDate=<null>,sequence=39]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-4/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13109",
+            "self": "http://jira.server.com/rest/api/2/issue/13109",
+            "key": "CIQ-3",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10318
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10103",
+                    "id": "10103",
+                    "key": "CIQ",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10103&avatarId=10011",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10103&avatarId=10011",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10103&avatarId=10011",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10103&avatarId=10011"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T15:31:32.771-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-3/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2017-03-23T15:18:26.000-0500",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T15:31:32.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/10100",
+                    "description": "",
+                    "iconUrl": "http://jira.server.com/images/icons/subtask.gif",
+                    "name": "To Do",
+                    "id": "10100",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/2",
+                        "id": 2,
+                        "key": "new",
+                        "colorName": "blue-gray",
+                        "name": "To Do"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": null,
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007fj:",
+                "aggregatetimeestimate": null,
+                "summary": "Login Page",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@7ab107d4[id=39,rapidViewId=4,state=ACTIVE,name=CallItQu Sprint 1,startDate=2017-03-26T15:17:00.000-05:00,endDate=2017-04-09T15:17:00.000-05:00,completeDate=<null>,sequence=39]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-3/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13108",
+            "self": "http://jira.server.com/rest/api/2/issue/13108",
+            "key": "CIQ-2",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10318
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10103",
+                    "id": "10103",
+                    "key": "CIQ",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10103&avatarId=10011",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10103&avatarId=10011",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10103&avatarId=10011",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10103&avatarId=10011"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T15:31:26.130-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-2/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2017-03-23T15:18:12.000-0500",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T15:31:26.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/10100",
+                    "description": "",
+                    "iconUrl": "http://jira.server.com/images/icons/subtask.gif",
+                    "name": "To Do",
+                    "id": "10100",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/2",
+                        "id": 2,
+                        "key": "new",
+                        "colorName": "blue-gray",
+                        "name": "To Do"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": null,
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007fh:",
+                "aggregatetimeestimate": null,
+                "summary": "Layout View",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@7ab107d4[id=39,rapidViewId=4,state=ACTIVE,name=CallItQu Sprint 1,startDate=2017-03-26T15:17:00.000-05:00,endDate=2017-04-09T15:17:00.000-05:00,completeDate=<null>,sequence=39]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-2/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13107",
+            "self": "http://jira.server.com/rest/api/2/issue/13107",
+            "key": "CIQ-1",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10318
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10103",
+                    "id": "10103",
+                    "key": "CIQ",
+                    "name": "Person",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?pid=10103&avatarId=10011",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&pid=10103&avatarId=10011",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&pid=10103&avatarId=10011",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&pid=10103&avatarId=10011"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T15:36:22.607-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-1/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2017-03-23T15:16:48.000-0500",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T15:36:22.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/10401",
+                    "description": "Dev is completed locally, but changes have not been pushed to QA",
+                    "iconUrl": "http://jira.server.com/images/icons/statuses/generic.png",
+                    "name": "Dev Complete",
+                    "id": "10401",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/4",
+                        "id": 4,
+                        "key": "indeterminate",
+                        "colorName": "Person",
+                        "name": "In Progress"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": null,
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007fd:i",
+                "aggregatetimeestimate": null,
+                "summary": "Reporting Mock for Accessibility test",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@7ab107d4[id=39,rapidViewId=4,state=ACTIVE,name=CallItQu Sprint 1,startDate=2017-03-26T15:17:00.000-05:00,endDate=2017-04-09T15:17:00.000-05:00,completeDate=<null>,sequence=39]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/CIQ-1/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "13060",
+            "self": "http://jira.server.com/rest/api/2/issue/13060",
+            "key": "BC-1",
+            "fields": {
+                "issuetype": {
+                    "self": "http://jira.server.com/rest/api/2/issuetype/1",
+                    "id": "1",
+                    "description": "A problem which impairs or prevents the functions of the product.",
+                    "iconUrl": "http://jira.server.com/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+                    "name": "Person",
+                    "subtask": false,
+                    "avatarId": 10303
+                },
+                "timespent": null,
+                "project": {
+                    "self": "http://jira.server.com/rest/api/2/project/10800",
+                    "id": "10800",
+                    "key": "BC",
+                    "name": "BARR Center",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/projectavatar?avatarId=10803",
+                        "24x24": "http://jira.server.com/secure/projectavatar?size=small&avatarId=10803",
+                        "16x16": "http://jira.server.com/secure/projectavatar?size=xsmall&avatarId=10803",
+                        "32x32": "http://jira.server.com/secure/projectavatar?size=medium&avatarId=10803"
+                    }
+                },
+                "fixVersions": [],
+                "aggregatetimespent": null,
+                "resolution": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "lastViewed": "2017-03-23T15:05:11.990-0500",
+                "watches": {
+                    "self": "http://jira.server.com/rest/api/2/issue/BC-1/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2017-03-08T15:36:45.000-0600",
+                "priority": {
+                    "self": "http://jira.server.com/rest/api/2/priority/3",
+                    "iconUrl": "http://jira.server.com/images/icons/priorities/medium.svg",
+                    "name": "Person",
+                    "id": "3"
+                },
+                "customfield_10300": null,
+                "labels": [],
+                "customfield_10301": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": null,
+                "customfield_10019": "Not started",
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "updated": "2017-03-23T15:08:52.000-0500",
+                "status": {
+                    "self": "http://jira.server.com/rest/api/2/status/3",
+                    "description": "This issue is being actively worked on at the moment by the assignee.",
+                    "iconUrl": "http://jira.server.com/images/icons/statuses/inprogress.png",
+                    "name": "In Progress",
+                    "id": "3",
+                    "statusCategory": {
+                        "self": "http://jira.server.com/rest/api/2/statuscategory/4",
+                        "id": 4,
+                        "key": "indeterminate",
+                        "colorName": "Person",
+                        "name": "In Progress"
+                    }
+                },
+                "components": [],
+                "timeoriginalestimate": null,
+                "description": "Prospective project request for Barr includes generating reports dynamically using T-SQL data to create both PDF and PowerPoint reports. \r\n\r\nCurrently there is support via SASS, however this is cumbersome. Are there any working solutions to do this built into .NET or a robust framework?",
+                "customfield_10010": null,
+                "customfield_10011": null,
+                "customfield_10012": null,
+                "customfield_10013": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10005": null,
+                "customfield_10009": "0|i007bd:",
+                "aggregatetimeestimate": null,
+                "summary": "Research Report Exports to PowerPoint",
+                "creator": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "http://jira.server.com/rest/api/2/user?username=username",
+                    "name": "Person",
+                    "key": "username",
+                    "emailAddress": "email@server.com",
+                    "avatarUrls": {
+                        "48x48": "http://jira.server.com/secure/useravatar?ownerId=username&avatarId=10901",
+                        "24x24": "http://jira.server.com/secure/useravatar?size=small&ownerId=username&avatarId=10901",
+                        "16x16": "http://jira.server.com/secure/useravatar?size=xsmall&ownerId=username&avatarId=10901",
+                        "32x32": "http://jira.server.com/secure/useravatar?size=medium&ownerId=username&avatarId=10901"
+                    },
+                    "displayName": "Person",
+                    "active": true,
+                    "timeZone": "America/Chicago"
+                },
+                "customfield_10000": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10001": null,
+                "customfield_10002": null,
+                "customfield_10200": null,
+                "customfield_10004": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@378981da[id=38,rapidViewId=18,state=ACTIVE,name=BC Sprint 1,startDate=2017-03-26T15:08:00.000-05:00,endDate=2017-04-09T15:08:00.000-05:00,completeDate=<null>,sequence=38]"
+                ],
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "http://jira.server.com/rest/api/2/issue/BC-1/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        }
+    ]
+}

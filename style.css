@@ -4,5 +4,18 @@ html, html > * {
     border: 0;
     margin: 0;
     padding: 0;
-    background-color: #311b92;
+    font: sans-serif;
+}
+
+.checkbox {
+    width: 0.5em;
+    height: 0.5em;
+    border: #304ffe 0.125em solid;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.checked {
+    background-color: #304ffe;
 }
