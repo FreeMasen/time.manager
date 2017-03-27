@@ -61,24 +61,33 @@
     width: 95%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    
 }
 
-.add {
+.mini-button {
     border-radius: 50%;
-    background-color: deeppink;
-    width: 18px;
-    height: 18px;
+    width: 0.8em;
+    height: 0.8em;
     margin-top: auto;
     margin-bottom: auto;
     line-height: 0.8em;
 }
 
-.add-text {
-    font-size: 0.8em;
+.mini-button > * {
     color: white;
+    font-size: 0.8em;
+}
+
+.add {
+    background-color: deeppink;
+}
+
+.clear {
+    background-color: black;
 }
 
 .section-item {
@@ -89,6 +98,15 @@
     margin-right: auto;
     word-wrap: break-word;
     background-color: white;
+    padding: 10px 0;
+}
+
+.section-item.pending {
+    padding: 0;
+}
+
+.pending > * {
+    margin-left: 10px;
 }
 
 .detail-section > * + * {
@@ -102,6 +120,28 @@
     margin-bottom: auto;
 }
 
-#pending-note {
-    background-color: transparent;
+.input-container {
+    display: flex;
+    flex-flow: column;
 }
+
+.input-label {
+    font-size: 0.8em;
+    color: lightslategray;
+}
+
+.input {
+    border: none;
+    line-height: 1em;
+    height: 1em;
+    font-size: 1.2em;
+}
+
+.input:focus {
+    outline: none;
+}
+
+#pending-duration {
+    width: 100px;
+}
+

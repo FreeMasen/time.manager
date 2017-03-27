@@ -61,7 +61,7 @@ export class TaskListItem {
     }
 
     goTo(): void {
-        console.log(`goTo(${this.task._id})`)
-        this.router.navigate(['taskDetail', this.task._id])
+        console.log(`goTo(${this.task._id})`);
+        this.router.navigate(['taskDetail', this.task._id]);
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Forms } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -17,7 +18,7 @@ export class TaskDetail implements OnInit {
     selectedNotes: number[] = [];
     selectedWork: number[] = [];
 
-    pendingWorkDate?: Date;
+    _pendingWorkDate?: Date;
     pendingWorkDuration?: number;
     pendingNote?: string;
 
@@ -76,13 +77,54 @@ export class TaskDetail implements OnInit {
     }
 
     addWork() {
-        this.pendingWorkDate = new Date();
+        this._pendingWorkDate = new Date();
         this.pendingWorkDuration = 0;
     }
 
+    get pendingWorkDate(): string {
+        if (!this._pendingWorkDate) return "";
+        var year = this._pendingWorkDate.getFullYear();
+        var month = this._pendingWorkDate.getMonth() + 1;
+        var day = this._pendingWorkDate.getDate();
+        var hour = this._pendingWorkDate.getHours();
+        var minutes = this._pendingWorkDate.getMinutes();
+        if (this._pendingWorkDate) {
+            var ret = `${year}-${this.twoDigitString(month)}-${this.twoDigitString(day)}T${this.twoDigitString(hour)}:${this.twoDigitString(minutes)}`
+            return ret;
+        }
+        return '';
+    }
+
+    set pendingWorkDate(newVal: string) {
+        var dateParts = newVal.replace('T', '-').split('-')
+        var year = Number.parseInt(dateParts[0]);
+        var month = Number.parseInt(dateParts[1]);
+        var day = Number.parseInt(dateParts[2]);
+        var timeParts = dateParts[3].split(':');
+        var hour = Number.parseInt(timeParts[0]);
+        var minute = Number.parseInt(timeParts[1]);
+        this._pendingWorkDate = new Date(year, month - 1, day, hour, minute);
+    }
+
     finalizeWork() {
-        this.task.work.push(new Work(null, this.pendingWorkDate, this.pendingWorkDuration));
+        this.task.work.push(new Work(null, this._pendingWorkDate, this.pendingWorkDuration));
         this.pendingWorkDate = null;
         this.pendingWorkDuration = null;
+    }
+
+    clearWork() {
+        this._pendingWorkDate = null;
+        this.pendingWorkDuration = null;
+    }
+
+    clearNote() {
+        this.pendingNote = null;
+    }
+
+    private twoDigitString = function(num: number): string {
+        if (num < 10) {
+            return '0' +  num;
+        }
+        return num.toString();
     }
 }
