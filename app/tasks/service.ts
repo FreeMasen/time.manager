@@ -22,7 +22,7 @@ export class Tasks {
     getWithId(id: string): Promise<Task> {
         return new Promise((resolve, reject) => {
             this.mocks.forEach(mock => {
-                if (mock._id = id) return resolve(mock);
+                if (mock._id == id) return resolve(mock);
                 
             })
             reject(new Error('No task found for ID'));
