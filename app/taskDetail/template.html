@@ -8,7 +8,7 @@
                 {{task.created}} - {{task.completed}}
             </span>
         </div>
-        <div class="button large-button clear"(click)="deleteSelf()">
+        <div title="Delete this task" class="button large-button clear"(click)="deleteSelf()">
             <md-icon class="clear-text">delete</md-icon>
         </div>
     </div>
@@ -17,11 +17,11 @@
             <div class="section-title">
                 <span>Notes</span>
                 <div class="button-group">
-                    <div class="button mini-button add" 
+                    <div title="Add a new note to this task" class="button mini-button add" 
                         (click)="addNote()">
                         <md-icon class="add-text">add</md-icon>
                     </div>
-                    <div class="button mini-button clear" 
+                    <div title="deleted selected notes" class="button mini-button clear" 
                         (click)="deleteSelected('notes')">
                         <md-icon class="clear-text">delete</md-icon>
                     </div>
@@ -56,11 +56,11 @@
             <div class="section-title">
                 <span>Work</span>
                 <div class="button-group">
-                    <div class="button mini-button add" 
+                    <div title="Record some work you have done for this task" class="button mini-button add" 
                         (click)="addWork()">
                         <md-icon class="add-text">add</md-icon>
                     </div>
-                    <div class="button mini-button clear" 
+                    <div title="Delete the selected work" class="button mini-button clear" 
                         (click)="deleteSelected('work')">
                         <md-icon class="clear-text">delete</md-icon>
                     </div>
