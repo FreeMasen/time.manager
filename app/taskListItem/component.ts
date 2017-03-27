@@ -60,8 +60,8 @@ export class TaskListItem {
         this.onSelectionChange.emit([this.task._id, this.selected]);
     }
 
-    goTo(id: string): void {
-        console.log(`goTo(${id})`)
-        this.router.navigate(['taskDetail', id])
+    goTo(): void {
+        console.log(`goTo(${this.task._id})`)
+        this.router.navigate(['taskDetail', this.task._id])
     }
 }
