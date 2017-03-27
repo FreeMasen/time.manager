@@ -16,10 +16,15 @@
         <div class="detail-section">
             <div class="section-title">
                 <span>Notes</span>
-                <div class="mini-button add" 
-                    (click)="addNote()">
-                    <md-icon class="add-text" 
-                            (click)="addNote()">add</md-icon>
+                <div class="button-group">
+                    <div class="mini-button add" 
+                        (click)="addNote()">
+                        <md-icon class="add-text">add</md-icon>
+                    </div>
+                    <div class="mini-button clear" 
+                        (click)="deleteSelected('notes')">
+                        <md-icon class="clear-text">delete</md-icon>
+                    </div>
                 </div>
             </div>
             <div class="section-item" *ngFor="let note of task.notes; let i = index">
@@ -50,8 +55,15 @@
         <div class="detail-section">
             <div class="section-title">
                 <span>Work</span>
-                <div class="mini-button add" (click)="addWork()">
-                    <md-icon class="add-text">add</md-icon>
+                <div class="button-group">
+                    <div class="mini-button add" 
+                        (click)="addWork()">
+                        <md-icon class="add-text">add</md-icon>
+                    </div>
+                    <div class="mini-button clear" 
+                        (click)="deleteSelected('work')">
+                        <md-icon class="clear-text">delete</md-icon>
+                    </div>
                 </div>
             </div>
             <div class="section-item" *ngFor="let work of task.work;let i = index">

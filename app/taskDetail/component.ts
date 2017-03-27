@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Forms } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -34,7 +33,6 @@ export class TaskDetail implements OnInit {
                         this.task = task;
                     })
             }
-            
         })
     }
 
@@ -56,15 +54,19 @@ export class TaskDetail implements OnInit {
         }
     }
 
-    deleteSelected() {
-        this.task.work = this.task.work.filter((item, i) => {
-            return !this.selectedWork.includes(i);
-        })
-        this.task.notes = this.task.notes.filter((item, i) => {
-            return !this.selectedNotes.includes(i);
-        })
-        this.selectedNotes = [];
-        this.selectedWork = [];
+    deleteSelected(element: string) {
+        if (element == 'work') {
+            this.task.work = this.task.work.filter((item, i) => {
+                return !this.selectedWork.includes(i);
+            })
+            this.selectedWork = [];
+        }
+        else if (element == 'notes') {
+            this.task.notes = this.task.notes.filter((item, i) => {
+                return !this.selectedNotes.includes(i);
+            })
+            this.selectedNotes = [];
+        }
     }
 
     addNote() {

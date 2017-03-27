@@ -68,6 +68,15 @@
     
 }
 
+.button-group {
+    display: flex;
+    flex-flow: row;
+}
+
+.button-group > * + * {
+    margin-left: 5px;
+}
+
 .mini-button {
     border-radius: 50%;
     width: 0.8em;
