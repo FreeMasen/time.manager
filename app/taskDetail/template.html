@@ -8,20 +8,20 @@
                 {{task.created}} - {{task.completed}}
             </span>
         </div>
-        <button md-mini-fab (click)="deleteSelected()">
-            <md-icon>delete</md-icon>
-        </button>
+        <div class="button large-button clear"(click)="deleteSelf()">
+            <md-icon class="clear-text">delete</md-icon>
+        </div>
     </div>
     <div id="task-details">
         <div class="detail-section">
             <div class="section-title">
                 <span>Notes</span>
                 <div class="button-group">
-                    <div class="mini-button add" 
+                    <div class="button mini-button add" 
                         (click)="addNote()">
                         <md-icon class="add-text">add</md-icon>
                     </div>
-                    <div class="mini-button clear" 
+                    <div class="button mini-button clear" 
                         (click)="deleteSelected('notes')">
                         <md-icon class="clear-text">delete</md-icon>
                     </div>
@@ -44,10 +44,10 @@
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div class="mini-button add" (click)="finalizeNote()">
+                <div class="button mini-button add" (click)="finalizeNote()">
                     <md-icon class="add-text">done</md-icon>
                 </div>
-                <div class="mini-button clear" (click)="clearNote()">
+                <div class="button mini-button clear" (click)="clearNote()">
                     <md-icon class="clear-text">clear</md-icon>
                 </div>
             </div>
@@ -56,11 +56,11 @@
             <div class="section-title">
                 <span>Work</span>
                 <div class="button-group">
-                    <div class="mini-button add" 
+                    <div class="button mini-button add" 
                         (click)="addWork()">
                         <md-icon class="add-text">add</md-icon>
                     </div>
-                    <div class="mini-button clear" 
+                    <div class="button mini-button clear" 
                         (click)="deleteSelected('work')">
                         <md-icon class="clear-text">delete</md-icon>
                     </div>
