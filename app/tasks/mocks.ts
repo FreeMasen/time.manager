@@ -1,7 +1,7 @@
 import { Task } from '../models';
 import { Work } from '../models';
 
-function getMocks(): Task[] {
+export function Mocks(): Task[] {
     var _mocks = [];
     var _objectives: string[] =  [
         'QA New feature',
@@ -38,5 +38,3 @@ function getMocks(): Task[] {
 function rnd(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
 }
-
-export var Mocks: Task[] = getMocks();
