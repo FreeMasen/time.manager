@@ -9,7 +9,7 @@
             </span>
         </div>
         <div title="Delete this task" class="button large-button clear"(click)="deleteSelf()">
-            <md-icon class="clear-text">delete</md-icon>
+            <div class="clear-text large-button-content">delete</div>
         </div>
     </div>
     <div id="task-details">
@@ -19,11 +19,11 @@
                 <div class="button-group">
                     <div title="Add a new note to this task" class="button mini-button add" 
                         (click)="addNote()">
-                        <md-icon class="add-text">add</md-icon>
+                        <div class="add-text mini-button-content">add</div>
                     </div>
                     <div title="deleted selected notes" class="button mini-button clear" 
                         (click)="deleteSelected('notes')">
-                        <md-icon class="clear-text">delete</md-icon>
+                        <div class="clear-text mini-button-content">delete</div>
                     </div>
                 </div>
             </div>
@@ -44,11 +44,11 @@
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div class="button mini-button add" (click)="finalizeNote()">
-                    <md-icon class="add-text">done</md-icon>
+                <div title="Add note" class="button mini-button add" (click)="finalizeNote()">
+                    <div class="add-text mini-button-content">done</div>
                 </div>
-                <div class="button mini-button clear" (click)="clearNote()">
-                    <md-icon class="clear-text">clear</md-icon>
+                <div title="Cancel" class="button mini-button clear" (click)="clearNote()">
+                    <div class="clear-text mini-button-content">clear</div>
                 </div>
             </div>
         </div>
@@ -58,11 +58,11 @@
                 <div class="button-group">
                     <div title="Record some work you have done for this task" class="button mini-button add" 
                         (click)="addWork()">
-                        <md-icon class="add-text">add</md-icon>
+                        <div class="add-text  mini-button-content">add</div>
                     </div>
                     <div title="Delete the selected work" class="button mini-button clear" 
                         (click)="deleteSelected('work')">
-                        <md-icon class="clear-text">delete</md-icon>
+                        <div class="clear-text  mini-button-content">delete</div>
                     </div>
                 </div>
             </div>
@@ -89,11 +89,11 @@
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div class="mini-button add" (click)="finalizeWork()">
-                    <md-icon class="add-text">done</md-icon>
+                <div title="Add work" class="mini-button add  mini-button-content" (click)="finalizeWork()">
+                    <div class="add-text mini-button-content">done</div>
                 </div>
-                <div class="mini-button clear" (click)="clearWork()">
-                    <md-icon class="clear-text">clear</md-icon>
+                <div title="cancel" class="mini-button clear" (click)="clearWork()">
+                    <div class="clear-text mini-button-content">clear</div>
                 </div>
             </div>
         </div>
