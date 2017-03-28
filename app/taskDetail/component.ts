@@ -61,8 +61,7 @@ export class TaskDetail implements OnInit {
                 return !this.selectedWork.includes(i);
             })
             this.selectedWork = [];
-        }
-        else if (element == 'notes') {
+        } else if (element == 'notes') {
             this.task.notes = this.task.notes.filter((item, i) => {
                 return !this.selectedNotes.includes(i);
             })
