@@ -17,11 +17,11 @@
             <div class="section-title">
                 <span>Notes</span>
                 <div class="button-group">
-                    <div class="mini-button add" 
+                    <div class="mini-button button add" 
                         (click)="addNote()">
-                        <div class="add-text mini-button-content">add</div>
+                        <div class="add-text mini-button button-content">add</div>
                     </div>
-                    <div class="mini-button clear" 
+                    <div class="mini-button button clear" 
                         (click)="deleteSelected('notes')">
                         <div class="clear-text mini-button-content">delete</div>
                     </div>
@@ -44,10 +44,10 @@
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div title="Add note" class="button mini-button add" (click)="finalizeNote()">
+                <div title="Add note" class="button mini-button button add" (click)="finalizeNote()">
                     <div class="add-text mini-button-content">done</div>
                 </div>
-                <div title="Cancel" class="button mini-button clear" (click)="clearNote()">
+                <div title="Cancel" class="button mini-button button clear" (click)="clearNote()">
                     <div class="clear-text mini-button-content">clear</div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                         (click)="addWork()">
                         <div class="add-text  mini-button-content">add</div>
                     </div>
-                    <div class="mini-button clear" 
+                    <div class="mini-button button clear" 
                         (click)="deleteSelected('work')">
                         <div class="clear-text  mini-button-content">delete</div>
                     </div>
@@ -89,11 +89,11 @@
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div title="Add work" class="mini-button add  mini-button-content" (click)="finalizeWork()">
-                    <div class="add-text mini-button-content">done</div>
+                <div title="Add work" class="mini-button button add  mini-button button-content" (click)="finalizeWork()">
+                    <div class="add-text mini-button button-content">done</div>
                 </div>
-                <div title="cancel" class="mini-button clear" (click)="clearWork()">
-                    <div class="clear-text mini-button-content">clear</div>
+                <div title="cancel" class="mini-button button clear" (click)="clearWork()">
+                    <div class="clear-text mini-button button-content">clear</div>
                 </div>
             </div>
         </div>
