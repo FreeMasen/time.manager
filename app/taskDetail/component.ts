@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Forms } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Task } from '../models';
@@ -23,7 +22,8 @@ export class TaskDetail implements OnInit {
     pendingNote?: string;
 
     constructor(private route: ActivatedRoute,
-                private tasks: Tasks) {}
+                private tasks: Tasks,
+                private router: Router) {}
 
     ngOnInit(): void {
         this.route.params.forEach(param => {
@@ -34,7 +34,6 @@ export class TaskDetail implements OnInit {
                         this.task = task;
                     })
             }
-            
         })
     }
 
@@ -60,7 +59,6 @@ export class TaskDetail implements OnInit {
         if (element == 'work') {
             this.task.work = this.task.work.filter((item, i) => {
                 return !this.selectedWork.includes(i);
-                
             })
             this.selectedWork = [];
         } else if (element == 'notes') {
@@ -130,5 +128,12 @@ export class TaskDetail implements OnInit {
             return '0' +  num;
         }
         return num.toString();
+    }
+
+    deleteSelf() {
+        this.tasks.delete([this.task._id])
+            .then(_ => {
+                this.router.navigate(['dashboard']);
+            })
     }
 }

@@ -7,7 +7,11 @@ declare var electron: any;
 @Injectable()
 export class Tasks {
 
-    mocks = Mocks;
+    mocks: Task[];
+
+    constructor() {
+        this.mocks = Mocks();
+    }
 
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
@@ -17,8 +21,8 @@ export class Tasks {
 
     getWithId(id: string): Promise<Task> {
         return new Promise((resolve, reject) => {
-            Mocks.forEach(mock => {
-                if (mock._id = id) return resolve(mock);
+            this.mocks.forEach(mock => {
+                if (mock._id == id) return resolve(mock);
                 
             })
             reject(new Error('No task found for ID'));

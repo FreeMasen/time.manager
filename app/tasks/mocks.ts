@@ -1,7 +1,7 @@
 import { Task } from '../models';
 import { Work } from '../models';
 
-function getMocks(): Task[] {
+export function Mocks(): Task[] {
     var _mocks = [];
     var _objectives: string[] =  [
         'QA New feature',
@@ -30,7 +30,7 @@ function getMocks(): Task[] {
             notes.push(_notes[rnd(0, _notes.length)]);
         }
         var objective: number = rnd(0, 3);
-        _mocks.push(new Task(`${i}`,_objectives[objective], null, notes, work));
+        _mocks.push(new Task(`task${i}`,_objectives[objective], null, notes, work));
     }
     return _mocks;
 }
@@ -38,5 +38,3 @@ function getMocks(): Task[] {
 function rnd(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
 }
-
-export var Mocks: Task[] = getMocks();
