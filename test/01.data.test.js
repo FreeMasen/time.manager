@@ -97,23 +97,7 @@ describe('Database', function() {
                     docs.forEach((doc) => {
                         var test = tests[doc._id];
                         assert(equals(doc, test));
-                        // for (var k in doc) {
-                        //     var prop = doc[k]
-                        //     equals(prop, test)
-                        //     if (typeof prop == 'function') {
-                        //         assert(prop.isEqual(test[k]), `test ${doc._id}: ${k} does not match: ${prop} : ${JSON.stringify(test[k])}`)
-                        //     }
-                        //     else if (Array.isArray(prop)) {
-
-                        //     }
-                        //     else if (typeof doc[k] == 'object') {
-
-                        //     }
-                        //     else {
-                        //         assert(doc[k] == test[k], `test ${doc._id}: ${k} does not match: ${JSON.stringify(doc[k])} : ${JSON.stringify(test[k])}`);
-                        //     }
-                        // }
-                    })
+                    });
                     assert(docs.length == 5, `array db does not have 5 elements: ${docs.length}`);
                     done();
                 })
