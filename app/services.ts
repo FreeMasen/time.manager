@@ -1,2 +1,2 @@
 export { Tasks } from './tasks/service';
-export { DateFormatter } from './DateFormatter/service';
+export { DateFormatter } from './dateFormatter/service';
