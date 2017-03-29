@@ -26,7 +26,6 @@ html, html > * {
     margin-bottom: auto;
     box-shadow: 2px 2px 2px 1px lightslategray;
     cursor: pointer;
-    
 }
 
 .button > * {
