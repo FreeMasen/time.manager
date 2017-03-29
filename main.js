@@ -3,7 +3,10 @@ const path = require('path');
 const url = require('url');
 const Positioner = require('electron-positioner');
 const debug = require('debug')('main');
-const db = require('./src/dataBase.js');
+var Database = require('./src/dataBase.js');
+const db = new Datatbase('time.manager', [
+                            'menu'
+                          ])
 
 const getMenu = require('./src/menuItems.js');
 const getTray = require('./src/windows/trayWindow');
