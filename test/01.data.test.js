@@ -26,7 +26,7 @@ tests[testThree._id] = testThree;
 
 
 
-describe.skip('Database', function() {
+describe('Database', function() {
     it('init', function() {
         var db = new Database('testing', ['none']);
     })
