@@ -2,20 +2,28 @@ import { Injectable } from '@angular/core';
 
 import { Task } from '../models';
 import { Mocks } from './mocks';
-declare var electron: any;
+
+import { nedb } from 'nedb';
 
 @Injectable()
 export class Tasks {
 
     mocks: Task[];
+    db: any
 
     constructor() {
         this.mocks = Mocks();
+        this.db = new nedb({filename: '../../assets/data/tasks.db', autoload: true });
     }
 
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
-            resolve(this.mocks);
+            this.db.find({'_completed': { '$exists': false }}, (err, docs) => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve(docs)
+            })
         })
     }
 
