@@ -77,12 +77,10 @@ function Mocks() {
             var daysInPast = rnd(0, 5)
             var dt = new Date()
             dt.setDate(new Date().getDate() - daysInPast);
-            var epoch = dt.getTime();
             work.start = dt;
             work.duration = rnd(0, 60);
             task.work.push(work);
         }
-        console.log(task.notes)
         var notes = [];
         for (var h = 0; h < rnd(0, 10); h++) {
             var noteIndex = rnd(0, _notes.length);
@@ -113,30 +111,30 @@ function insertDocs(docs) {
 
 insertDocs(mocks)
 
-// fs.writeFileSync('testa.json', JSON.stringify(mocks));
+fs.writeFileSync('testa.json', JSON.stringify(mocks));
 
-// db.menu.insert(menuTemplate, (err, doc) => {
-//     if (err) return console.log('Menu Seed Error: ', err);
-//     if (doc) console.log('inserted menuitems', doc)
-//     db.tasks.insert(mocks, (err, docs) => {
-//         if (err) return console.log('Tasks Seed Error: ', err);
-//         if (docs) console.log('inserted tasks: ', docs)
-//         testInsert();
-//     })
-// })
+db.menu.insert(menuTemplate, (err, doc) => {
+    if (err) return console.log('Menu Seed Error: ', err);
+    if (doc) //console.log('inserted menuitems', doc)
+    db.tasks.insert(mocks, (err, docs) => {
+        if (err) return console.log('Tasks Seed Error: ', err);
+        if (docs) //console.log('inserted tasks: ', docs)
+        testInsert();
+    })
+})
 
-// function testInsert() {
-//     db.menu.find({}, (err, docs) => {
-//         if (err) throw err;
-//         console.log('menu: ', docs);
-//         db.tasks.find({}, (err, docs) => {
-//             fs.writeFileSync('toskb.json', JSON.stringify(docs));
-//             if (err) throw err;
-//             docs.forEach(doc => {
-//                 for (var k in doc) {
-//                     console.log(doc[k]);
-//                 }
-//             })
-//         })
-//     })
-// }
+function testInsert() {
+    db.menu.find({}, (err, docs) => {
+        if (err) throw err;
+        console.log('menu: ', docs);
+        db.tasks.find({}, (err, docs) => {
+            fs.writeFileSync('testb.json', JSON.stringify(docs));
+            if (err) throw err;
+            docs.forEach(doc => {
+                for (var k in doc) {
+                    //console.log(doc[k]);
+                }
+            })
+        })
+    })
+}
