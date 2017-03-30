@@ -3,6 +3,8 @@ const FunctionSerializer = require('./functionSerializer');
 const Debug = require('debug');
 const debug = Debug('data.collection');
 
+const util = require('util')
+
 class Collection {
     constructor(filename) {
         debug('collection init')
@@ -15,6 +17,8 @@ class Collection {
         obj = this._serializeAnyFuncs(obj);
         debug('serialization complete');
         debug('inserting into ned store');
+        console.log(util.inspect(obj), { showHidden: true, depth: null });
+        
         this.store.insert(obj, (err, doc) => {
             debug('ned store cb');
             if (err) return (err);
@@ -25,15 +29,24 @@ class Collection {
 
     _serializeAnyFuncs(obj) {
         debug('_serializeAnyFuncs')
-        if (!Array.isArray(obj)) return this._serialize(obj);
-        debug('not array')
-        return obj.map(o => {
-            return this._serialize(o);
-        })
+        if (!Array.isArray(obj)) {
+            return this._serialize(obj);
+        } else {
+            return obj.map(o => {
+                return this._serialize(o);
+            })
+        }
     }
 
     _serialize(obj) {
-        var ret = {}
+        var ret = {};
+        if (Array.isArray(obj)) {
+            ret = []
+        } else if (typeof obj == 'object') {
+            ret = {}
+        } else {
+            return obj
+        }
         for (var k in obj) {
             var prop = obj[k]
             debug(k);
@@ -44,10 +57,17 @@ class Collection {
                 ret[k] = FunctionSerializer.serialize(prop);
                 debug(ret[k])
             } else if (typeof prop == 'object') {
-                debug('found object, recursing')
-                ret[k] = this._serializeAnyFuncs(prop);
+                if (Array.isArray(prop)) {
+                    ret[k] = []
+                    prop.forEach(element => {
+                        return ret[k].push(this._serialize(prop));
+                    })
+                } else if (prop instanceof Date) {
+                    ret[k] = prop
+                } else {
+                    ret[k] = this._serializeAnyFuncs(prop);
+                }                
             } else {
-                debug('setting standard');
                 ret[k] = prop;
             }
         }
@@ -87,7 +107,18 @@ class Collection {
     }
 
     _deserialize(obj) {
-        var ret = {}
+        var ret;
+        if (obj instanceof Date) {
+            return obj
+        }
+        if (Array.isArray(obj)) {
+            ret = [];
+        } else if (typeof obj == 'object') {
+            ret = {};
+        } else {
+            return obj
+        }
+
         for (var k in obj) {
             var prop = obj[k]
             debug(k);

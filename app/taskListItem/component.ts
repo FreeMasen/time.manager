@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { Task } from '../models';
 
+import { DateFormatter } from '../services';
+
 @Component({
     selector: 'task-list-item',
     templateUrl: 'app/taskListItem/template.html',
@@ -44,11 +46,16 @@ export class TaskListItem {
     @Output() onSelectionChange = new EventEmitter<[string, boolean]>();
 
     constructor(
-            private router: Router
+            private router: Router,
+            private dateFormatter: DateFormatter
     ) {}
 
     get currentState() {
         return this.state ? 'expanded' : 'collapsed';
+    }
+
+    dateString(dt: Date): string {
+        return this.dateFormatter.format(dt, 'MM-dd-yyyy hh:mm TT');
     }
 
     toggleExpanded() {
@@ -60,8 +67,8 @@ export class TaskListItem {
         this.onSelectionChange.emit([this.task._id, this.selected]);
     }
 
-    goTo(id: string): void {
-        console.log(`goTo(${id})`)
-        this.router.navigate(['taskDetail', id])
+    goTo(): void {
+        console.log(`goTo(${this.task._id})`);
+        this.router.navigate(['taskDetail', this.task._id]);
     }
 }

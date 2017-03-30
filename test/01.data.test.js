@@ -1,5 +1,5 @@
 const assert = require('assert');
-const db = require('../src/dataBase.js');
+const Database = require('../src/dataBase.js');
 
 const testOne = {
     _id: "0",
@@ -19,14 +19,55 @@ const testThree = {
     click() { return 'things!' }
 };
 
+const unixEpoch = new Date(1970,0,1,0,0,0,0);
+const birthday = new Date(1983,0,31,4,30,0,0);
+const ani = new Date(2014, 0,18,11,30,0,0);
+const dateArray = [
+    unixEpoch,
+    birthday,
+    ani
+]
+
+const testFour = {
+    _id: "4",
+    sub: {
+        i: 'am',
+        a: [
+            'nested',
+            'object'
+        ],
+        with: function() {
+            return 'stuff'
+        },
+        and: dateArray
+    }
+}
+
+const testFive = {
+    _id: "5",
+    sub: {
+        sub: {
+            sub: {
+                data: [
+                    'one',
+                    'two',
+                    'three'
+                ]
+            }
+        }
+    }
+}
+
 tests = {};
 tests[testOne._id] = testOne;
 tests[testTwo._id] = testTwo;
 tests[testThree._id] = testThree;
+tests[testFour._id] = testFour;
+tests[testFive._id] = testFive;
 
 
 
-describe.skip('Database', function() {
+describe('Database', function() {
     it('init', function() {
         var db = new Database('testing', ['none']);
     })
@@ -41,7 +82,7 @@ describe.skip('Database', function() {
             })
             it('array', function(done) {
                 var db = new Database('testing', ['array']);
-                var testsArray = [testOne, testTwo, testThree];
+                var testsArray = [testOne, testTwo, testThree, testFour, testFive];
                 db.array.insert(testsArray, (err, docs) => {
                     if (err) return done(err);
                     done();
@@ -55,16 +96,9 @@ describe.skip('Database', function() {
                     if(err) return done(err)
                     docs.forEach((doc) => {
                         var test = tests[doc._id];
-                        for (var k in doc) {
-                            if (typeof doc[k] == 'function') {
-                                assert(doc[k].isEqual(test[k]), `test ${doc._id}: ${k} does not match: ${doc[k]} : ${JSON.stringify(test[k])}`)
-                            }
-                            else {
-                                assert(doc[k] == test[k], `test ${doc._id}: ${k} does not match: ${JSON.stringify(doc[k])} : ${JSON.stringify(test[k])}`);
-                            }
-                        }
-                    })
-                    assert(docs.length == 3, `array db does not have 3 elements: ${docs.length}`);
+                        assert(equals(doc, test));
+                    });
+                    assert(docs.length == 5, `array db does not have 5 elements: ${docs.length}`);
                     done();
                 })
             })
@@ -106,7 +140,7 @@ describe.skip('Database', function() {
                 var db = new Database('testing', ['array']);
                 db.array.delete({}, (err, num) => {
                     if (err) return done(err);
-                    assert(num == 3, `elements deleted is not 3: ${num}`);
+                    assert(num == 5, `elements deleted is not 5: ${num}`);
                     done();
                 })
             })
@@ -128,7 +162,28 @@ before(function(done) {
     })
 })
 
-Function.prototype.isEqual = function(func) {
-    return this.length == func.length &&
-            this() == this()
+function equals(lhs, rhs) {
+    if (Array.isArray(lhs)) {
+        if (!Array.isArray(rhs)) return false;
+        if (lhs.length != rhs.length) return false;
+        for (var i = 0; i < lhs.length; i++) {
+            if (!equals(lhs[i], rhs[i])) return false
+        }
+        return true
+    } else if (typeof lhs == 'function') {
+        return this.length == func.length &&
+            this() == this();
+    } else if (lhs instanceof Date) {
+        if (!(rhs instanceof Date)) return false
+        return lhs == rhs;
+    } else if (typeof lhs == 'object') {
+        if (typeof rhs != 'object')
+        for (var k in lhs) {
+            if (!rhs[k]) return false;
+            if (!equals(lhs[k] != rhs[k])) return false
+        }
+        return true
+    } else {
+        return lhs == rhs;
+    }
 }

@@ -1,4 +1,4 @@
-md-icon#back {
+#back {
     height: 30px;
     line-height: 30px;
     padding: 0 4px;
@@ -6,10 +6,17 @@ md-icon#back {
     margin-top: auto;
     margin-bottom: auto;
     cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Material Icons';
+    box-shadow: 2px 2px 2px 1px black;
 }
 
-md-icon#back:hover {
+#back:hover {
     background-color: deeppink;
+}
+
+#back:active {
+    transform: translate(1px, 1px);
 }
 
 #app-title {
