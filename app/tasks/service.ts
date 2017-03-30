@@ -17,7 +17,7 @@ export class Tasks {
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
             resolve(this.mocks.filter(task => {
-                return task.isComplete;
+                return !task.isComplete;
             }));
         })
     }
