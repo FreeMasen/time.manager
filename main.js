@@ -4,7 +4,7 @@ const url = require('url');
 const Positioner = require('electron-positioner');
 const debug = require('debug')('main');
 var Database = require('./src/dataBase.js');
-const db = new Datatbase('time.manager', [
+const db = new Database('time.manager', [
                             'menu'
                           ])
 
