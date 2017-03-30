@@ -11,7 +11,8 @@
     "types": [
       "hammerjs",
       "core-js", 
-      "node"
+      "node",
+      "nedb"
     ]
   }
 }

@@ -36,6 +36,7 @@
   "devDependencies": {
     "@types/core-js": "0.9.35",
     "@types/hammerjs": "2.0.34",
+    "@types/nedb": "^1.8.1",
     "@types/node": "6.0.52",
     "codecov": "1.0.1",
     "concurrently": "^3.1.0",
