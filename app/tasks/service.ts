@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Task } from '../models';
 import { Mocks } from './mocks';
 
-import { nedb } from 'nedb';
 
 @Injectable()
 export class Tasks {
@@ -18,12 +17,9 @@ export class Tasks {
 
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
-            this.db.find({'_completed': { '$exists': false }}, (err, docs) => {
-                if (err) {
-                    return reject(err);
-                }
-                resolve(docs)
-            })
+            resolve(this.mocks.filter(task => {
+                return task.isComplete;
+            }));
         })
     }
 
