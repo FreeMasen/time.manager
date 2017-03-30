@@ -12,7 +12,6 @@ export class Tasks {
 
     constructor() {
         this.mocks = Mocks();
-        this.db = new nedb({filename: '../../assets/data/tasks.db', autoload: true });
     }
 
     getUncomplete(): Promise<Task[]> {
