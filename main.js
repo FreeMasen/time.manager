@@ -21,7 +21,6 @@ let settingsWindow;
 
 app.on('ready', () => {
   db.menu.find({}, (err, docs) => {
-    require('util').inspect(docs);
     Menu.setApplicationMenu(Menu.buildFromTemplate(docs));
     taskWindow = getTasks();
 
