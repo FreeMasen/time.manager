@@ -22,7 +22,6 @@ var menuTemplate = [
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
                 click(item, win) {
-                    console.log(win.baseURl);
                     win.webContents.loadURL(win.baseURL);
                 }
             },
