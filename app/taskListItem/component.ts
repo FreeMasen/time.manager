@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, trigger, state, style, 
-            transition, animate, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {  trigger, state, style, 
+            transition, animate,} from '@angular/animations';
 import { Router } from '@angular/router';
 
 import { Task } from '../models';
