@@ -31,12 +31,8 @@ class FunctionSerializer {
     }
 
     deserialize(func, parent) {
-            debug('func:')
-            debug(func)
         var ret = new Function(func.args, func.body);
         ret.bind(parent)
-            debug('ret:')
-            debug(ret)
         return ret;
     }
 }
