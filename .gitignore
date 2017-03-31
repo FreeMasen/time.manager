@@ -4,3 +4,5 @@
 **/app/**/*.js.map
 
 **/*.db
+
+**.DS_Store
