@@ -16,7 +16,11 @@ class FunctionSerializer {
         var argsStart = text.indexOf('(') + 1;
         var argsEnd = text.indexOf(')');
         var argsString = text.substring(argsStart, argsEnd);
-        return argsString.split(',').filter(arg => { return arg.length > 0});
+        return argsString.split(',').filter(arg => {
+                                        return arg.length > 0
+                                    }).map(arg => { 
+                                        return arg.trim() 
+                                    });
     }
 
     _getBody(text) {

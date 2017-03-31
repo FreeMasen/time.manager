@@ -62,15 +62,18 @@ class Collection {
         if (Array.isArray(obj)) {
             var ret = [];
             obj.forEach((element, i) => {
-                ret[i] = this._serializeAnyFuncs(element);
+                ret[i] = this._deserializeAnyFuncs(element);
             })
             return ret;
         }
         if (typeof obj == 'object') {
-            if (obj.isFunc) return FunctionSerializer.deserialize(obj);
+            if (obj.isFunc) {
+                var func = FunctionSerializer.deserialize(obj);
+                return func;
+            }
             var ret = {};
             for (var k in obj) {
-                ret[k] = this._serializeAnyFuncs(obj[k]);
+                ret[k] = this._deserializeAnyFuncs(obj[k]);
             }
             return ret
         }

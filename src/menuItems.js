@@ -6,10 +6,9 @@ var menuList;
 function getMenu(cb) {
     db.menu.find({}, (err, docs) => {
         if (err) throw err;
+        console.log(docs);
         cb(docs);
     })
 }
 
 module.exports = getMenu;
-
-// /Users/RFM/Documents/Projects/time.manager/src/dataBase.js

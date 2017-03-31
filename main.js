@@ -13,8 +13,6 @@ const getTray = require('./src/windows/trayWindow');
 const getTasks = require('./src/windows/taskWindow.js');
 let menu;
 
-global.dir = app.getAppPath();
-
 let taskWindow;
 let trayWindow;
 let settingsWindow;

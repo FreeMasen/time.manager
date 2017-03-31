@@ -13,7 +13,7 @@ function createWindow() {
     protocol: 'file:',
     slashes: true
   })
-  win.loadURL(win.url);
+  win.loadURL(win.baseURL);
 
   var menu = Menu.buildFromTemplate(menuTemplate);
   if (!icon) {
