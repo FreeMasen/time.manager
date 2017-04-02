@@ -37,17 +37,18 @@
     "zone.js": "^0.7.4"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "4.1.0-beta.0",
     "@types/core-js": "0.9.35",
     "@types/hammerjs": "2.0.34",
     "@types/nedb": "^1.8.1",
     "@types/node": "6.0.52",
     "codecov": "1.0.1",
     "concurrently": "^3.1.0",
+    "electron": "^1.6.2",
     "istanbul": "0.4.5",
     "mocha": "^3.2.0",
     "nightmare": "^2.9.0",
     "request": "^2.79.0",
-    "typescript": "^2.2.2",
-    "electron": "^1.6.2"
+    "typescript": "^2.2.2"
   }
 }
