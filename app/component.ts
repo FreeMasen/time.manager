@@ -3,8 +3,8 @@ import { Location } from '@angular/common';
 
 @Component({
     selector: 'my-app',
-    templateUrl: './app/template.html',
-    styleUrls: ['./app/style.css'] 
+    templateUrl: './template.html',
+    styleUrls: ['./style.css'] 
 })
 export class AppComponent { 
 
