@@ -3,22 +3,26 @@ import { Injectable } from '@angular/core';
 import { Task } from '../models';
 import { Mocks } from './mocks';
 
+var Database = require('../../src/database.js');
 
 @Injectable()
 export class Tasks {
 
     mocks: Task[];
-    db: any
+    private db: any;
 
     constructor() {
         this.mocks = Mocks();
+        this.db = new Database('time.manager', ['tasks']);
     }
 
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
-            resolve(this.mocks.filter(task => {
-                return !task.isComplete;
-            }));
+            this.db.tasks.find({}, (err, docs: Task[]) => {
+                console.log(docs);
+                if (err) return reject(err);
+                resolve(docs);
+            })
         })
     }
 

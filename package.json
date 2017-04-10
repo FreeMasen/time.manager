@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "webpack && mocha test",
-    "start": "webpack && concurrently  \"webpack -watch\" \"electron .\""
+    "start": "webpack && concurrently  \"webpack --watch\" \"electron .\""
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^4.0.1",
     "@angular/platform-server": "^4.0.1",
     "@angular/router": "^4.0.1",
+    "@types/nedb": "^1.8.2",
     "core-js": "^2.4.1",
     "debug": "2.6.0",
     "electron-positioner": "^3.0.0",

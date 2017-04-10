@@ -48,6 +48,8 @@ export class Dashboard implements OnInit {
         this.tasks.getUncomplete()
         .then(taskList => {
             this.taskList = taskList;
+        }).catch(err => {
+            console.error('error with find', err)
         })
     }
 

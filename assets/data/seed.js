@@ -1,6 +1,7 @@
 const Database = require('../../src/dataBase.js');
 const FunctionSerializer = require('../../src/functionSerializer');
 const { MenuItem } = require('electron');
+const randomBytes = require('crypto').randomBytes;
 
 var fs = require('fs');
 var DataFileNames = fs.readdirSync('./assets/data');
@@ -68,9 +69,11 @@ function Mocks() {
     ]
     for (var i = 0;i<25;i++) {
         var task = {};
+        task._id = randomBytes(16).toString('hex');
         var workNumber = rnd(0, 5);
         task.work = [];
         task.notes = [];
+        task.objective = _objectives[rnd(0, _objectives.length -1)]
         for (var j = 0;j<workNumber;j++) {
             var work = {};
             var daysInPast = rnd(0, 5)
