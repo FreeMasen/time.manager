@@ -6,12 +6,16 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es2015", "dom"],
+    "lib": ["es5", "dom"],
     "removeComments": false,
     "noImplicitAny": false,
     "types": [
       "core-js", 
       "node"    
       ]
-  }
+  },
+  "exclude": [
+    "node_modules/*",
+    "**/*-aot.ts"
+  ]
 }
