@@ -6,13 +6,16 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": ["es5", "dom"],
     "removeComments": false,
     "noImplicitAny": false,
     "types": [
-      "hammerjs",
       "core-js", 
-      "node",
-      "nedb"
-    ]
-  }
+      "node"    
+      ]
+  },
+  "exclude": [
+    "node_modules/*",
+    "**/*-aot.ts"
+  ]
 }

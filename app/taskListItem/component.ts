@@ -9,8 +9,8 @@ import { DateFormatter } from '../services';
 
 @Component({
     selector: 'task-list-item',
-    templateUrl: 'app/taskListItem/template.html',
-    styleUrls: ['app/taskListItem/style.css'],
+    templateUrl: './template.html',
+    styleUrls: ['./style.css'],
     inputs: ['task'],
     animations: [
         trigger('direction', [

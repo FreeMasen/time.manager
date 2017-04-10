@@ -20,8 +20,8 @@ declare var electron: any;
       transition('displayed => hidden', animate('100ms ease-in')),
       transition('hidden => displayed', animate('100ms ease-out'))
     ])],
-    templateUrl: 'app/dashboard/template.html',
-    styleUrls: ['app/dashboard/style.css']
+    templateUrl: './template.html',
+    styleUrls: ['./style.css']
 })
 export class Dashboard implements OnInit {
     taskList: Task[] = [];

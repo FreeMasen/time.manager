@@ -8,8 +8,8 @@ import { Work } from '../models';
 
 @Component({
     selector: '<taskDetail>',
-    templateUrl: 'app/taskDetail/template.html',
-    styleUrls: ['app/taskDetail/style.css']
+    templateUrl:'./template.html',
+    styleUrls: ['./style.css']
 })
 export class TaskDetail implements OnInit {
     task: Task;
