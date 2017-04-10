@@ -4,8 +4,8 @@
   "description": "Electron App for tracking time on a project at work",
   "main": "main.js",
   "scripts": {
-    "test": "tsc && mocha test",
-    "start": "tsc && concurrently  \"tsc -w\" \"node index.js\""
+    "test": "webpack && mocha test",
+    "start": "webpack && concurrently  \"webpack -watch\" \"electron .\""
   },
   "author": "",
   "license": "ISC",
