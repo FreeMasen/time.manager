@@ -8,12 +8,8 @@ const helpers = require('./config/helpers.js');
 module.exports = {
     devtool: 'source-map',
     entry: {
-        '@angular': [
-            'rxjs',
-            'reflect-metadata',
-            'zone.js'
-        ],
-        'common': ['es6-shim', './pollyfills.ts'],
+        'polyfills': './pollyfills.ts',
+        'vendor':'./vendor.ts',
         'app': './app/main.ts'
     },
     output: {
@@ -59,8 +55,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new chunks({names: ['@angular', 'common'], minChunks: Infinity}),
-        new html(),
+        new html({
+            template: './config/template.html',
+            filename: '../index.html'
+        }),
         new webpack.ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
