@@ -67,6 +67,7 @@ export class TaskDetail implements OnInit {
             })
             this.selectedNotes = [];
         }
+        this.sendUpdate();
     }
 
     addNote() {
@@ -76,6 +77,7 @@ export class TaskDetail implements OnInit {
     finalizeNote() {
         this.task.notes.push(this.pendingNote);
         this.pendingNote = null;
+        this.sendUpdate();
     }
 
     addWork() {
@@ -112,6 +114,7 @@ export class TaskDetail implements OnInit {
         this.task.work.push(new Work(null, this._pendingWorkDate, this.pendingWorkDuration));
         this.pendingWorkDate = null;
         this.pendingWorkDuration = null;
+        this.sendUpdate();
     }
 
     clearWork() {
@@ -134,6 +137,19 @@ export class TaskDetail implements OnInit {
         this.tasks.delete([this.task._id])
             .then(_ => {
                 this.router.navigate(['dashboard']);
+            })
+    }
+
+    private updating: boolean = false;
+    private sendUpdate(): void {
+        this.updating = true;
+        this.tasks.update(this.task)
+            .then(() => {
+                this.updating = false
+            })
+            .catch(err => {
+                this.updating = false;
+                throw err;
             })
     }
 }
