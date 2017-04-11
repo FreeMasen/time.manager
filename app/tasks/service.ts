@@ -19,30 +19,38 @@ export class Tasks {
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
             this.db.tasks.find({}, (err, docs: Task[]) => {
-                console.log(docs);
                 if (err) return reject(err);
-                resolve(docs);
+                resolve(docs.filter(task => {
+                    return !task.isComplete
+                }));
             })
         })
     }
 
     getWithId(id: string): Promise<Task> {
         return new Promise((resolve, reject) => {
-            this.mocks.forEach(mock => {
-                if (mock._id == id) return resolve(mock);
-                
+            this.db.tasks.findOne({_id: id}, (err, task: Task) => {
+                if (err) return reject(err);
+                resolve(task);
             })
-            reject(new Error('No task found for ID'));
         })
     }
 
-    delete(listOfIds: string[]) {
+    update(task: Task): Promise<Task> {
         return new Promise((resolve, reject) => {
-            this.mocks = this.mocks.filter(mock => {
-                return !listOfIds.includes(mock._id);
+            this.db.tasks.update({_id: task._id}, task, (err, num, docs) => {
+                if (err) return reject(err);
+                resolve(docs);
             })
-            resolve()
         })
+    }
 
+    delete(listOfIds: string[]): Promise<number> {
+        return new Promise((resolve, reject) => {
+            this.db.tasks.delete({_id: { $in: listOfIds}}, (err, num) => {
+                if (err) return reject(err);
+                resolve(num);
+            })
+        })
     }
 }
