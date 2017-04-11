@@ -28,6 +28,7 @@ export class Dashboard implements OnInit {
     selected: string[] = []
     constructor(private tasks: Tasks,
                 private router: Router) {}
+    pendingTask?: Task = null;
     
     ngOnInit():void {
         this.getUncomplete();
@@ -59,5 +60,14 @@ export class Dashboard implements OnInit {
                 this.selected = [];
                 this.getUncomplete()
             })
+    }
+
+    createdNewTask(): void {
+        this.pendingTask = new Task();
+    }
+
+    saveTask(): void {
+        this.tasks.save(this.pendingTask);
+        this.pendingTask = null;
     }
 }
