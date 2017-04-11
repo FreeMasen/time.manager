@@ -17,6 +17,7 @@ const db = new Database('time.manager', ['menu', 'tasks']);
 
 var menuTemplate = [
     {
+        _id: '1',
         label: 'File',
         submenu: [
             {
@@ -35,6 +36,7 @@ var menuTemplate = [
         ]
     },
     {
+        _id: '2',
         label: 'Edit',
         submenu: [
             {
@@ -46,6 +48,7 @@ var menuTemplate = [
         ]
     },
     {
+        _id: '3',
         label: 'View',
         submenu: [
         ]
@@ -69,7 +72,7 @@ function Mocks() {
     ]
     for (var i = 0;i<25;i++) {
         var task = {};
-        task._id = randomBytes(16).toString('hex');
+        task._id = '-1';
         var workNumber = rnd(0, 5);
         task.work = [];
         task.notes = [];
@@ -125,18 +128,18 @@ db.menu.insert(menuTemplate, (err, doc) => {
     })
 })
 
-function testInsert() {
-    db.menu.find({}, (err, docs) => {
-        if (err) throw err;
-        console.log('menu: ', docs);
-        db.tasks.find({}, (err, docs) => {
-            fs.writeFileSync('testb.json', JSON.stringify(docs));
-            if (err) throw err;
-            docs.forEach(doc => {
-                for (var k in doc) {
-                    //console.log(doc[k]);
-                }
-            })
-        })
-    })
-}
+// function testInsert() {
+//     db.menu.find({}, (err, docs) => {
+//         if (err) throw err;
+//         console.log('menu: ', docs);
+//         db.tasks.find({}, (err, docs) => {
+//             fs.writeFileSync('testb.json', JSON.stringify(docs));
+//             if (err) throw err;
+//             docs.forEach(doc => {
+//                 for (var k in doc) {
+//                     //console.log(doc[k]);
+//                 }
+//             })
+//         })
+//     })
+// }
