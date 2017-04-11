@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { Task } from '../models';
-import { Mocks } from './mocks';
 
 var Database = require('../../src/database.js');
 
 @Injectable()
 export class Tasks {
-
-    mocks: Task[];
     private db: any;
 
     constructor() {
-        this.mocks = Mocks();
         this.db = new Database('time.manager', ['tasks']);
     }
 
@@ -50,6 +46,15 @@ export class Tasks {
             this.db.tasks.delete({_id: { $in: listOfIds}}, (err, num) => {
                 if (err) return reject(err);
                 resolve(num);
+            })
+        })
+    }
+
+    save(task: Task): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.db.tasks.insert(task, (err)=> {
+                if (err) return reject(err);
+                resolve();
             })
         })
     }
