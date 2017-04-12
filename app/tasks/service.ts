@@ -12,13 +12,34 @@ export class Tasks {
         this.db = new Database('time.manager', ['tasks']);
     }
 
-    getUncomplete(): Promise<Task[]> {
+    getAll(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
             this.db.tasks.find({}, (err, docs: Task[]) => {
+                if (err) return reject(err);
+                resolve(docs);
+            })
+        })
+    }
+
+    getUncomplete(): Promise<Task[]> {
+        return new Promise((resolve, reject) => {
+            //find all where isComplete does not exist pr
+            //is explicitly false
+            this.db.tasks.find({$or: [{isComplete: {$exists: false}}, 
+                                        {isComplete: false}]}, (err, docs: Task[]) => {
                 if (err) return reject(err);
                 resolve(docs.filter(task => {
                     return !task.isComplete
                 }));
+            })
+        })
+    }
+
+    getComplete(): Promise<Task[]> {
+        return new Promise((resolve, reject) => {
+            this.db.tasks.find({isComplete: true}, (err, docs: Task[]) => {
+                if (err) return reject(err);
+                resolve(docs);
             })
         })
     }
@@ -50,11 +71,11 @@ export class Tasks {
         })
     }
 
-    save(task: Task): Promise<any> {
+    save(task: Task): Promise<Task> {
         return new Promise((resolve, reject) => {
-            this.db.tasks.insert(task, (err)=> {
+            this.db.tasks.insert(task, (err, task: Task)=> {
                 if (err) return reject(err);
-                resolve();
+                resolve(task);
             })
         })
     }
