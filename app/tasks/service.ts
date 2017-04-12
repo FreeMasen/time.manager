@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Task } from '../models';
 
-var Database = require('./../../src/database.js');
+var Database = require('../../src/database.js');
 
 @Injectable()
 export class Tasks {

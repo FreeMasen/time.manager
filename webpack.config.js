@@ -3,6 +3,7 @@ const chunks = webpack.optimize.CommonsChunkPlugin;
 const html = require('html-webpack-plugin');
 const text = require('extract-text-webpack-plugin')
 const helpers = require('./config/helpers.js');
+const path = require('path');
 
 
 module.exports = {
@@ -10,7 +11,8 @@ module.exports = {
     entry: {
         'polyfills': './pollyfills.ts',
         'vendor':'./vendor.ts',
-        'app': './app/main.ts'
+        'app': ['./app/main.ts',
+                './src/database.js']
     },
     output: {
         path: __dirname + '/build/',
