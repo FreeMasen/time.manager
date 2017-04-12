@@ -1,4 +1,4 @@
-const Database = require('../../src/dataBase.js');
+const Database = require('../../src/database.js');
 const FunctionSerializer = require('../../src/functionSerializer');
 const { MenuItem } = require('electron');
 const randomBytes = require('crypto').randomBytes;
