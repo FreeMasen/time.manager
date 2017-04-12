@@ -4,7 +4,7 @@
   "description": "Electron App for tracking time on a project at work",
   "main": "main.js",
   "scripts": {
-    "test": "webpack && mocha test",
+    "test": "webpack --progress --display-error-details && mocha test",
     "start": "webpack && concurrently  \"webpack --watch\" \"electron .\""
   },
   "author": "",
