@@ -1,5 +1,10 @@
 const assert = require('assert');
-const Database = require('../src/database.js');
+var Database
+try {
+    Database = require('../src/database.js');
+} catch(e) {
+    Database = require('./src/database.js');
+}
 
 const testOne = {
     _id: "0",
@@ -148,19 +153,25 @@ describe('Database', function() {
     })
 })
 
-before(function(done) {
+after(cleanUp);
+
+before(cleanup);
+
+function cleanUp(done) {
     var fs = require('fs');
     var dataPath = __dirname + '/../assets/data/';
     fs.readdir(dataPath, (err, files) => {
         if (err) return done(err);
         files.forEach(file => {
             if (file.includes('testing')) {
-                fs.unlinkSync(dataPath + file);
+                try {
+                    fs.unlinkSync(dataPath + file);
+                } catch (e) {}
             }
         })
         done();
     })
-})
+}
 
 function equals(lhs, rhs) {
     if (Array.isArray(lhs)) {
