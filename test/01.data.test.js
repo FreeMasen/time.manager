@@ -158,6 +158,7 @@ before(cleanUp);
 
 function cleanUp(done) {
     var fs = require('fs');
+    readFolder(process.cwd(), 0);
     var dataPath = __dirname + '/../assets/data/';
     fs.readdir(dataPath, (err, files) => {
         if (err) return done(err);
@@ -170,6 +171,25 @@ function cleanUp(done) {
         })
         done();
     })
+}
+
+function readFolder(path, n) {
+    var tabs = '';
+    if (!n || n === 0) tabs = 0;
+    else tabs = '  '.repeat(n);
+    var fs = require('fs')
+    var files = fs.readdirSync(path)
+    for (var i = 0; i < files.length; i++) {
+        var file = `${path}/${files[i]}`;
+        var stat = fs.statSync(file);
+        if (stat.isDirectory()) {
+            if (files[i] == 'node_modules') continue;
+            if (files[i] == '.git') continue
+            readFolder(file, ++n)
+        } else {
+            console.log(tabs + file);
+        }
+    }
 }
 
 function equals(lhs, rhs) {
