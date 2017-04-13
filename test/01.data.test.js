@@ -1,13 +1,6 @@
 const assert = require('assert');
-readFolder(process.cwd(), 0);
 var Database
-console.log(process.cwd())
-try {
-    Database = require('../src/database.js');
-} catch(e) {
-    //not sure why git isn't picking up the difference here
-    Database = require('../src/dataBase.js');
-}
+Database = require('../src/database.js');
 
 const testOne = {
     _id: "0",
