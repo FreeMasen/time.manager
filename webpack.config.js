@@ -3,6 +3,7 @@ const chunks = webpack.optimize.CommonsChunkPlugin;
 const html = require('html-webpack-plugin');
 const text = require('extract-text-webpack-plugin')
 const helpers = require('./config/helpers.js');
+const path = require('path');
 
 
 module.exports = {

@@ -1,5 +1,6 @@
 const assert = require('assert');
-const Database = require('../src/dataBase.js');
+var Database
+Database = require('../src/database.js');
 
 const testOne = {
     _id: "0",
@@ -64,8 +65,6 @@ tests[testTwo._id] = testTwo;
 tests[testThree._id] = testThree;
 tests[testFour._id] = testFour;
 tests[testFive._id] = testFive;
-
-
 
 describe('Database', function() {
     it('init', function() {
@@ -148,19 +147,46 @@ describe('Database', function() {
     })
 })
 
-before(function(done) {
+after(cleanUp);
+
+before(cleanUp);
+
+function cleanUp(done) {
     var fs = require('fs');
+    
     var dataPath = __dirname + '/../assets/data/';
     fs.readdir(dataPath, (err, files) => {
         if (err) return done(err);
         files.forEach(file => {
             if (file.includes('testing')) {
-                fs.unlinkSync(dataPath + file);
+                try {
+                    fs.unlinkSync(dataPath + file);
+                } catch (e) {}
             }
         })
         done();
     })
-})
+}
+
+function readFolder(path, n) {
+    var tabs = '';
+    if (!n || n === 0) tabs = '';
+    else tabs = '  '.repeat(n);
+    var fs = require('fs')
+    var files = fs.readdirSync(path)
+    for (var i = 0; i < files.length; i++) {
+        var file = `${path}/${files[i]}`;
+        var stat = fs.statSync(file);
+        if (stat.isDirectory()) {
+            console.log(tabs + file);
+            if (files[i] == 'node_modules') continue;
+            if (files[i] == '.git') continue
+            readFolder(file, ++n)
+        } else {
+            console.log(tabs + file);
+        }
+    }
+}
 
 function equals(lhs, rhs) {
     if (Array.isArray(lhs)) {

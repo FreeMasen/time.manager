@@ -1,6 +1,7 @@
-const Database = require('../../src/dataBase.js');
+const Database = require('../../src/database.js');
 const FunctionSerializer = require('../../src/functionSerializer');
 const { MenuItem } = require('electron');
+const randomBytes = require('crypto').randomBytes;
 
 var fs = require('fs');
 var DataFileNames = fs.readdirSync('./assets/data');
@@ -16,6 +17,7 @@ const db = new Database('time.manager', ['menu', 'tasks']);
 
 var menuTemplate = [
     {
+        _id: '1',
         label: 'File',
         submenu: [
             {
@@ -34,6 +36,7 @@ var menuTemplate = [
         ]
     },
     {
+        _id: '2',
         label: 'Edit',
         submenu: [
             {
@@ -45,6 +48,7 @@ var menuTemplate = [
         ]
     },
     {
+        _id: '3',
         label: 'View',
         submenu: [
         ]
@@ -68,9 +72,11 @@ function Mocks() {
     ]
     for (var i = 0;i<25;i++) {
         var task = {};
+        task._id = '-1';
         var workNumber = rnd(0, 5);
         task.work = [];
         task.notes = [];
+        task.objective = _objectives[rnd(0, _objectives.length -1)]
         for (var j = 0;j<workNumber;j++) {
             var work = {};
             var daysInPast = rnd(0, 5)
@@ -122,18 +128,18 @@ db.menu.insert(menuTemplate, (err, doc) => {
     })
 })
 
-function testInsert() {
-    db.menu.find({}, (err, docs) => {
-        if (err) throw err;
-        console.log('menu: ', docs);
-        db.tasks.find({}, (err, docs) => {
-            fs.writeFileSync('testb.json', JSON.stringify(docs));
-            if (err) throw err;
-            docs.forEach(doc => {
-                for (var k in doc) {
-                    //console.log(doc[k]);
-                }
-            })
-        })
-    })
-}
+// function testInsert() {
+//     db.menu.find({}, (err, docs) => {
+//         if (err) throw err;
+//         console.log('menu: ', docs);
+//         db.tasks.find({}, (err, docs) => {
+//             fs.writeFileSync('testb.json', JSON.stringify(docs));
+//             if (err) throw err;
+//             docs.forEach(doc => {
+//                 for (var k in doc) {
+//                     //console.log(doc[k]);
+//                 }
+//             })
+//         })
+//     })
+// }

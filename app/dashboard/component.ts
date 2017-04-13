@@ -28,9 +28,11 @@ export class Dashboard implements OnInit {
     selected: string[] = []
     constructor(private tasks: Tasks,
                 private router: Router) {}
-    
+    pendingTask?: Task = null;
+    selectedFilter: number = 0;
+
     ngOnInit():void {
-        this.getUncomplete();
+        this.getTasks(this.selectedFilter);
     }
 
     toggleSelected(change: [string, boolean]) {
@@ -44,18 +46,45 @@ export class Dashboard implements OnInit {
         }
     }
 
-    getUncomplete() {
-        this.tasks.getUncomplete()
-        .then(taskList => {
-            this.taskList = taskList;
-        })
+    getTasks(value: number) {
+        this.taskList = [];
+        var property: string = '';
+        switch (value) {
+            case 0:
+                property = 'getUncomplete';
+            break;
+            case 1:
+                property = 'getComplete';
+            break;
+            default:
+                property = 'getAll'
+        }
+        this.tasks[property]()
+            .then(tasks => {
+                this.taskList = tasks;
+            })
+            .catch(err => {
+                console.error(`error with ${property}`, err);
+            })
     }
 
     deleteSelected() {
         this.tasks.delete(this.selected)
             .then(_ => {
                 this.selected = [];
-                this.getUncomplete()
+                this.getTasks(this.selectedFilter);
             })
+    }
+
+    createdNewTask(): void {
+        this.pendingTask = new Task();
+    }
+
+    saveTask(): void {
+        this.tasks.save(this.pendingTask)
+            .then(task => {
+                this.taskList.unshift(task);
+            });
+        this.pendingTask = null;
     }
 }

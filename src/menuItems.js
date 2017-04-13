@@ -1,5 +1,5 @@
 const { Menu } = require('electron');
-const db = require('./dataBase.js');
+const db = require('./database.js');
 
 var menuList;
 

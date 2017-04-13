@@ -1,44 +1,78 @@
 import { Injectable } from '@angular/core';
 
 import { Task } from '../models';
-import { Mocks } from './mocks';
 
+import { Data } from '../services';
 
 @Injectable()
 export class Tasks {
+    db = new Data('tasks');
 
-    mocks: Task[];
-    db: any
-
-    constructor() {
-        this.mocks = Mocks();
+    getAll(): Promise<Task[]> {
+        return new Promise((resolve, reject) => {
+            this.db.store.find({}, (err, docs: Task[]) => {
+                if (err) return reject(err);
+                resolve(docs);
+            })
+        })
     }
 
     getUncomplete(): Promise<Task[]> {
         return new Promise((resolve, reject) => {
-            resolve(this.mocks.filter(task => {
-                return !task.isComplete;
-            }));
+            //find all where isComplete does not exist pr
+            //is explicitly false
+            this.db.store.find({$or: [{isComplete: {$exists: false}}, 
+                                        {isComplete: false}]}, (err, docs: Task[]) => {
+                if (err) return reject(err);
+                resolve(docs.filter(task => {
+                    return !task.isComplete
+                }));
+            })
+        })
+    }
+
+    getComplete(): Promise<Task[]> {
+        return new Promise((resolve, reject) => {
+            this.db.store.find({isComplete: true}, (err, docs: Task[]) => {
+                if (err) return reject(err);
+                resolve(docs);
+            })
         })
     }
 
     getWithId(id: string): Promise<Task> {
         return new Promise((resolve, reject) => {
-            this.mocks.forEach(mock => {
-                if (mock._id == id) return resolve(mock);
-                
+            this.db.store.findOne({_id: id}, (err, task: Task) => {
+                if (err) return reject(err);
+                resolve(task);
             })
-            reject(new Error('No task found for ID'));
         })
     }
 
-    delete(listOfIds: string[]) {
+    update(task: Task): Promise<Task> {
         return new Promise((resolve, reject) => {
-            this.mocks = this.mocks.filter(mock => {
-                return !listOfIds.includes(mock._id);
+            this.db.store.update({_id: task._id}, task, (err, num, docs) => {
+                if (err) return reject(err);
+                resolve(docs);
             })
-            resolve()
         })
+    }
 
+    delete(listOfIds: string[]): Promise<number> {
+        return new Promise((resolve, reject) => {
+            this.db.store.remove({_id: { $in: listOfIds}}, (err, num) => {
+                if (err) return reject(err);
+                resolve(num);
+            })
+        })
+    }
+
+    save(task: Task): Promise<Task> {
+        return new Promise((resolve, reject) => {
+            this.db.store.insert(task, (err, task: Task)=> {
+                if (err) return reject(err);
+                resolve(task);
+            })
+        })
     }
 }

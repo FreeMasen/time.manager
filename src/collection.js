@@ -29,6 +29,9 @@ class Collection {
         if (typeof obj == 'object') {
             ret = {}
             for (var k in obj) {
+                //if the _id property of an object is -1 I want to treat it
+                //as undefined to have the DB provide an id
+                if (k == '_id' && obj[k] == -1) continue
                 ret[k] = this._serializeAnyFuncs(obj[k]);
             }
             return ret;

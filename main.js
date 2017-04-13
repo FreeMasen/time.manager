@@ -3,7 +3,7 @@ const path = require('path');
 const url = require('url');
 const Positioner = require('electron-positioner');
 const debug = require('debug')('main');
-var Database = require('./src/dataBase.js');
+var Database = require('./src/database.js');
 const db = new Database('time.manager', [
                             'menu'
                           ])
