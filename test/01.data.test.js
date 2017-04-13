@@ -155,7 +155,7 @@ describe('Database', function() {
 
 after(cleanUp);
 
-before(cleanup);
+before(cleanUp);
 
 function cleanUp(done) {
     var fs = require('fs');
