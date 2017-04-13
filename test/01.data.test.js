@@ -176,7 +176,7 @@ function cleanUp(done) {
 
 function readFolder(path, n) {
     var tabs = '';
-    if (!n || n === 0) tabs = 0;
+    if (!n || n === 0) tabs = '';
     else tabs = '  '.repeat(n);
     var fs = require('fs')
     var files = fs.readdirSync(path)
@@ -184,6 +184,7 @@ function readFolder(path, n) {
         var file = `${path}/${files[i]}`;
         var stat = fs.statSync(file);
         if (stat.isDirectory()) {
+            console.log(tabs + file);
             if (files[i] == 'node_modules') continue;
             if (files[i] == '.git') continue
             readFolder(file, ++n)
