@@ -1,4 +1,5 @@
 const assert = require('assert');
+readFolder(process.cwd(), 0);
 var Database
 console.log(process.cwd())
 try {
@@ -158,7 +159,7 @@ before(cleanUp);
 
 function cleanUp(done) {
     var fs = require('fs');
-    readFolder(process.cwd(), 0);
+    
     var dataPath = __dirname + '/../assets/data/';
     fs.readdir(dataPath, (err, files) => {
         if (err) return done(err);
