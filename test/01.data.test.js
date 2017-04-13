@@ -70,8 +70,6 @@ tests[testThree._id] = testThree;
 tests[testFour._id] = testFour;
 tests[testFive._id] = testFive;
 
-
-
 describe('Database', function() {
     it('init', function() {
         var db = new Database('testing', ['none']);
