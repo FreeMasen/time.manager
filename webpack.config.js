@@ -11,8 +11,7 @@ module.exports = {
     entry: {
         'polyfills': './pollyfills.ts',
         'vendor':'./vendor.ts',
-        'app': ['./app/main.ts',
-                './src/database.js']
+        'app': './app/main.ts'
     },
     output: {
         path: __dirname + '/build/',
