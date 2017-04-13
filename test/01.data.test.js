@@ -5,7 +5,8 @@ console.log(process.cwd())
 try {
     Database = require('../src/database.js');
 } catch(e) {
-    Database = require('./src/database.js');
+    //not sure why git isn't picking up the difference here
+    Database = require('../src/dataBase.js');
 }
 
 const testOne = {
