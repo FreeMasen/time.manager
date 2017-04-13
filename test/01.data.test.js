@@ -1,5 +1,6 @@
 const assert = require('assert');
 var Database
+console.log(process.cwd())
 try {
     Database = require('../src/database.js');
 } catch(e) {
