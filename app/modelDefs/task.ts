@@ -1,6 +1,6 @@
 import { Work } from './work';
 export class Task {
-    _id: string;
+    _id?: string;
     objective: string;
     notes: string[];
     work: Work[];
@@ -16,7 +16,7 @@ export class Task {
         return this._completed != null;
     }
 
-    constructor(id: string = '-1',
+    constructor(id?: string,
                 objective: string = '',
                 created: Date = new Date(),
                 notes: string[] = [],
