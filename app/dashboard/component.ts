@@ -4,7 +4,7 @@ import {trigger, state, style,
 import { Router } from '@angular/router';
 
 import { Task } from '../models';
-import { Tasks, Data } from '../services';
+import { Data } from '../services';
 
 declare var electron: any;
 @Component({
@@ -53,10 +53,10 @@ export class Dashboard implements OnInit {
         var query;
         switch (value) {
             case 0:
-                query = { isComplete: false };
+                query = { complete: { $exists: false } };
             break;
             case 1:
-                query = { isComplete: true };
+                query = { complete: { $exists: true } };
             break;
             default:
                 query = {};
