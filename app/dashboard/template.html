@@ -20,7 +20,7 @@
         </div>
     </div>
     <div id="dashboard-content" class="page-content, task-list">
-        <div id="pending task" *ngIf="pendingTask != null">
+        <div id="pending task" *ngIf="pendingTask">
             <input type="text" placeholder="Objective" name="objective" [(ngModel)]="pendingTask.objective" />
             <button (click)="saveTask()" md-mini-fab ><md-icon>done</md-icon></button>
         </div>

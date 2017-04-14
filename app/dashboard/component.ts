@@ -1,12 +1,12 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
 import {trigger, state, style, 
             transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { Form } from '@angular/forms';
 
 import { Task } from '../models';
 import { Data } from '../services';
 
-declare var electron: any;
 @Component({
     selector:'<dashboard>',
     animations: [
@@ -24,21 +24,24 @@ declare var electron: any;
     styleUrls: ['./style.css']
 })
 export class Dashboard implements OnInit {
-    tasks: Task[] = [];
-    selected: string[] = []
+    tasks: Task[];
+    selected: string[];
     
     constructor(private router: Router,
-                private data: Data) {}
+                private data: Data,
+                private dective: ChangeDetectorRef) {
+                    this.selected = [];
+                    this.selected = [];
+                }
 
     pendingTask?: Task = null;
     selectedFilter: number = 0;
 
     ngOnInit():void {
-        this.getTasks(this.selectedFilter);
+        this.getTasks(this.selectedFilter)
     }
 
     toggleSelected(change: [string, boolean]) {
-        console.log(change)
         if (change[1]) {
             this.selected.push(change[0])
         } else {
@@ -49,43 +52,52 @@ export class Dashboard implements OnInit {
     }
 
     getTasks(value: number) {
-        console.log(`getTasks(${value})`)
-        var query;
-        switch (value) {
-            case 0:
-                query = { complete: { $exists: false } };
-            break;
-            case 1:
-                query = { complete: { $exists: true } };
-            break;
-            default:
-                query = {};
-        }
-        console.log(`about to search with`)
-        console.log(query)
-        this.data.tasks.find(query, (err, docs: Task[]) => {
-            console.log(query)
-            console.log(docs);
-            if (err) return console.error('error with query', query, err);
-            this.tasks = docs;
-        })
+            var query;
+            switch (value) {
+                case 0:
+                    query = { complete: { $exists: false } };
+                break;
+                case 1:
+                    query = { complete: { $exists: true } };
+                break;
+                default:
+                    query = {};
+            }
+            this.data.tasks.find(query)
+            .then(tasks => {
+                this.tasks = tasks;
+            })
     }
 
     deleteSelected() {
-        this.data.tasks.remove(this.selected, (err, num) => {
-            if (err) return console.error('error in remove',err, this.selected)
+        var toBeRemoved = this.tasks.filter(task => {
+            return this.selected.includes(task._id);
         })
+        this.data.tasks.removeBulk(toBeRemoved)
+        .then(_ => {
+            this.tasks = this.tasks.filter(task => {
+                return !this.selected.includes(task._id)
+            })
+            this.selected = [];
+        })
+        .catch(err => {
+
+        }) 
     }
 
     createdNewTask(): void {
         this.pendingTask = new Task();
     }
 
-    saveTask(): void {
-        this.data.tasks.insert(this.pendingTask, (err) => {
-            if (err) return console.error('error in save', err, this.pendingTask);
-            this.getTasks(this.selectedFilter);
-            this.pendingTask = null;
-        })
+    saveTask() {
+        console.log('saving');
+            this.data.tasks.insert(this.pendingTask)
+            .then(_ => {
+                this.pendingTask = null;
+                this.getTasks(this.selectedFilter);
+            })
+            .catch(err => {
+                
+            })
     }
 }

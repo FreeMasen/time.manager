@@ -1,11 +1,11 @@
-import { Work } from './work';
-export class Task {
-    _id?: string;
+import { Work, Storeable } from '../models';
+export class Task implements Storeable {
+    _id: string;
     objective: string;
     notes: string[];
     work: Work[];
     created: Date;
-    private _completed?: Date;
+    _completed?: Date;
     get completed(): string {
         if (this.isComplete) {
             return this._completed.toLocaleDateString();
