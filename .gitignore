@@ -1,9 +1,7 @@
 **/node_modules
 
-**/app/**/*.js
-**/app/**/*.js.map
-
 **/*.db
 
 **.DS_Store
 /build/*
+**.log
