@@ -4,9 +4,7 @@ import Ned = require('nedb');
 
 @Injectable()
 export class Data {
-    store: Ned;
-
-    constructor(name: string) {
-        this.store = new Ned({filename: `./app/data/${name}.db`, autoload: true});
-    }
+    tasks: Ned = new Ned({filename: `./app/data/tasks.db`, autoload: true}); 
+    categories: Ned = new Ned({filename: './app/data/categories.db', autoload: true});
+    clients: Ned = new Ned({filename: './app/data/tasks.db', autoload: true});
 }

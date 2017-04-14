@@ -4,7 +4,7 @@ import {trigger, state, style,
 import { Router } from '@angular/router';
 
 import { Task } from '../models';
-import { Tasks } from '../services';
+import { Tasks, Data } from '../services';
 
 declare var electron: any;
 @Component({
@@ -24,10 +24,10 @@ declare var electron: any;
     styleUrls: ['./style.css']
 })
 export class Dashboard implements OnInit {
-    taskList: Task[] = [];
+    tasks: Task[] = [];
     selected: string[] = []
-    constructor(private tasks: Tasks,
-                private router: Router) {}
+    constructor(private router: Router,
+                private data: Data) {}
     pendingTask?: Task = null;
     selectedFilter: number = 0;
 
@@ -47,33 +47,25 @@ export class Dashboard implements OnInit {
     }
 
     getTasks(value: number) {
-        this.taskList = [];
-        var property: string = '';
+        var query = {};
         switch (value) {
             case 0:
-                property = 'getUncomplete';
+                query = { isComplete: true };
             break;
             case 1:
-                property = 'getComplete';
+                query = { isComplete: true };
             break;
-            default:
-                property = 'getAll'
         }
-        this.tasks[property]()
-            .then(tasks => {
-                this.taskList = tasks;
-            })
-            .catch(err => {
-                console.error(`error with ${property}`, err);
-            })
+        this.data.tasks.find(query, (err, tasks: Task[]) => {
+            if (err) return console.error('error with query', query, err);
+            this.tasks = tasks;
+        })
     }
 
     deleteSelected() {
-        this.tasks.delete(this.selected)
-            .then(_ => {
-                this.selected = [];
-                this.getTasks(this.selectedFilter);
-            })
+        this.data.tasks.remove(this.selected, (err, num) => {
+            if (err) return console.error('error in remove',err, this.selected)
+        })
     }
 
     createdNewTask(): void {
@@ -81,10 +73,10 @@ export class Dashboard implements OnInit {
     }
 
     saveTask(): void {
-        this.tasks.save(this.pendingTask)
-            .then(task => {
-                this.taskList.unshift(task);
-            });
-        this.pendingTask = null;
+        this.data.tasks.insert(this.pendingTask, (err) => {
+            if (err) return console.error('error in save', err, this.pendingTask);
+            this.getTasks(this.selectedFilter);
+            this.pendingTask = null;
+        })
     }
 }
