@@ -26,8 +26,10 @@ declare var electron: any;
 export class Dashboard implements OnInit {
     tasks: Task[] = [];
     selected: string[] = []
+    
     constructor(private router: Router,
                 private data: Data) {}
+
     pendingTask?: Task = null;
     selectedFilter: number = 0;
 
@@ -47,16 +49,22 @@ export class Dashboard implements OnInit {
     }
 
     getTasks(value: number) {
-        var query = {};
+        console.log(`getTasks(${value})`)
+        var query;
         switch (value) {
             case 0:
-                query = { isComplete: true };
+                query = { isComplete: false };
             break;
             case 1:
                 query = { isComplete: true };
             break;
+            default:
+                query = {};
         }
+        console.log(`about to search with`)
+        console.log(query)
         this.data.tasks.find(query, (err, tasks: Task[]) => {
+            console.log(`returned with ${err || tasks}`);
             if (err) return console.error('error with query', query, err);
             this.tasks = tasks;
         })
