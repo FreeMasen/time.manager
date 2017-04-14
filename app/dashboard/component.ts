@@ -63,10 +63,11 @@ export class Dashboard implements OnInit {
         }
         console.log(`about to search with`)
         console.log(query)
-        this.data.tasks.find(query, (err, tasks: Task[]) => {
-            console.log(`returned with ${err || tasks}`);
+        this.data.tasks.find(query, (err, docs: Task[]) => {
+            console.log(query)
+            console.log(docs);
             if (err) return console.error('error with query', query, err);
-            this.tasks = tasks;
+            this.tasks = docs;
         })
     }
 

@@ -24,6 +24,6 @@
             <input type="text" placeholder="Objective" name="objective" [(ngModel)]="pendingTask.objective" />
             <button (click)="saveTask()" md-mini-fab ><md-icon>done</md-icon></button>
         </div>
-        <task-list-item *ngFor="let task of taskList" [task]="task" (onSelectionChange)="toggleSelected($event)"></task-list-item>
+        <task-list-item *ngFor="let task of tasks" [task]="task" (onSelectionChange)="toggleSelected($event)"></task-list-item>
     </div>
 </div>
