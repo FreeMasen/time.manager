@@ -4,9 +4,9 @@
 
 #### An electron application for managing todo's and billable client hours 
 
-[creating a new task](https://robertmasen.pizza/img/new%20task.gif)
+![creating a new task](https://robertmasen.pizza/img/new%20task.gif)
 
-[quick viewing task details](https://robertmasen.pizza/img/new%20task%202.gif)
+![quick viewing task details](https://robertmasen.pizza/img/new%20task%202.gif)
 
 #### Installing/Contributing
 > note: this project is a work in progress, not all functionallity is complete
