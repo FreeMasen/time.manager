@@ -5,7 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-        
         "osx": {
             "name": "Debug Main Process",
             "type": "node",
@@ -16,11 +15,11 @@
             },
             "windows": {
                 "name": "Debug Main Process",
-        "type": "node",
-        "request": "launch",
-        "cwd": "${workspaceRoot}",
-        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd",
-        "program": "${workspaceRoot}/main.js"
+                "type": "node",
+                "request": "launch",
+                "cwd": "${workspaceRoot}",
+                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd",
+                "program": "${workspaceRoot}/main.js"
             }
         }
     ]
