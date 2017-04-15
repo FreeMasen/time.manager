@@ -1,0 +1,46 @@
+<div id="settings">
+    <div class="title-group">
+        <div class="title">
+            <h1>Settings</h1>
+        </div>
+    </div>
+    <div class="content">
+        <h2>Manage Lists</h2>
+        <!--These should be tables...-->
+        <div id="lists" class="section">
+            <ul id="clients">
+                <li>
+                    <span class="column-title">Quick</span>
+                    <span class="column-title">Client Name</span>
+                <li *ngFor="let client of clients">
+                    <div class="checkbox" [ngClass]="{checked: client.isQuickClient}" (click)="toggleQuickClient(client._id)"></div>
+                    <span>{{client.name}}</span>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span class="column-title">Quick</span>
+                    <span class="column-title">Category</span>
+                </li>
+                <li *ngFor="let category of categories">
+                    <div class="checkbox" [ngClass]="{checked: category.isQuickCategory}" (click)="toggleQuickClient(category._id)">
+                    </div>
+                    <span>{{category.name}}</span>
+            </ul>
+        </div>
+        <h2>Manage Connections</h2>
+        <div id="connections" class="section">
+            <div id="jira">
+                <!--username, password, url, enable/disable-->
+            </div>
+            <div id="firebase">
+                <!--Connect to google account, sync categories, sync clients, sync tasks-->
+            </div>
+        </div>
+        <h2>Color Scheme</h2>
+        <div id="colors" class="section">
+            <!--Dark theme, light theme-->
+            <!--maybe able to use node & SASS to achieve this-->
+        </div>
+    </div>  
+</div>

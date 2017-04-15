@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'my-app',
@@ -9,7 +10,8 @@ import { Location } from '@angular/common';
 export class AppComponent { 
 
     constructor(
-        private location: Location
+        private location: Location,
+        private router: Router
     ){
         
     }
@@ -19,5 +21,9 @@ export class AppComponent {
 
     goBack() {
         this.location.back();
+    }
+
+    openSettings() {
+        this.router.navigate(['settings']);
     }
 }

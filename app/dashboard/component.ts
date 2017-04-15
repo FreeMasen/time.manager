@@ -1,12 +1,12 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
 import {trigger, state, style, 
             transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { Form } from '@angular/forms';
 
 import { Task } from '../models';
-import { Tasks } from '../services';
+import { Data } from '../services';
 
-declare var electron: any;
 @Component({
     selector:'<dashboard>',
     animations: [
@@ -24,19 +24,24 @@ declare var electron: any;
     styleUrls: ['./style.css']
 })
 export class Dashboard implements OnInit {
-    taskList: Task[] = [];
-    selected: string[] = []
-    constructor(private tasks: Tasks,
-                private router: Router) {}
+    tasks: Task[];
+    selected: string[];
+    
+    constructor(private router: Router,
+                private data: Data,
+                private dective: ChangeDetectorRef) {
+                    this.selected = [];
+                    this.selected = [];
+                }
+
     pendingTask?: Task = null;
     selectedFilter: number = 0;
 
     ngOnInit():void {
-        this.getTasks(this.selectedFilter);
+        this.getTasks(this.selectedFilter)
     }
 
     toggleSelected(change: [string, boolean]) {
-        console.log(change)
         if (change[1]) {
             this.selected.push(change[0])
         } else {
@@ -47,44 +52,52 @@ export class Dashboard implements OnInit {
     }
 
     getTasks(value: number) {
-        this.taskList = [];
-        var property: string = '';
-        switch (value) {
-            case 0:
-                property = 'getUncomplete';
-            break;
-            case 1:
-                property = 'getComplete';
-            break;
-            default:
-                property = 'getAll'
-        }
-        this.tasks[property]()
+            var query;
+            switch (value) {
+                case 0:
+                    query = { complete: { $exists: false } };
+                break;
+                case 1:
+                    query = { complete: { $exists: true } };
+                break;
+                default:
+                    query = {};
+            }
+            this.data.tasks.find(query)
             .then(tasks => {
-                this.taskList = tasks;
-            })
-            .catch(err => {
-                console.error(`error with ${property}`, err);
+                this.tasks = tasks;
             })
     }
 
     deleteSelected() {
-        this.tasks.delete(this.selected)
-            .then(_ => {
-                this.selected = [];
-                this.getTasks(this.selectedFilter);
+        var toBeRemoved = this.tasks.filter(task => {
+            return this.selected.includes(task._id);
+        })
+        this.data.tasks.removeBulk(toBeRemoved)
+        .then(_ => {
+            this.tasks = this.tasks.filter(task => {
+                return !this.selected.includes(task._id)
             })
+            this.selected = [];
+        })
+        .catch(err => {
+
+        }) 
     }
 
     createdNewTask(): void {
         this.pendingTask = new Task();
     }
 
-    saveTask(): void {
-        this.tasks.save(this.pendingTask)
-            .then(task => {
-                this.taskList.unshift(task);
-            });
-        this.pendingTask = null;
+    saveTask() {
+        console.log('saving');
+            this.data.tasks.insert(this.pendingTask)
+            .then(_ => {
+                this.pendingTask = null;
+                this.getTasks(this.selectedFilter);
+            })
+            .catch(err => {
+                
+            })
     }
 }

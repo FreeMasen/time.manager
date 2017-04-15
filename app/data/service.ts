@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 
-import Ned = require('nedb');
+import {Task, Category, Client, Collection} from '../models';
+import { Seed } from './seed';
 
 @Injectable()
 export class Data {
-    store: Ned;
+    tasks = new Collection<Task>('./app/data/tasks.db');
+    categories = new Collection<Category>('./app/data/categories.db');
+    clients = new Collection('./app/data/clients.db');
 
-    constructor(name: string) {
-        this.store = new Ned({filename: `./app/data/${name}.db`, autoload: true});
+    seed() {
+        var seed = new Seed();
+        this.tasks.insertBulk(seed.tasks());
+        this.categories.insertBulk(seed.categories());
+        this.clients.insertBulk(seed.clients());
     }
 }
