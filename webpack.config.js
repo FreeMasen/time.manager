@@ -28,30 +28,30 @@ module.exports = {
             {
                 test: /\.ts$/,
                 exclude: ['/node_modules/','/releases/'],
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+                use: ['awesome-typescript-loader', 'angular2-template-loader'],
                 
             },
             {
                 test: /\.json$/,
-                loader: 'json-loader',
+                use: 'json-loader',
             },
             {
                 test: /\.css$/,
                 exclude: helpers.root('app'),
-                loader: text.extract({ fallback: 'style-loader', loader: 'css-loader?sourceMap' })
+                use: text.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap' })
             },
             {
                 test: /\.css$/,
                 include: helpers.root('app'),
-                loader: 'raw-loader'
+                use: 'raw-loader'
             },
             {
                 test: /\.html$/,
-                loader: 'html-loader'
+                use: 'html-loader'
             },
             {
                 test: /\.(png|jpg)$/,
-                loader: 'file-loader?name=assets/[name].[hash].[ext]'
+                use: 'file-loader?name=assets/[name].[hash].[ext]'
             }
         ]
     },
