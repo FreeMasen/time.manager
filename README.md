@@ -4,75 +4,35 @@
 
 #### An electron application for managing todo's and billable client hours 
 
+![creating a new task](https://robertmasen.pizza/img/time.manager/NewTask.gif)
 
-## Front End
+![quick viewing task details](https://robertmasen.pizza/img/time.manager/ViewQuickDetail.gif)
 
-> Angular2 and Material2
+![Add note and work to task](https://robertmasen.pizza/img/time.manager/AddNoteAndWork.gif)
 
-###### Main windows
+![remove note and work](https://robertmasen.pizza/img/time.manager/TrashDetail.gif)
 
- - [ ] Taskbar window for quickly switching the user's current workflow 
+![remove task](https://robertmasen.pizza/img/time.manager/TrashDash.gif)
 
- - [ ] Task Manager window for adding todo's and assigning them to the billable category
+#### Installing/Contributing
+> note: this project is a work in progress, not all functionallity is complete
 
- - [ ] Category/Client manager window for adding/removing/modifying Categories and Clients
+```
+git clone https://github.com/freemasen/time.manager
+cd time.manager
+npm i
+electron .
+```
 
-## Backend
+###### File Structure
+All angular files are included in the ./app folder. Each angular item 
+is in its own folder with the filename of its types (i.e. component.ts, 
+service.ts, template.html, style.css). 
 
-> Electron and NodeJs 6.10
+The UI elements are all packaged via webpack, this results in the
+index.html file in the project root and all packaged contents
+in the ./build folder. 
 
+The Electron starting point is main.js. Any node modules are located in 
+the ./src folder, with the electron windows in ./src/windows.
 
- - [ ] data.js:
-  - Abstraction of the Nedb interface to allow for function definition storage in Nedb
-  - Limitted operations include insert, find, findOne, update, and delete
- - [ ] functionSerializer.js:
-  - "static" class that will split a function into a storable object
-  - the serialization calls the Function.prototype.toString() method and then parses the string and places elements into 3 JSON properties:
-    - name: function signature
-    - args: array of argument names
-    - body: the function body not including the curly braces
-
-## Models
-
-> Writen in Typescript, _id property assigned by Nedb
-
-- Task:
-  - properties:
-      - _id: string (Nedb assigned)
-      - objective: string (actual task description)
-      - notes: string[] (any notes about the task)
-      - work: Work[] (time spent working on this task)
-  - computed properties
-    - get completed(): string (returns the date completed as a string or "Not yet complete")
-    - isComplete(): boolean (returns if the task is complete or not)
-  - methods
-    - complete(): void (sets the completion date)
-    - uncomplete(): void (removes the completion date)
-  - TODO:
-    - define the Client/Category relationship
-    - define method for returning total time of all work
-- Work:
-  - properties:
-      - _id: string (Nedb assigned)
-      - start: Date (start date and time)
-      - duration: number (number of minutes spent working)
-- Category:
-  - properties:
-      - _id: string (Nedb assigned)
-      - name: string (category name)
-      - tasks: Task[] (list of all task in this category)
-      - isQuickCategory: boolean (if displayed on the quick choice menu)
-  - computed properties
-  - methods
-  - TODO
-    - implement a method for getting the total of work per day
-- [ ] Client:
-  - properties:
-      - _id: string
-      - name: string
-      - categories: Category[] (list of categories for this client)
-      - isQuickClient: boolean (if this client should appear in the quick client menu)
-  - computed properties
-  - methods
-  - TODO
-    - implement a method for getting a total of work per category per day
