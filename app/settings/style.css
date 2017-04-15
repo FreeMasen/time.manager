@@ -1,17 +1,36 @@
 .content {
     display: flex;
+    flex-flow: column;
+}
+
+#lists {
+    display: flex;
     flex-flow: row;
+    justify-content: space-around;
 }
 
 ul {
     list-style: none;
     border: 1px darkslategray solid;
+    width: 40%;
+    margin: 0, 10px;
+    border-radius: 5px;
+    padding: 10px; 
+    max-height: 300px;
+    overflow: scroll;
 }
 
 li {
     display: flex;
     flex-flow: row;
     justify-content: flex-start;
+    margin-top: 5px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+li > * {
+    margin: 0 10px;
 }
 
 .column-title {
