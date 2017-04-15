@@ -7,6 +7,9 @@ export class Collection<T extends Storeable> {
     }
 
     insert(...value: T[]): Promise<T[]> {
+        return this.insertBulk(value);
+    }
+    insertBulk(value: T[]): Promise<T[]> {
         return new Promise((resolve, reject) => {
             this.store.insert(value, (err, docs: T[]) => {
                 if (err) return reject(err);
