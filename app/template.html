@@ -2,6 +2,7 @@
     <md-toolbar color="primary">
         <div id="back" *ngIf="canGoBack" (click)="goBack()">chevron_left</div>
         <span id="app-title">Time Manager</span>
+        <div id="settings" (click)="openSettings()">settings</div>
     </md-toolbar>
     <router-outlet></router-outlet>
 </md-card>

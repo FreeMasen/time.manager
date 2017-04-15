@@ -13,6 +13,7 @@ import { AppComponent } from './component';
 import { Dashboard } from './dashboard/component';
 import { TaskDetail } from './taskDetail/component';
 import { TaskListItem } from './taskListItem/component';
+import { Settings } from './settings/component';
 
 import { Tasks, DateFormatter, Data } from './services';
 
@@ -31,7 +32,8 @@ import './rxjs'
         AppComponent,
         Dashboard,
         TaskDetail,
-        TaskListItem
+        TaskListItem,
+        Settings
     ],
     providers: [
         Tasks,

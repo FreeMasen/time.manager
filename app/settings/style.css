@@ -1,0 +1,19 @@
+.content {
+    display: flex;
+    flex-flow: row;
+}
+
+ul {
+    list-style: none;
+    border: 1px darkslategray solid;
+}
+
+li {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+}
+
+.column-title {
+    font-weight: bold;
+}
