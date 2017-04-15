@@ -4,9 +4,15 @@
 
 #### An electron application for managing todo's and billable client hours 
 
-![creating a new task](https://robertmasen.pizza/img/new%20task.gif)
+![creating a new task](https://robertmasen.pizza/img/time.manager/NewTask.gif)
 
-![quick viewing task details](https://robertmasen.pizza/img/new%20task%202.gif)
+![quick viewing task details](https://robertmasen.pizza/img/time.manager/ViewQuickDetail.gif)
+
+![Add note and work to task](https://robertmasen.pizza/img/time.manager/AddNoteAndWork.gif)
+
+![remove note and work](https://robertmasen.pizza/img/time.manager/TrashDetail.gif)
+
+![remove task](https://robertmasen.pizza/img/time.manager/TrashDash.gif)
 
 #### Installing/Contributing
 > note: this project is a work in progress, not all functionallity is complete
