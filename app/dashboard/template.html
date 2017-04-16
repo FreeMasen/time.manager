@@ -1,8 +1,8 @@
 <div id="dashboard">
-    <div class="page-title-group">
-        <div  class="page-title-line">
+    <div class="title-group">
+        <div  class="title">
             <span id="dashboard-title">Tasks</span>
-            <div id="buttons">
+            <div class="button-group">
                 <button title="delete selected tasks" md-mini-fab id="delete-button" (click)="deleteSelected()">
                     <md-icon>delete</md-icon>
                 </button>
@@ -24,6 +24,6 @@
             <input type="text" placeholder="Objective" name="objective" [(ngModel)]="pendingTask.objective" />
             <button (click)="saveTask()" md-mini-fab ><md-icon>done</md-icon></button>
         </div>
-        <task-list-item *ngFor="let task of tasks" [task]="task" (onSelectionChange)="toggleSelected($event)"></task-list-item>
+        <task-list-item color="primary-plus" *ngFor="let task of tasks" [task]="task" (onSelectionChange)="toggleSelected($event)"></task-list-item>
     </div>
 </div>

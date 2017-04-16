@@ -1,0 +1,90 @@
+html, html > * {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+input {
+    font-family: sans-serif;
+}
+
+.button {
+    font-family: 'Material Icons';
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+    margin-right: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 50px;
+    max-width: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    min-height: 50px;
+    font-size: 1.75em;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+
+    .circle {
+        border-radius: 50%;
+    }
+    
+    .mini {
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+    }
+
+    .micro {
+        width: 8px;
+        height: 8px;
+        line-height: 8px;
+    }
+}
+
+.button:active {
+    transform: translate(1px, 1px);
+}
+
+nav {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    #nav-left, #nav-right {
+        display: flex;
+        flex-flow: row;
+    }
+}
+
+.card {
+    width: 95%;
+    margin: auto;
+    padding: 10px;
+}
+
+.title-group {
+    width: 95%;
+    margin: auto;
+    padding: 2px;
+    display: flex;
+    flex-flow: row;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 2px;
+}
+
+.title {
+    font-size: 24pt;
+    font-weight: bold;
+}
