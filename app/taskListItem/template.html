@@ -1,8 +1,8 @@
 <div color="primary-plus" class="task-list-item">
     <div class="task-title">
-        <md-icon [@direction]="currentState" 
+        <i [@direction]="currentState" 
                 (click)="toggleExpanded()" 
-                class="material-icons display-toggle">chevron_right</md-icon>
+                class="material-icons display-toggle">chevron_right</i>
         <div class="checkbox" id="task {{ task._id }}" [ngClass]="{checked: selected}" (click)="toggleSelected(task._id)"></div>
         <span class="title-text" (click)="goTo()">{{task.objective}}</span>
     </div>
