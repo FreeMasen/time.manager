@@ -9,28 +9,24 @@
     justify-content: space-around;
 }
 
-ul {
-    list-style: none;
+#lists > table {
     width: 40%;
-    margin: 0, 10px;
-    border-radius: 5px;
-    padding: 10px; 
+}
+tbody, thead {
+    display: block;
+}
+
+tbody {
     max-height: 300px;
-    overflow: scroll;
+    overflow-y: auto;
 }
 
-li {
-    display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
-    margin-top: 5px;
-    border-radius: 5px;
+.col1 {
+    width: 0.6em;
+    padding-right: 15px;
 }
 
-li > * {
-    margin: 0 10px;
-}
-
-.column-title {
-    font-weight: bold;
+.col3 {
+    width: 0.6em;
+    padding-left: 15px;
 }

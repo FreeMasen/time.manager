@@ -8,25 +8,44 @@
         <h2>Manage Lists</h2>
         <!--These should be tables...-->
         <div id="lists" class="section">
-            <ul id="clients">
-                <li>
-                    <span class="column-title">Quick</span>
-                    <span class="column-title">Client Name</span>
-                <li *ngFor="let client of clients">
-                    <div class="checkbox" [ngClass]="{checked: client.isQuickClient}" (click)="toggleQuickClient(client._id)"></div>
-                    <span>{{client.name}}</span>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <span class="column-title">Quick</span>
-                    <span class="column-title">Category</span>
-                </li>
-                <li *ngFor="let category of categories">
-                    <div class="checkbox" [ngClass]="{checked: category.isQuickCategory}" (click)="toggleQuickClient(category._id)">
-                    </div>
-                    <span>{{category.name}}</span>
-            </ul>
+            <table id="clients">
+                <thead>
+                    <tr>
+                        <th class="col1"><i>done</i></th>
+                        <th class="col2">Client Name</th>
+                        <th class="col3">Quick</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let client of clients">
+                        <td class="col1"><div class="checkbox" [ngClass]="{checked: false}" (click)="console.log('selected')"></div>
+                        <td class="col2">{{client.name}}</td>
+                        <td class="col3">
+                            <div class="checkbox" [ngClass]="{checked: client.isQuickClient}" (click)="toggleQuickClient(client._id)"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="categories">
+                <thead>
+                    <tr>
+                        <th class="col1"><i>done</i></th>
+                        <th class="col2">Category</th>
+                        <th class="col3">Quick</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categories">
+                        <td class="col1">
+                            <div class="checkbox" [ngClass]="{checked: false}" (click)="console.log('selected')"></div>
+                        </td>
+                        <td class="col2">{{category.name}}</td>
+                        <td class="col3">
+                            <div class="checkbox" [ngClass]="{checked: category.isQuickCategory}" (click)="toggleQuickClient(category._id)"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <h2>Manage Connections</h2>
         <div id="connections" class="section">
