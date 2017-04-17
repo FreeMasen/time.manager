@@ -33,6 +33,16 @@ html, html > * {
   border-color: #ECEFF1; }
 
 .checkbox {
-  border-color: #455A64; }
+  border-color: #68b6f3 !important; }
   .checkbox.checked {
-    background-color: #455A64; }
+    background-color: #68b6f3; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #546E7A; }
+
+::-webkit-scrollbar-thumb {
+  background: #68b6f3;
+  -webkit-box-shadow: inset 0 0 6px #78909C; }
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #97cdf7; }
