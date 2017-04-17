@@ -3,7 +3,9 @@ html, html > * {
   color: #ECEFF1; }
 
 .button {
-  box-shadow: 2px 2px 2px 1px #78909C; }
+  box-shadow: 2px 2px 1px -1px #78909C; }
+  .button.round {
+    box-shadow: 1px 2px 1px -1px #546E7A; }
 
 *.button:hover {
   background-color: #37474F; }
@@ -22,3 +24,15 @@ html, html > * {
 
 [color="accent"] {
   background-color: #68b6f3; }
+
+[color="alert"] {
+  background-color: #FF5252;
+  box-shadow: #546E7A; }
+
+.title {
+  border-color: #ECEFF1; }
+
+.checkbox {
+  border-color: #455A64; }
+  .checkbox.checked {
+    background-color: #455A64; }

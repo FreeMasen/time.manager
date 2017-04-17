@@ -43,9 +43,19 @@ export class TaskDetail implements OnInit {
                 this.data.tasks.find({_id: id})
                     .then(task => {
                         this.task = task[0];
-                    })
+                    });
             }
-        })
+        });
+    }
+
+    get totalWork(): string {
+        return this.dateHandler.timeString(
+            this.task.minutesOfWork()
+        )
+    }
+
+    getDateString(dt: Date) {
+        return this.dateHandler.format(dt, 'M/d/yy h:m D');
     }
 
     toggleNote(id: number) {
@@ -134,14 +144,12 @@ export class TaskDetail implements OnInit {
 
     private updating: boolean = false;
     private sendUpdate(): void {
-        this.updating = true;
         this.data.tasks.update(this.task)
-            .then(() => {
-                this.updating = false
+            .then(_ => {
+
             })
             .catch(err => {
-                this.updating = false;
-                throw err;
+                console.error(err);
             })
     }
 }

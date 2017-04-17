@@ -51,12 +51,19 @@ export class TaskListItem {
             private dateFormatter: DateFormatter
     ) {}
 
+    get totalWork() {
+        console.log(this.task.minutesOfWork());
+        return this.dateFormatter.timeString(
+            this.task.minutesOfWork()
+        );
+    }
+
     get currentState() {
         return this.state ? 'expanded' : 'collapsed';
     }
 
     dateString(dt: Date): string {
-        return this.dateFormatter.format(dt, 'MM-dd-yyyy hh:mm TT');
+        return this.dateFormatter.format(dt, 'M-d-yy h:m T');
     }
 
     toggleExpanded() {

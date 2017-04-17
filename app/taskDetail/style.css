@@ -20,7 +20,6 @@
 #title-group {
     display: flex;
     flex-flow: column;
-    border-bottom: 1px ghostwhite solid;
 }
 
 #task-title {
@@ -32,7 +31,6 @@
     width: 100%;
     font-size: 12pt;
     font-style: oblique;
-    color: lightslategrey
 }
 
 #task-details {
@@ -48,7 +46,6 @@
 .detail-section {
     display: flex;
     flex-flow: column;
-    background-color: ghostwhite;
     border-radius: 5px;
     width: 100%;
     padding-bottom: 10px;
@@ -57,7 +54,6 @@
 .section-title {
     font-size: 18pt;
     font-weight: bold;
-    border-bottom: 1px white solid;
     margin-bottom: 3px;
     width: 95%;
     margin-left: auto;
@@ -74,18 +70,6 @@
     flex-flow: row;
 }
 
-.add {
-    background-color: deeppink;
-}
-
-.add-text, .clear-text {
-    color: white;
-}
-
-.clear {
-    background-color: black;
-}
-
 .section-item {
     display: flex;
     flex-flow: row;
@@ -93,7 +77,6 @@
     margin-left: auto;
     margin-right: auto;
     word-wrap: break-word;
-    background-color: white;
     padding: 10px 0;
 }
 
@@ -123,7 +106,6 @@
 
 .input-label {
     font-size: 0.8em;
-    color: lightslategray;
 }
 
 .input {

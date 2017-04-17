@@ -9,48 +9,77 @@ html, html > * {
 input {
   font-family: sans-serif; }
 
+select {
+  padding-left: 8px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  border: none;
+  border-radius: 0;
+  font-size: 1.2em;
+  overflow: hidden; }
+
+select:before {
+  content: '';
+  right: 6px;
+  top: 0px;
+  width: 20px;
+  height: 20px;
+  background: #f8f8f8;
+  position: absolute; }
+
+.button-group {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between; }
+  .button-group * + * {
+    margin-left: 0.4em; }
+
 .button {
+  display: block;
   font-family: 'Material Icons';
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 5px;
-  margin-right: 15px;
   cursor: pointer;
   border-radius: 5px;
   height: 50px;
-  max-width: 50px;
-  min-width: 50px;
-  max-height: 50px;
-  min-height: 50px;
-  font-size: 1.75em;
   width: 50px;
+  font-size: 1.75rem;
   line-height: 50px;
   text-align: center;
   cursor: pointer; }
-  .button .circle {
+  .button.round {
     border-radius: 50%; }
-  .button .mini {
-    width: 15px;
-    height: 15px;
-    line-height: 15px; }
-  .button .micro {
-    width: 8px;
-    height: 8px;
-    line-height: 8px; }
+  .button.mini {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1em; }
+  .button.micro {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 0.5em; }
 
 .button:active {
-  transform: translate(1px, 1px); }
+  transform: translate(1px, 1px);
+  box-shadow: unset; }
 
 nav {
-  width: 100%;
+  width: calc(100% - 15px);
   padding-top: 5px;
   padding-bottom: 5px;
+  padding-left: 15px;
   display: flex;
   flex-flow: row;
   justify-content: space-between; }
   nav #nav-left, nav #nav-right {
     display: flex;
-    flex-flow: row; }
+    flex-flow: row;
+    margin-top: auto;
+    margin-bottom: auto; }
+    nav #nav-left * + *, nav #nav-right * + * {
+      margin-left: 15px; }
+  nav #nav-right {
+    margin-right: 15px; }
 
 .card {
   width: 95%;
@@ -59,10 +88,19 @@ nav {
 
 .title-group {
   width: 95%;
-  margin: auto;
+  margin: 5px auto 0;
   padding: 2px;
+  padding-bottom: 10px;
   display: flex;
-  flex-flow: row; }
+  flex-flow: column;
+  border-bottom: 1px solid;
+  margin-bottom: 10px; }
+  .title-group .title {
+    border: none;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-bottom: 0; }
 
 h1 {
   font-size: 3em;
@@ -70,4 +108,21 @@ h1 {
 
 .title {
   font-size: 24pt;
-  font-weight: bold; }
+  font-weight: bold;
+  border-bottom: 1px solid;
+  margin-bottom: 10px; }
+
+.checkbox {
+  width: 0.5em;
+  height: 0.5em;
+  border: 0.125em solid;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto; }
+
+.checked {
+  background-color: #304ffe; }
+
+.page-content {
+  width: 95%;
+  margin: auto; }
