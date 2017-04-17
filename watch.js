@@ -1,22 +1,50 @@
-const exec = require('child_process').exec;
+const fs = require('fs');
+const config = require('./webpack.config.js');
+const webpack = require('webpack');
+const sass = require('node-sass');
 
 
-function watch(cssFileNames) {
-    var webpack = 'webpack --watch'
-    var sass = [];
-    cssFileNames.forEach(element => {
-        sass.push(`node-sass ${element.inFile} ${element.outFile}`)
+
+function watch(theme) {
+    var compiler = webpack(config)
+
+    compiler.watch(
+        {aggregareTimeout: 300,
+        poll: true},
+        (err, stats) => {
+            console.log('webpack cb')
+        }
+    )
+
+    var style = 
+        {inFile: './styles/main.sass',
+        outFile: './style.css'}
+    var colors = 
+        {inFile: theme,
+        outFile: './theme.css'}
+
+    var styleWatcher = fs.watch('./styles/', (event, filename) => {
+        if (filename.includes('main')) {
+            compileSass(style.inFile, style.outFile);
+        } else {
+            compileSass(colors.inFile, colors.outFile);
+        }
     });
-    exec(webpack,report);
-    sass.forEach(cmd => {
-        exec(cmd, report);
-    })
+
 }
 
-function report(err, stdout, stderr) {
-    if (stdout) console.log(stdout);
-    if (stderr) console.log(stderr);
-    if (err) process.exit(err);
+function compileSass(infile, outfile) {
+
+    sass.render({
+        file: infile,
+        outputStyle: 'compressed'
+    }, (err, result) => {
+        if (err) return console.error('error rendering', infile, err);
+        fs.writeFile(outfile, result.css, (err) => {
+            if (err) return console.error('error writing', infile, 'to', outfile, err);
+            console.log('wrote', infile, 'to', outfile);
+        })
+    })
 }
 
 var theme = './styles/_dark.sass';
@@ -24,11 +52,5 @@ if (process.argv[2] == 'light') {
     theme = './styles/_light.sass'
 }
 
-var cssFileNames = [
-    {inFile: './styles/main.sass',
-    outFile: './style.css'},
-    {inFile: theme,
-    outFile: './theme.css'}
-]
 
-watch(cssFileNames);
+watch(theme);
