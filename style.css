@@ -9,6 +9,9 @@ html, html > * {
 input {
   font-family: sans-serif; }
 
+i {
+  font-family: 'Material Icons'; }
+
 select {
   padding-left: 8px;
   padding-right: 10px;
@@ -18,15 +21,6 @@ select {
   border-radius: 0;
   font-size: 1.2em;
   overflow: hidden; }
-
-select:before {
-  content: '';
-  right: 6px;
-  top: 0px;
-  width: 20px;
-  height: 20px;
-  background: #f8f8f8;
-  position: absolute; }
 
 .button-group {
   display: flex;
@@ -62,6 +56,14 @@ select:before {
 .button:active {
   transform: translate(1px, 1px);
   box-shadow: unset; }
+
+.checkbox {
+  width: 0.5em;
+  height: 0.5em;
+  border: 0.125em solid;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto; }
 
 nav {
   width: calc(100% - 15px);
@@ -112,17 +114,20 @@ h1 {
   border-bottom: 1px solid;
   margin-bottom: 10px; }
 
-.checkbox {
-  width: 0.5em;
-  height: 0.5em;
-  border: 0.125em solid;
-  display: block;
-  margin-top: auto;
-  margin-bottom: auto; }
-
-.checked {
-  background-color: #304ffe; }
-
 .page-content {
   width: 95%;
   margin: auto; }
+
+::-webkit-scrollbar {
+  width: 8px; }
+
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+
+::-webkit-scrollbar:horizontal {
+  display: none; }
