@@ -100,4 +100,8 @@ export class Dashboard implements OnInit {
                 
             })
     }
+
+    clearTask() {
+        this.pendingTask = null;
+    }
 }

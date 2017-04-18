@@ -7,7 +7,7 @@ const path = require('path');
 
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'eval-cheap-module-source-map',
     entry: {
         'polyfills': './pollyfills.ts',
         'vendor':'./vendor.ts',

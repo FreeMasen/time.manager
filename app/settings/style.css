@@ -3,36 +3,64 @@
     flex-flow: column;
 }
 
+.section, .section-title {
+    margin-left: 10px;
+}
+
 #lists {
     display: flex;
     flex-flow: row;
     justify-content: space-around;
 }
 
-ul {
-    list-style: none;
-    border: 1px darkslategray solid;
+#categories {
     width: 40%;
-    margin: 0, 10px;
-    border-radius: 5px;
-    padding: 10px; 
-    max-height: 300px;
-    overflow: scroll;
 }
 
-li {
+#clients {
+    width: 55%;
+}
+
+tbody, thead {
+    display: block;
+}
+
+tbody {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+th {
+    text-align: center;
+}
+
+.col1 {
+    width: 0.6em;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.col2 {
+    padding-left: 5px;
+    width: 99%;
+}
+
+.col3 {
+    width: 0.6em;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+form > * {
     display: flex;
     flex-flow: row;
-    justify-content: flex-start;
-    margin-top: 5px;
-    background-color: whitesmoke;
-    border-radius: 5px;
+    margin-top: 10px;
 }
 
-li > * {
-    margin: 0 10px;
+form > * > * + * {
+    margin-left: 10px;
 }
 
-.column-title {
-    font-weight: bold;
+#colors > .checkbox-group {
+    width: 75px;
 }

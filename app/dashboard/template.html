@@ -1,29 +1,38 @@
 <div id="dashboard">
-    <div class="page-title-group">
-        <div  class="page-title-line">
+    <div class="title-group">
+        <div class="title">
             <span id="dashboard-title">Tasks</span>
-            <div id="buttons">
-                <button title="delete selected tasks" md-mini-fab id="delete-button" (click)="deleteSelected()">
-                    <md-icon>delete</md-icon>
-                </button>
-                <button class="mini-button" md-mini-fab (click)="createdNewTask()">
-                    <md-icon>add</md-icon>
-                </button>
+            <div class="button-group">
+                <div class="button round" (click)="deleteSelected()" color="alert">delete</div>
+                <div class="button round" (click)="createdNewTask()" color="primary-minus">add</div>
             </div>
         </div>
         <div id="dashboard-subtitle" class="page-subtitle">
-            <select role="combobox" id="filter" name="filter options" [(ngModel)]="selectedFilter" (ngModelChange)="getTasks($event)">
+            <select role="combobox" id="filter" name="filter options" [(ngModel)]="selectedFilter" (ngModelChange)="getTasks($event)" color="primary-plus">
                 <option [ngValue]="0">incomplete</option>
                 <option [ngValue]="1">complete</option>
                 <option [ngValue]="2">all</option>
             </select>
         </div>
     </div>
-    <div id="dashboard-content" class="page-content, task-list">
+    <div id="dashboard-content" class="page-content task-list">
         <div id="pending task" *ngIf="pendingTask">
             <input type="text" placeholder="Objective" name="objective" [(ngModel)]="pendingTask.objective" />
-            <button (click)="saveTask()" md-mini-fab ><md-icon>done</md-icon></button>
+            <div class="button-group">
+                <div 
+                (click)="saveTask()" 
+                class="button mini round"
+                color="accent">done</div>
+                <div
+                (click)="clearTask()"
+                class="button mini round"
+                color="alert">cancel</div>
+            </div>
         </div>
-        <task-list-item *ngFor="let task of tasks" [task]="task" (onSelectionChange)="toggleSelected($event)"></task-list-item>
+        <task-list-item 
+            color="primary-plus" 
+            *ngFor="let task of tasks" 
+            [task]="task" 
+            (onSelectionChange)="toggleSelected($event)"></task-list-item>
     </div>
 </div>

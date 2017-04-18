@@ -1,29 +1,34 @@
 <div id="task-detail" *ngIf="task != undefined">
     <div id="header">
-        <div id="title-group">
-            <span id="task-title">
-                {{task.objective}}
-            </span>
-            <span id="task-subtitle">
+        <div class="title-group">
+            <div class="title">
+                <span>{{task.objective}}</span>
+            </div>
+            <span class="subtitle">
                 {{taskCreated}} - {{taskCompleted}}
             </span>
         </div>
-        <div title="Delete this task" class="button large-button clear"(click)="deleteSelf()">
-            <div class="clear-text large-button-content">delete</div>
+        <div title="Delete this task" 
+            class="button round" 
+            (click)="deleteSelf()"
+            color="alert">
+            delete
         </div>
     </div>
     <div id="task-details">
-        <div class="detail-section">
+        <div class="detail-section" color="primary-plus">
             <div class="section-title">
                 <span>Notes</span>
                 <div class="button-group">
-                    <div class="mini-button button add" 
-                        (click)="addNote()">
-                        <div class="add-text mini-button button-content">add</div>
+                    <div class="button round mini" 
+                        (click)="addNote()"
+                        color="accent">
+                        add
                     </div>
-                    <div class="mini-button button clear" 
-                        (click)="deleteSelected('notes')">
-                        <div class="clear-text mini-button-content">delete</div>
+                    <div class="button round mini" 
+                        (click)="deleteSelected('notes')"
+                        color="alert">
+                        delete
                     </div>
                 </div>
             </div>
@@ -44,25 +49,33 @@
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div title="Add note" class="button mini-button button add" (click)="finalizeNote()">
-                    <div class="add-text mini-button-content">done</div>
-                </div>
-                <div title="Cancel" class="button mini-button button clear" (click)="clearNote()">
-                    <div class="clear-text mini-button-content">clear</div>
+                <div class="button-group">
+                    <div 
+                        title="Add note"  
+                        (click)="finalizeNote()"
+                        class="button micro round"
+                        color="accent">done</div>
+                    <div 
+                        title="Cancel"
+                        (click)="clearNote()"
+                        class="button micro round" 
+                        color="alert">clear</div>
                 </div>
             </div>
         </div>
-        <div class="detail-section">
+        <div class="detail-section" color="primary-plus">
             <div class="section-title">
                 <span>Work</span>
                 <div class="button-group">
-                    <div title="Record some work you have done for this task" class="button mini-button add" 
-                        (click)="addWork()">
-                        <div class="add-text  mini-button-content">add</div>
+                    <div class="button round mini" 
+                        (click)="addWork()"
+                        color="accent">
+                        add
                     </div>
-                    <div class="mini-button button clear" 
-                        (click)="deleteSelected('work')">
-                        <div class="clear-text  mini-button-content">delete</div>
+                    <div class="button round mini" 
+                        (click)="deleteSelected('notes')"
+                        color="alert">
+                        delete 
                     </div>
                 </div>
             </div>
@@ -70,7 +83,7 @@
                 <div class="checkbox" 
                         (click)='toggleWork(i)' 
                         [ngClass]="{checked: selectedWork.includes(i)}"></div>
-                <span class="item-title">{{work.start}} {{work.duration}}</span>
+                <span class="item-title">{{getDateString(work.start)}} {{work.duration}}</span>
             </div>
             <div class="pending section-item" *ngIf="pendingWorkDate != '' && pendingWorkDuration != null">
                 <div class="input-container">
@@ -89,11 +102,17 @@
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div title="Add work" class="mini-button button add  mini-button button-content" (click)="finalizeWork()">
-                    <div class="add-text mini-button button-content">done</div>
-                </div>
-                <div title="cancel" class="mini-button button clear" (click)="clearWork()">
-                    <div class="clear-text mini-button button-content">clear</div>
+                <div class="button-group">
+                    <div 
+                        title="Add work" 
+                        class="button micro round" 
+                        (click)="finalizeWork()"
+                        color="accent">done</div>
+                    <div 
+                        title="cancel" 
+                        class="button micro round" 
+                        (click)="clearWork()"
+                        color="alert">clear</div>
                 </div>
             </div>
         </div>

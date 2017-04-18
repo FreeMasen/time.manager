@@ -89,6 +89,20 @@ export class DateFormatter {
         return new Date(year, month - 1, day, hour, minute);
     }
 
+    timeString(minutes: number): string {
+        console.log(`timeString(${minutes})`);
+        var hours = 0;
+        while(minutes > 60) {
+            hours++;
+            minutes -= 60;
+        }
+        var ret = '';
+        if (hours > 0) ret += `${hours} hours `;
+        if (minutes > 0) ret += `${minutes} minutes`;
+        if (ret.length == 0) return `0 minutes`;
+        return ret.trim();
+    }
+
     private twoDigitString(num: number) {
         return `0${num}`.substr(-2);
     }

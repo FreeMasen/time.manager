@@ -12,6 +12,7 @@ export class Task implements Storeable {
         } 
         return "Not yet complete"
     }
+
     get isComplete(): boolean {
         return this._completed != null;
     }
@@ -35,5 +36,15 @@ export class Task implements Storeable {
 
     uncomplete() {
         this._completed = null;
+    }
+
+    minutesOfWork(): number {
+        var ret =  this.work.map(work => {
+            return work.duration;
+        }).reduce((acc, val) => {
+            return acc + val;
+        }, 0);
+        console.log(`totalTime(): ${ret}`);
+        return ret;
     }
 }
