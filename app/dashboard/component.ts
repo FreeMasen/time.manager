@@ -55,10 +55,10 @@ export class Dashboard implements OnInit {
             var query;
             switch (value) {
                 case 0:
-                    query = { complete: { $exists: false } };
+                    query = { _completed: { $exists: false } };
                 break;
                 case 1:
-                    query = { complete: { $exists: true } };
+                    query = { _completed: { $exists: true } };
                 break;
                 default:
                     query = {};
@@ -86,8 +86,16 @@ export class Dashboard implements OnInit {
     }
 
     completeSelected() {
-        console.log('completeSelected()')
-        
+        var selectedTasks = this.tasks.filter(task => {
+            var ret = this.selected.includes(task._id);
+            if (ret) task._completed = new Date();
+            return ret;
+        })
+        this.data.tasks.updateBulk(selectedTasks)
+        .then(_ => {
+            this.selected = [];
+            this.getTasks(this.selectedFilter);
+        })
     }
 
     createdNewTask(): void {
