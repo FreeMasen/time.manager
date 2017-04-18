@@ -12,7 +12,7 @@ function watch(theme) {
         {aggregareTimeout: 300,
         poll: true},
         (err, stats) => {
-            console.log('webpack cb')
+            console.log(stats.toString("errors-only"))
         }
     )
 
