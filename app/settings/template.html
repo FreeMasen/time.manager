@@ -1,19 +1,20 @@
 <div id="settings">
     <div class="title-group">
-        <div class="title">
-            <h1>Settings</h1>
+        <div class="title-group">
+            <div class="title">
+                <span>Settings</span>
+            </div>
         </div>
     </div>
     <div class="content">
-        <h2>Manage Lists</h2>
-        <!--These should be tables...-->
+        <h2 class="section-title">Manage Lists</h2>
         <div id="lists" class="section">
             <table id="clients">
                 <thead>
                     <tr>
                         <th class="col1"><i>done</i></th>
                         <th class="col2">Client Name</th>
-                        <th class="col3">Quick</th>
+                        <th class="col3" title="Quick clients"><i>flash_on</i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +32,7 @@
                     <tr>
                         <th class="col1"><i>done</i></th>
                         <th class="col2">Category</th>
-                        <th class="col3">Quick</th>
+                        <th class="col3" title="Quick clients"><i>flash_on</i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,10 +48,22 @@
                 </tbody>
             </table>
         </div>
-        <h2>Manage Connections</h2>
+        <h2 class="section-title">Manage Connections</h2>
         <div id="connections" class="section">
             <div id="jira">
-                <!--username, password, url, enable/disable-->
+                <h3>Jira (coming soon)</h3>
+                <form>
+                    <div class="enabled">
+                        <div class="checkbox" [ngClass]="{checked: false}"></div><span>enabled</span>
+                    </div>
+                    <div class="login">
+                        <input placeholder="username" disabled/>
+                        <input placeholder="password" disabled/>
+                    </div>
+                    <div class="url">
+                        <input placeholder="web address" disabled/>
+                    </div>
+                </form>
             </div>
             <div id="firebase">
                 <!--Connect to google account, sync categories, sync clients, sync tasks-->

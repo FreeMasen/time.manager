@@ -3,15 +3,24 @@
     flex-flow: column;
 }
 
+.section, .section-title {
+    margin-left: 10px;
+}
+
 #lists {
     display: flex;
     flex-flow: row;
     justify-content: space-around;
 }
 
-#lists > table {
+#categories {
     width: 40%;
 }
+
+#clients {
+    width: 55%;
+}
+
 tbody, thead {
     display: block;
 }
@@ -23,10 +32,27 @@ tbody {
 
 .col1 {
     width: 0.6em;
+    max-width: 0.6em;
     padding-right: 15px;
+}
+
+.col2 {
+    padding-left: 5px;
+    width: 99%;
 }
 
 .col3 {
     width: 0.6em;
+    padding-right: 15px;
     padding-left: 15px;
+}
+
+form > * {
+    display: flex;
+    flex-flow: row;
+    margin-top: 10px;
+}
+
+form > * > * + * {
+    margin-left: 10px;
 }

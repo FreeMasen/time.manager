@@ -3,7 +3,10 @@ const path = require('path');
 const url = require('url');
 
 function createTaskWindow() {
-    win = new BrowserWindow({width: 800, height: 800, show: true});
+    win = new BrowserWindow({width: 800
+                            , height: 800
+                            , minWidth: 800
+                            , show: true});
     var u = url.format({
         pathname: path.join(__dirname,'..', '..', 'index.html'),
         protocol: 'file:',
