@@ -1,9 +1,7 @@
 <div id="settings">
     <div class="title-group">
-        <div class="title-group">
-            <div class="title">
-                <span>Settings</span>
-            </div>
+        <div class="title">
+            <span>Settings</span>
         </div>
     </div>
     <div class="content">
@@ -52,7 +50,7 @@
         <div id="connections" class="section">
             <div id="jira">
                 <h3>Jira (coming soon)</h3>
-                <form>
+                <form class="disabled">
                     <div class="enabled">
                         <div class="checkbox" [ngClass]="{checked: false}"></div><span>enabled</span>
                     </div>
@@ -66,13 +64,28 @@
                 </form>
             </div>
             <div id="firebase">
+                <h3>Web sync (coming soon)</h3>
+                <div class="button wide" color="accent" [ngClass]="{disabled: true}">Link google account</div>
+                <div class="checkbox-group disabled">
+                    <div class="checkbox"></div><span>Sync Clients</span>
+                </div>
+                <div class="checkbox-group disabled">
+                    <div class="checkbox"></div><span>Sync Categories</span>
+                </div>                 
+                <div class="checkbox-group disabled">
+                    <div class="checkbox"></div><span>Sync Tasks</span>
+                </div> 
                 <!--Connect to google account, sync categories, sync clients, sync tasks-->
             </div>
         </div>
-        <h2>Color Scheme</h2>
+        <h2>Theme</h2>
         <div id="colors" class="section">
-            <!--Dark theme, light theme-->
-            <!--maybe able to use node & SASS to achieve this-->
+            <div class="checkbox-group">
+            <div class="checkbox" [ngClass]="{checked: true}"></div><span>Dark</span>
+            </div>
+            <div class="checkbox-group disabled">
+            <div class="checkbox" [ngClass]="{checked: false}"></div><span>Light</span>
+            </div>
         </div>
     </div>  
 </div>

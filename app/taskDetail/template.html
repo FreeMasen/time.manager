@@ -1,8 +1,10 @@
 <div id="task-detail" *ngIf="task != undefined">
     <div id="header">
         <div class="title-group">
-            <h1>{{task.objective}}</h1>
-            <span id="task-subtitle">
+            <div class="title">
+                <span>{{task.objective}}</span>
+            </div>
+            <span class="subtitle">
                 {{taskCreated}} - {{taskCompleted}}
             </span>
         </div>

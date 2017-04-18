@@ -30,9 +30,13 @@ tbody {
     overflow-y: auto;
 }
 
+th {
+    text-align: center;
+}
+
 .col1 {
     width: 0.6em;
-    max-width: 0.6em;
+    padding-left: 10px;
     padding-right: 15px;
 }
 
@@ -43,8 +47,8 @@ tbody {
 
 .col3 {
     width: 0.6em;
-    padding-right: 15px;
     padding-left: 15px;
+    padding-right: 10px;
 }
 
 form > * {
@@ -55,4 +59,8 @@ form > * {
 
 form > * > * + * {
     margin-left: 10px;
+}
+
+#colors > .checkbox-group {
+    width: 75px;
 }
