@@ -38,17 +38,29 @@ export class Collection<T extends Storeable> {
         })
     }
 
-    update(query, updated, options): Promise<number> {
+    update(...value: T[]): Promise<number> {
         this.activityListener('update')
-        this.activityListener(query)
-        this.activityListener(updated)
-        this.activityListener(options)
+        this.activityListener(value);
+        return this.updateBulk(value);
+    }
+
+    updateBulk(values: T[]): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.store.update(query, updated, options, (err, num) => {
-                
-                if (err) return reject(err);
-                resolve(num);
+            this._update(values, err => {
+                if (err) return reject(err)
+                resolve();
             })
+        })
+    }
+
+    private _update(values: T[], cb) {
+        if (values.length < 1) return cb(null)
+        var update = values.pop();
+        var q = {_id: update._id};
+        delete update._id;
+        this.store.update(q, update, {}, (err, num) => {
+            if (err) return cb(err)
+            this._update(values, cb);
         })
     }
 
