@@ -30,24 +30,23 @@ export class Settings implements OnInit {
     }
 
     toggleQuickCategory(id: string) {
-        var category = this.categories.filter(client => {
-            return id == client._id
-        })[0];
-        category.isQuickCategory = !category.isQuickCategory;
-        this.data.clients.update(category)
-        .then(_ => {
-            this.getValues();
-        });
+        this.toggleQuick(id, 'categories');
     }
 
-        toggleQuickClient(id: string) {
-        var client = this.clients.filter(client => {
-            return id == client._id
-        })[0];
-        client.isQuickClient = !client.isQuickClient;
-        this.data.clients.update(client)
-        .then(_ => {
-            this.getValues();
-        });
+    toggleQuickClient(id: string) {
+        this.toggleQuick(id, 'clients');
+    }
+
+    toggleQuick(id: string, collection: string) {
+        // var query = {_id: id};
+        // var isQuick = false; 
+        // isQuick = this[collection].filter(category => { 
+        //     return id == category._id
+        // })[0].isQuick;
+        // var update = {isQuick: isQuick};
+        // this.data[collection].update(query, update, {})
+        // .then(_ => {
+        //     this.getValues();
+        // });
     }
 }

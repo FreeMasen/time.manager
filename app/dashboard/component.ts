@@ -85,6 +85,11 @@ export class Dashboard implements OnInit {
         }) 
     }
 
+    completeSelected() {
+        console.log('completeSelected()')
+        
+    }
+
     createdNewTask(): void {
         this.pendingTask = new Task();
     }

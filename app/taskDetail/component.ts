@@ -144,12 +144,12 @@ export class TaskDetail implements OnInit {
 
     private updating: boolean = false;
     private sendUpdate(): void {
-        this.data.tasks.update(this.task)
-            .then(_ => {
+        // this.data.tasks.update(this.task)
+        //     .then(_ => {
 
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        //     })
+        //     .catch(err => {
+        //         console.error(err);
+        //     })
     }
 }
