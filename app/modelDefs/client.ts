@@ -2,9 +2,9 @@ import { Storeable } from '../models';
 export class Client implements Storeable {
     _id: string;
     name: string;
-    isQuickClient: boolean;
+    isQuick: boolean;
     constructor(name: string) {
         this.name = name;
-        this.isQuickClient = false;
+        this.isQuick = false;
     }
 }
