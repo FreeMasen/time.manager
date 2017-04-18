@@ -9,6 +9,7 @@ export class Collection<T extends Storeable> {
     insert(...value: T[]): Promise<T[]> {
         return this.insertBulk(value);
     }
+    
     insertBulk(value: T[]): Promise<T[]> {
         return new Promise((resolve, reject) => {
             this.store.insert(value, (err, docs: T[]) => {
@@ -27,12 +28,11 @@ export class Collection<T extends Storeable> {
         })
     }
 
-    update(updated: T): Promise<any> {
+    update(query, updated, options): Promise<number> {
         return new Promise((resolve, reject) => {
-            var query = {_id: updated._id};
-            this.store.update(query, updated, (err) => {
+            this.store.update(query, updated, options, (err, num) => {
                 if (err) return reject(err);
-                resolve();
+                resolve(num);
             })
         })
     }
