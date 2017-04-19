@@ -14,7 +14,7 @@ import { TaskDetail } from './taskDetail/component';
 import { TaskListItem } from './taskListItem/component';
 import { Settings } from './settings/component';
 
-import { Tasks, DateFormatter, Data } from './services';
+import { DateFormatter, Data, Calculator } from './services';
 
 import './rxjs'
 
@@ -34,9 +34,9 @@ import './rxjs'
         Settings
     ],
     providers: [
-        Tasks,
         DateFormatter,
-        Data
+        Data,
+        Calculator
     ],
     bootstrap: [
         AppComponent
