@@ -5,9 +5,9 @@ import { Seed } from './seed';
 
 @Injectable()
 export class Data {
-    tasks = new Collection<Task>('./app/data/tasks.db', this.listenToTasks);
-    categories = new Collection<Category>('./app/data/categories.db', this.listenToClients);
-    clients = new Collection('./app/data/clients.db', this.listenToClients);
+    tasks = new Collection<Task>('./app/data/tasks.db');
+    categories = new Collection<Category>('./app/data/categories.db');
+    clients = new Collection<Client>('./app/data/clients.db');
 
     seed() {
         console.error('SEEDING DATA STORE FILES')
