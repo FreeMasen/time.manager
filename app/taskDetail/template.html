@@ -8,11 +8,18 @@
                 {{taskCreated}} - {{taskCompleted}}
             </span>
         </div>
-        <div title="Delete this task" 
-            class="button round" 
-            (click)="deleteSelf()"
-            color="alert">
-            delete
+        <div class="button-group">
+            <div title="Complete task"
+                class="button round"
+                (click)="toggleCompletion()"
+                color="accent">done
+            </div>
+            <div title="Delete this task" 
+                class="button round" 
+                (click)="deleteSelf()"
+                color="alert">
+                delete
+            </div>
         </div>
     </div>
     <div id="task-details">
