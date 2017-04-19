@@ -89,7 +89,7 @@ export class Dashboard implements OnInit {
     completeSelected() {
         var selectedTasks = this.tasks.filter(task => {
             var ret = this.selected.includes(task._id);
-            if (ret) task._completed = new Date();
+            if (ret) task.complete();
             return ret;
         })
         this.data.tasks.updateBulk(selectedTasks)
