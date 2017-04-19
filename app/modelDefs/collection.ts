@@ -27,14 +27,33 @@ export class Collection<T extends Storeable> {
         })
     }
 
-    find(query: any): Promise<T[]> {
-        this.activityListener('find')
+    find(query: any, sortDescriptor?: any): Promise<T[]> {
+        this.activityListener('find');
         this.activityListener(query);
         return new Promise((resolve, reject) => {
-            this.store.find(query, (err, docs: T[]) => {
-                if (err) return reject(err);
-                resolve(docs);
-            })
+            // if (sortDescriptor != undefined) {
+            //     this.activityListener('finding find unsorted')
+            //     this.store.find(query, (err, docs: T[]) => {
+            //         if (err) return reject(err);
+            //         resolve(docs);
+            //     })
+            // } else {
+                this.activityListener('finding sorted');
+                this.activityListener(sortDescriptor);
+                this.store
+                    .find(query)
+                    .sort(sortDescriptor)
+                    .exec((err, docs: T[]) => {
+                        if (err) return reject(err);
+                        resolve(docs);
+                    })
+            // }
+        })
+    }
+
+    findSorted(query: any, sort: any): Promise<T[]> {
+        return new Promise((resolve, reject) => {
+
         })
     }
 

@@ -41,16 +41,6 @@ export class Dashboard implements OnInit {
         this.getTasks(this.selectedFilter)
     }
 
-    toggleSelected(change: [string, boolean]) {
-        if (change[1]) {
-            this.selected.push(change[0])
-        } else {
-            this.selected = this.selected.filter(selectedId => {
-                return change[0] != selectedId;
-            })
-        }
-    }
-
     getTasks(value: number) {
             var query;
             switch (value) {
@@ -63,10 +53,21 @@ export class Dashboard implements OnInit {
                 default:
                     query = {};
             }
-            this.data.tasks.find(query)
-            .then(tasks => {
-                this.tasks = tasks;
+            this.data.tasks
+                .find(query, {created: -1})
+                .then(tasks => {
+                    this.tasks = tasks;
+                })
+    }
+
+    toggleSelected(change: [string, boolean]) {
+        if (change[1]) {
+            this.selected.push(change[0]);
+        } else {
+            this.selected = this.selected.filter(selectedId => {
+                return change[0] != selectedId;
             })
+        }
     }
 
     deleteSelected() {
