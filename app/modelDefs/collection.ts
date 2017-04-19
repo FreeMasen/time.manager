@@ -31,13 +31,6 @@ export class Collection<T extends Storeable> {
         this.activityListener('find');
         this.activityListener(query);
         return new Promise((resolve, reject) => {
-            // if (sortDescriptor != undefined) {
-            //     this.activityListener('finding find unsorted')
-            //     this.store.find(query, (err, docs: T[]) => {
-            //         if (err) return reject(err);
-            //         resolve(docs);
-            //     })
-            // } else {
                 this.activityListener('finding sorted');
                 this.activityListener(sortDescriptor);
                 this.store
@@ -47,13 +40,6 @@ export class Collection<T extends Storeable> {
                         if (err) return reject(err);
                         resolve(docs);
                     })
-            // }
-        })
-    }
-
-    findSorted(query: any, sort: any): Promise<T[]> {
-        return new Promise((resolve, reject) => {
-
         })
     }
 
