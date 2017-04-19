@@ -16,7 +16,7 @@ import { DateFormatter } from '../services';
         trigger('direction', [
             state('collapsed', style({ transform: 'rotate(0)' })),
             state('expanded', style({ transform: 'rotate(90deg)' })),
-            transition('expanded -> collapsed', animate('300ms 500ms')),
+            transition('expanded -> collapsed', animate('300ms')),
             transition('collapsed => expanded', animate('300ms'))
         ]), 
         trigger('drawer', [
