@@ -20,7 +20,7 @@
                         <td class="col1"><div class="checkbox" [ngClass]="{checked: false}" (click)="console.log('selected')"></div>
                         <td class="col2">{{client.name}}</td>
                         <td class="col3">
-                            <div class="checkbox" [ngClass]="{checked: client.isQuickClient}" (click)="toggleQuickClient(client._id)"></div>
+                            <div class="checkbox" [ngClass]="{checked: client.isQuick}" (click)="toggleQuickClient(client)"></div>
                         </td>
                     </tr>
                 </tbody>
@@ -40,7 +40,7 @@
                         </td>
                         <td class="col2">{{category.name}}</td>
                         <td class="col3">
-                            <div class="checkbox" [ngClass]="{checked: category.isQuickCategory}" (click)="toggleQuickClient(category._id)"></div>
+                            <div class="checkbox" [ngClass]="{checked: category.isQuick}" (click)="toggleQuickCategory(category)"></div>
                         </td>
                     </tr>
                 </tbody>
