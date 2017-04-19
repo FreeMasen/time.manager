@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 
 import { Data } from '../services';
-import { Client, Category, Storeable } from '../models';
+import { Client, Category } from '../models';
+import { Storeable } from '../interfaces';
 
 @Component({
     selector: '<settings>',

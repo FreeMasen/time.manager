@@ -1,4 +1,4 @@
-import { Storeable } from '../models';
+import { Storeable } from '../interfaces';
 import Ned = require('nedb');
 export class Collection<T extends Storeable> {
     private store: Ned;
