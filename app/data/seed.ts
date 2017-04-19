@@ -6,8 +6,14 @@ export class Seed {
         var _objectives =  [
             'QA New feature',
             'Build initial Spec',
-            'Develop working model',
-            'Implement new feature'
+            'Develop use case',
+            'Implement new feature',
+            'Email someone about a thing',
+            'Make this phone call',
+            'Buy Eggs',
+            'Bury the hatchet',
+            'Read Crime and Punishment',
+            'Implement light theme'
         ];
         var _notes = [
             'This is a note',
@@ -16,11 +22,11 @@ export class Seed {
             `Do not for get about this!`,
             'More information is important'
         ]
-        for (var i = 0;i<25;i++) {
+        for (var i = 0;i<10;i++) {
             var workNumber = this.rnd(0, 5);
             var work = [];
             var notes = [];
-            var objective = _objectives[this.rnd(0, _objectives.length -1)]
+            var objective = _objectives[i]
             for (var j = 0;j<workNumber;j++) {
                 var daysInPast = this.rnd(0, 5)
                 var dt = new Date()
