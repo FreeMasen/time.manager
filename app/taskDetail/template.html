@@ -12,8 +12,14 @@
             <div title="Complete task"
                 class="button round"
                 (click)="toggleCompletion()"
-                color="accent">done
+                color="accent"
+                *ngIf="!task.isComplete">done
             </div>
+            <div title="Uncomplete task"
+                class="button round"
+                (click)="toggleCompletion()"
+                color="accent"
+                *ngIf="task.isComplete"></div>
             <div title="Delete this task" 
                 class="button round" 
                 (click)="deleteSelf()"
