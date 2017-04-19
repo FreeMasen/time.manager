@@ -1,50 +1,30 @@
-import { Work, Storeable } from '../models';
+import { Work, Category, Client } from '../models';
+import { Storeable } from '../interfaces'
 export class Task implements Storeable {
     _id: string;
     objective: string;
     notes: string[];
     work: Work[];
     created: Date;
-    _completed?: Date;
-    get completed(): string {
-        if (this.isComplete) {
-            return this._completed.toLocaleDateString();
-        } 
-        return "Not yet complete"
-    }
-
-    get isComplete(): boolean {
-        return this._completed != null;
-    }
+    completed?: Date;
+    status: string
+    category: Category;
+    client: Client
 
     constructor(id?: string,
                 objective: string = '',
                 created: Date = new Date(),
                 notes: string[] = [],
                 work: Work[] = [],
-                completed?: Date) {
+                completed?: Date,
+                category: Category = new Category(),
+                client: Client = new Client()) {
         this._id = id;
         this.objective = objective;
         this.created = created;
         this.notes = notes;
         this.work = work;
-    }
-
-    complete() {
-        this._completed = new Date();
-    }
-
-    uncomplete() {
-        this._completed = null;
-    }
-
-    minutesOfWork(): number {
-        var ret =  this.work.map(work => {
-            return work.duration;
-        }).reduce((acc, val) => {
-            return acc + val;
-        }, 0);
-        console.log(`totalTime(): ${ret}`);
-        return ret;
+        this.category = category;
+        this.client = client;
     }
 }

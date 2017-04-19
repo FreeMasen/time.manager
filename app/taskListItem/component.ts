@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { Task } from '../models';
 
-import { DateFormatter } from '../services';
+import { DateFormatter, Calculator } from '../services';
 
 @Component({
     selector: 'task-list-item',
@@ -48,14 +48,13 @@ export class TaskListItem {
 
     constructor(
             private router: Router,
-            private dateFormatter: DateFormatter
+            private dateFormatter: DateFormatter,
+            private calculator: Calculator
     ) {}
 
     get totalWork() {
-        console.log(this.task.minutesOfWork());
-        return this.dateFormatter.timeString(
-            this.task.minutesOfWork()
-        );
+        var totalMinutes = this.calculator.totalMinutesOfWork(this.task);
+        return this.dateFormatter.timeString(totalMinutes);
     }
 
     get currentState() {

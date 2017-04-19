@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Task } from '../models';
-import { Data, DateFormatter } from '../services';
+import { Data, DateFormatter, Calculator } from '../services';
 import { Work } from '../models';
 
 @Component({
@@ -18,7 +18,7 @@ export class TaskDetail implements OnInit {
     }
 
     get taskCompleted(): string {
-        if (!this.task.isComplete) {
+        if (!this.task.completed) {
             return 'Pending'
         }
         return this.dateHandler.format(this.task.created, 'MM/dd/yyyy hh:mm D');
@@ -34,7 +34,8 @@ export class TaskDetail implements OnInit {
     constructor(private route: ActivatedRoute,
                 private data: Data,
                 private router: Router,
-                private dateHandler: DateFormatter) {}
+                private dateHandler: DateFormatter,
+                private calculator: Calculator) {}
 
     ngOnInit(): void {
         this.route.params.forEach(param => {
@@ -50,7 +51,7 @@ export class TaskDetail implements OnInit {
 
     get totalWork(): string {
         return this.dateHandler.timeString(
-            this.task.minutesOfWork()
+            this.calculator.totalMinutesOfWork(this.task)
         )
     }
 
@@ -153,10 +154,10 @@ export class TaskDetail implements OnInit {
             })
     }
     toggleCompletion() {
-        if (this.task.isComplete) {
-            this.task.uncomplete()
+        if (this.task.completed) {
+            delete this.task.completed
         } else {
-            this.task.complete()
+            this.task.completed = new Date()
         }
         this.data.tasks.update(this.task)
             .then(_ => {})
