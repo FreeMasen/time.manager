@@ -1,4 +1,4 @@
-import { Storeable } from '../Interfaces';
+import { Storeable } from '../interfaces';
 export class Client implements Storeable {
     _id: string;
     name: string;
