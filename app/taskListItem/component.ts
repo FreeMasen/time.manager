@@ -29,7 +29,7 @@ import { DateFormatter, Calculator } from '../services';
             state('expanded', style({ opacity: 1 })),
             state('void', style({ opacity: 0 })),
             transition('* => expanded', animate('250ms ease-in')),
-            transition('expanded => *', animate('250ms 125ms ease-out'))
+            transition('expanded => *', animate('250ms ease-out'))
         ]),
         trigger('workFader', [
             state('expanded', style({ opacity: 1 })),
@@ -42,6 +42,7 @@ import { DateFormatter, Calculator } from '../services';
 export class TaskListItem {
 
     state: boolean = false;
+    exiting: boolean = false;
     selected: boolean = false;
     @Input() task: Task;
     @Output() onSelectionChange = new EventEmitter<[string, boolean]>();
@@ -52,24 +53,29 @@ export class TaskListItem {
             private calculator: Calculator
     ) {}
 
-    get totalWork() {
+    get totalWork(): string {
         var totalMinutes = this.calculator.totalMinutesOfWork(this.task);
         return this.dateFormatter.timeString(totalMinutes);
     }
 
-    get currentState() {
+    get currentState(): string {
         return this.state ? 'expanded' : 'collapsed';
     }
 
     dateString(dt: Date): string {
-        return this.dateFormatter.format(dt, 'M-d-yy h:m T');
+        return this.dateFormatter.format(dt, 'M-d-yy h:m D');
     }
 
-    toggleExpanded() {
-        this.state = !this.state;
+    toggleExpanded(): void {
+        if (this.state) {
+            this.exiting = true;
+        } else {
+            this.state = true;
+            this.exiting = false;
+        }
     }
 
-    toggleSelected() {
+    toggleSelected(): void {
         this.selected = !this.selected;
         this.onSelectionChange.emit([this.task._id, this.selected]);
     }
@@ -77,5 +83,16 @@ export class TaskListItem {
     goTo(): void {
         console.log(`goTo(${this.task._id})`);
         this.router.navigate(['taskDetail', this.task._id]);
+    }
+
+    animationsCallback(event): void {
+        console.log(`**${event.phaseName}** trigger: ${event.triggerName} is going from ${event.fromState} to ${event.toState}`);
+        if (event.phaseName == 'done') {
+            if (event.triggerName == 'notesFader') {
+                if (event.toState == 'void') {
+                    this.state = false;
+                }
+            }
+        }
     }
 }
