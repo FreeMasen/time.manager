@@ -34,7 +34,7 @@ import { DateFormatter, Calculator } from '../services';
         trigger('workFader', [
             state('expanded', style({ opacity: 1 })),
             state('void', style({ opacity: 0 })),
-            transition('* => expanded', animate('250ms 125ms ease-in')),
+            transition('* => expanded', animate('250ms ease-in')),
             transition('expanded => *', animate('250ms ease-out'))
         ])
     ]
