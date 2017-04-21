@@ -1,0 +1,47 @@
+<div id="Calendar">
+    <div class="title-group">
+        <span class="title">Calendar</span>
+    </div>
+    <div class="page-content">
+        <div id="week-selector" color="primary">
+            <div class="button-group">
+                <div class="button mini" color="accent" (click)="goBack()">chevron_left</div>
+                <div class="button mini" color="accent" (click)="goForward()">chevron_right</div>
+            </div>
+            <div class="display-box">
+                <span>{{startDateString}}</span>
+                <span> - </span>
+                <span>{{endDateString}}</span>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Category</th>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bucket of buckets">
+                    <th>{{bucket.client}}</th>
+                    <th>{{bucket.category}}</th>
+                    <td>{{bucket.sunday}}</td>
+                    <td>{{bucket.monday}}</td>
+                    <td>{{bucket.tuesday}}</td>
+                    <td>{{bucket.wednesday}}</td>
+                    <td>{{bucket.thursday}}</td>
+                    <td>{{bucket.friday}}</td>
+                    <td>{{bucket.saturday}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
