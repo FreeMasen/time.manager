@@ -19,6 +19,12 @@
     <div id="dashboard-content" class="page-content task-list">
         <div id="pending-task" *ngIf="pendingTask">
             <input type="text" placeholder="Objective" name="objective" [(ngModel)]="pendingTask.objective" />
+            <select [(ngModel)]="task.category">
+                <option *ngFor="" [ngValue]=""></option>
+            </select>
+            <select>
+
+            </select>
             <div class="button-group">
                 <div 
                 (click)="saveTask()" 
