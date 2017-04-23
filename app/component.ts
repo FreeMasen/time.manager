@@ -26,4 +26,8 @@ export class AppComponent {
     openSettings() {
         this.router.navigate(['settings']);
     }
+
+    openCalendar() {
+        this.router.navigate(['calendar']);
+    }
 }
