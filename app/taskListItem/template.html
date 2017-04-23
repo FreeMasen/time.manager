@@ -10,7 +10,9 @@
     </div>
     <div *ngIf="currentState == 'expanded'" 
             class="task-details" 
-            [@drawer]="currentState">
+            [@drawer]="currentState"
+            (@drawer.start)="animationsCallback($event)"
+            (@drawer.done)="animationsCallback($event)">
         <div class="task-detail-section" 
                 [@notesFader]="currentState" 
                 color="accent"
