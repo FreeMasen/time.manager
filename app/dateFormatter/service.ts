@@ -89,8 +89,8 @@ export class DateFormatter {
         return new Date(year, month - 1, day, hour, minute);
     }
 
-    timeString(minutes: number): string {
-        console.log(`timeString(${minutes})`);
+    hoursAndMinutes(minutes: number): string {
+        console.log(`hoursAndMinutesString(${minutes})`);
         var hours = 0;
         while(minutes > 60) {
             hours++;
@@ -101,6 +101,14 @@ export class DateFormatter {
         if (minutes > 0) ret += `${minutes} minutes`;
         if (ret.length == 0) return `0 minutes`;
         return ret.trim();
+    }
+
+    hoursWithDecimal(minutes: number): string {
+        return `${(minutes / 60).toFixed(2)} hours`;
+    }
+
+    private fillWithZeros(num: number, targetLength: number = 2): string {
+        return `${'0'.repeat(targetLength)}${num}`.substr(-targetLength);
     }
 
     private twoDigitString(num: number) {
