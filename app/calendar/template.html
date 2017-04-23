@@ -6,42 +6,53 @@
         <div id="week-selector" color="primary">
             <div class="button-group">
                 <div class="button mini" color="accent" (click)="goBack()">chevron_left</div>
+                <div class="display-box">
+                    <span>{{startDateString}}</span>
+                    <span> - </span>
+                    <span>{{endDateString}}</span>
+                </div>
                 <div class="button mini" color="accent" (click)="goForward()">chevron_right</div>
-            </div>
-            <div class="display-box">
-                <span>{{startDateString}}</span>
-                <span> - </span>
-                <span>{{endDateString}}</span>
             </div>
         </div>
         <table>
             <thead>
                 <tr>
-                    <th>Client</th>
-                    <th>Category</th>
-                    <th>Sunday</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
+                    <th class="client-column">Client</th>
+                    <th class="category-column">Category</th>
+                    <th class="day-column">Monday</th>
+                    <th class="day-column">Tuesday</th>
+                    <th class="day-column">Wednesday</th>
+                    <th class="day-column">Thursday</th>
+                    <th class="day-column">Friday</th>
+                    <th class="day-column">Saturday</th>
+                    <th class="day-column">Sunday</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let bucket of buckets">
-                    <th>{{bucket.client}}</th>
-                    <th>{{bucket.category}}</th>
-                    <td>{{bucket.sunday}}</td>
-                    <td>{{bucket.monday}}</td>
-                    <td>{{bucket.tuesday}}</td>
-                    <td>{{bucket.wednesday}}</td>
-                    <td>{{bucket.thursday}}</td>
-                    <td>{{bucket.friday}}</td>
-                    <td>{{bucket.saturday}}</td>
+                <tr class="bucket-swimlane" *ngFor="let bucket of buckets">
+                    <th class="client-column">{{bucket.client}}</th>
+                    <th class="category-column">{{bucket.category}}</th>
+                    <td class="day-column">{{formatHours(bucket.monday)}}</td>
+                    <td class="day-column">{{formatHours(bucket.tuesday)}}</td>
+                    <td class="day-column">{{formatHours(bucket.wednesday)}}</td>
+                    <td class="day-column">{{formatHours(bucket.thursday)}}</td>
+                    <td class="day-column">{{formatHours(bucket.friday)}}</td>
+                    <td class="day-column">{{formatHours(bucket.saturday)}}</td>
+                    <td class="day-column">{{formatHours(bucket.sunday)}}</td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr id="total">
+                    <th id="total-header" colspan="2">Total</th>
+                    <td class="day-column">{{getTotal('monday')}}</td>
+                    <td class="day-column">{{getTotal('tuesday')}}</td>
+                    <td class="day-column">{{getTotal('wednesday')}}</td>
+                    <td class="day-column">{{getTotal('thursday')}}</td>
+                    <td class="day-column">{{getTotal('friday')}}</td>
+                    <td class="day-column">{{getTotal('saturday')}}</td>
+                    <td class="day-column">{{getTotal('sunday')}}</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

@@ -76,13 +76,17 @@ table
     border-collapse: collapse
     border: 1px solid $primary-minus
 
-thead
+thead, tfoot
     background-color: $primary
     border-collapse: collapse
     border: 1px solid $primary-minus
     * + *
         border-collapse: collapse
         border-left: 1px solid $primary-minus
+
+.bucket-swimlane 
+    border-bottom: 1px solid $primary-minus
+    border-top: 1px solid $primary-minus
 
 ::-webkit-scrollbar-track 
     -webkit-box-shadow: inset 0 0 6px $primary-minus

@@ -55,7 +55,7 @@ export class TaskListItem {
 
     get totalWork(): string {
         var totalMinutes = this.calculator.totalMinutesOfWork(this.task);
-        return this.dateFormatter.timeString(totalMinutes);
+        return this.dateFormatter.hoursAndMinutes(totalMinutes);
     }
 
     get currentState(): string {
