@@ -16,26 +16,26 @@ import { DateFormatter, Calculator } from '../services';
         trigger('direction', [
             state('collapsed', style({ transform: 'rotate(0)' })),
             state('expanded', style({ transform: 'rotate(90deg)' })),
-            transition('expanded -> collapsed', animate('300ms')),
-            transition('collapsed => expanded', animate('300ms'))
+            transition('expanded -> collapsed', animate('100ms')),
+            transition('collapsed => expanded', animate('100ms'))
         ]), 
         trigger('drawer', [
             state('void', style({ height: 0 })),
-            state('open', style({ height: '*' })),
-            transition('void => open', animate('250ms ease-in')),
-            transition('* => void', animate('250ms 250ms ease-out'))
+            state('expanded', style({ height: '*' })),
+            transition(':enter', animate('250ms ease-in')),
+            transition(':leave', animate('250 ease-out'))
         ]),
         trigger('notesFader', [
             state('expanded', style({ opacity: 1 })),
             state('void', style({ opacity: 0 })),
-            transition('* => expanded', animate('250ms ease-in')),
-            transition('expanded => *', animate('250ms ease-out'))
+            transition(':enter', animate('250ms 250ms ease-in')),
+            transition(':leave', animate('250ms ease-out'))
         ]),
         trigger('workFader', [
             state('expanded', style({ opacity: 1 })),
             state('void', style({ opacity: 0 })),
-            transition('* => expanded', animate('250ms ease-in')),
-            transition('expanded => *', animate('250ms ease-out'))
+            transition(':enter', animate('250ms 250ms ease-in')),
+            transition(':leave', animate('250ms ease-out'))
         ])
     ]
 })
