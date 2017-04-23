@@ -50,7 +50,7 @@ export class TaskDetail implements OnInit {
     }
 
     get totalWork(): string {
-        return this.dateHandler.timeString(
+        return this.dateHandler.hoursAndMinutes(
             this.calculator.totalMinutesOfWork(this.task)
         )
     }
