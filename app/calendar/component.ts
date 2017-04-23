@@ -24,14 +24,25 @@ export class Calendar implements OnInit {
                 client: `Client ${i}`,
                 category: `Category ${i}`,
                 sunday: 0,
-                monday: this.dateFormatter.timeString(this.rnd(1,120)),
-                tuesday: this.dateFormatter.timeString(this.rnd(1,120)),
-                wednesday: this.dateFormatter.timeString(this.rnd(1,120)),
-                thursday: this.dateFormatter.timeString(this.rnd(1,120)),
-                friday: this.dateFormatter.timeString(this.rnd(1,120)),
+                monday: this.rnd(1,120),
+                tuesday: this.rnd(1,120),
+                wednesday: this.rnd(1,120),
+                thursday: this.rnd(1,120),
+                friday: this.rnd(1,120),
                 saturday: 0
             })
         }
+    }
+
+    formatHours(hours: number) {
+        return this.dateFormatter.hoursWithDecimal(hours);
+    }
+
+    getTotal(day: string): string {
+        var total = this.buckets.reduce((a, b) => {
+            return a + b[day];
+        }, 0);
+        return this.dateFormatter.hoursWithDecimal(total);
     }
 
     goBack() {
