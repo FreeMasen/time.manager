@@ -1,4 +1,27 @@
 #pending-task {
     display: flex;
     flex-flow: row;
+    justify-content: space-between
+}
+
+#pending-task-inputs {
+    display: flex;
+    flex-flow: column;
+}
+
+#select-group {
+    margin-top: 5px;
+}
+
+#select-group > * + * {
+    margin-left: 10px;
+}
+
+#select-group {
+    display: flex;
+    flex-flow: row;
+}
+
+[name="objective"] {
+    width: 100%;
 }
