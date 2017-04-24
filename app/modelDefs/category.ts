@@ -3,7 +3,7 @@ export class Category implements Storeable {
     _id: string;
     name: string;
     isQuick: boolean;
-    constructor(name: string = 'Uncategorized') {
+    constructor(name: string = '') {
         this.name = name;
         this.isQuick = false;
     }

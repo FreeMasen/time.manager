@@ -63,11 +63,6 @@
     justify-content: space-between;
 }
 
-.button-group {
-    display: flex;
-    flex-flow: row;
-}
-
 .section-item {
     display: flex;
     flex-flow: row;
@@ -116,7 +111,21 @@
     outline: none;
 }
 
+[name="pending-duration"] {
+    margin-bottom: 10px;
+    
+}
+
+#pending-note {
+    width: 80%;
+}
+
 #pending-duration {
     width: 100px;
 }
 
+
+
+#pending-buttons {
+    margin: auto;
+}

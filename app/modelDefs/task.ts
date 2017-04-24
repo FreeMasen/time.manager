@@ -4,7 +4,6 @@ export class Task implements Storeable {
     _id: string;
     objective: string;
     notes: string[];
-    work: Work[];
     created: Date;
     completed?: Date;
     status: string
@@ -15,7 +14,6 @@ export class Task implements Storeable {
                 objective: string = '',
                 created: Date = new Date(),
                 notes: string[] = [],
-                work: Work[] = [],
                 completed?: Date,
                 category: Category = new Category(),
                 client: Client = new Client()) {
@@ -23,7 +21,6 @@ export class Task implements Storeable {
         this.objective = objective;
         this.created = created;
         this.notes = notes;
-        this.work = work;
         this.category = category;
         this.client = client;
     }

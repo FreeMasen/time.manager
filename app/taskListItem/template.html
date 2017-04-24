@@ -34,10 +34,10 @@
             *ngIf="!exiting">
             <span class="task-section-title title">Work</span>
             <div class="detail-list">
-                <div *ngFor="let work of task.work; let j = index" class="detail-list-item" color="primary">
+                <div *ngFor="let workItem of work; let j = index" class="detail-list-item" color="primary">
                     <div class="work-details">
-                        <span>start: {{ work.start.toLocaleString() }}</span>
-                        <span>duration: {{ work.duration }} minutes</span>
+                        <span>start: {{ workItem.start.toLocaleString() }}</span>
+                        <span>duration: {{ workItem.duration }} minutes</span>
                     </div>
                 </div>
             </div>
