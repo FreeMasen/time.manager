@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Data, DateFormatter } from '../services';
+import { Data, DateFormatter, Calculator } from '../services';
 
 @Component({
     selector: '<calendar>',
@@ -8,30 +8,25 @@ import { Data, DateFormatter } from '../services';
     styleUrls: ['./style.css']
 })
 export class Calendar implements OnInit {
-    startDate: Date;
-    endDate: Date;
+    referenceDate = new Date();
     buckets: any[] = [];
 
     constructor(private data: Data,
-                private dateFormatter: DateFormatter) {
-        
-    }
+                private dateFormatter: DateFormatter,
+                private calculator: Calculator) {}
 
     ngOnInit() {
-        //TODO: Add data service call
-        for (var i = 0; i < 10; i++) {
-            this.buckets.push({
-                client: `Client ${i}`,
-                category: `Category ${i}`,
-                sunday: 0,
-                monday: this.rnd(1,120),
-                tuesday: this.rnd(1,120),
-                wednesday: this.rnd(1,120),
-                thursday: this.rnd(1,120),
-                friday: this.rnd(1,120),
-                saturday: 0
-            })
-        }
+        this.data.work.find({$and: [{start: { $gte: this.startDate }}, 
+                                    {start: {$lte: this.endDate}}]})
+                .then(work => {
+                    var taskIds = work.map(workItem => {
+                        return workItem.taskId
+                    })
+                    this.data.tasks.find({_id: {$in: taskIds}})
+                        .then(tasks => {
+                            
+                        })
+                })
     }
 
     formatHours(hours: number) {
@@ -46,22 +41,26 @@ export class Calendar implements OnInit {
     }
 
     goBack() {
-        console.log('goBack()');
+        this.referenceDate.setDate(this.referenceDate.getDate() - 7);
     }
 
     goForward() {
-        console.log('goForward()')
+        this.referenceDate.setDate(this.referenceDate.getDate() + 7);
+    }
+
+    get startDate(): Date {
+        return this.calculator.getMonday(this.referenceDate);
+    } 
+
+    get endDate(): Date {
+        return this.calculator.getSunday(this.referenceDate);
     }
 
     get startDateString(): string {
-        return this.dateFormatter.toDateTimeLocal(this.startDate);
+        return this.dateFormatter.format(this.startDate, 'M/d/yyyy');
     }
 
     get endDateString(): string {
-        return this.dateFormatter.toDateTimeLocal(this.endDate);
-    }
-
-    private rnd(min, max): number {
-        return Math.floor(Math.random() * (max - min) + min)
+        return this.dateFormatter.format(this.endDate, 'M/d/yyyy');
     }
 }
