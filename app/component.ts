@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent { 
 
+    listView: boolean = true
+
     constructor(
         private location: Location,
         private router: Router
@@ -16,7 +18,11 @@ export class AppComponent {
         
     }
     get canGoBack():boolean {
-        return this.location.path() != '/dashboard';
+        return this.location.path() != '/dashboard'
+    }
+
+    get isCalendarView():boolean {
+        return this.location.path() != '/calendar';
     }
 
     goBack() {
@@ -29,5 +35,10 @@ export class AppComponent {
 
     openCalendar() {
         this.router.navigate(['calendar']);
+
+    }
+
+    openDashboard() {
+        this.router.navigate(['dashboard']);
     }
 }
