@@ -18,13 +18,19 @@
     </div>
     <div id="dashboard-content" class="page-content task-list">
         <div id="pending-task" *ngIf="pendingTask">
-            <input type="text" placeholder="Objective" name="objective" [(ngModel)]="pendingTask.objective" />
-            <select [(ngModel)]="task.category">
-                <option *ngFor="" [ngValue]=""></option>
-            </select>
-            <select>
-
-            </select>
+            <div id="pending-task-inputs">
+                <input type="text" placeholder="Objective" name="objective" [(ngModel)]="pendingTask.objective" />
+                <div id="select-group">
+                    <select [(ngModel)]="pendingTask.client.name" id="pending-task-client">
+                        <option disabled hidden selected value="">Select client</option>
+                        <option *ngFor="let client of clients" [ngValue]="client.name">{{client.name}}</option>
+                    </select>
+                    <select [(ngModel)]="pendingTask.category.name" id="pending-task-category">
+                        <option disabled hidden selected value="" class="placeholder">Select category</option>
+                        <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
+                    </select>
+                </div>
+            </div>
             <div class="button-group">
                 <div 
                 (click)="saveTask()" 
