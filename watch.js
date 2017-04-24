@@ -37,7 +37,7 @@ function compileSass(infile, outfile) {
 
     sass.render({
         file: infile,
-        outputStyle: 'compressed'
+        // outputStyle: 'compressed'
     }, (err, result) => {
         if (err) return console.error('error rendering', infile, err);
         fs.writeFile(outfile, result.css, (err) => {
