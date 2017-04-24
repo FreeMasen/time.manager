@@ -27,7 +27,7 @@ export class Collection<T extends Storeable> {
         })
     }
 
-    find(query: any, sortDescriptor?: any): Promise<T[]> {
+    find(query: any, sortDescriptor?: any, projection?: any): Promise<T[]> {
         this.activityListener('find');
         this.activityListener(query);
         return new Promise((resolve, reject) => {
