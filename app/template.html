@@ -1,12 +1,21 @@
 <div id="full-content">
     <nav color="primary" class="toolbar">
         <div id="nav-left">
-            <div id="back" *ngIf="canGoBack" (click)="goBack()" class="button" color="primary-minus">reply</div>
             <h1>Time Manager</h1>
         </div>
         <div id="nav-right">
-            <div id="calendar" (click)="openCalendar()" class="button" color="primary-minus">view_day</div>
-            <div id="settings" (click)="openSettings()" class="button" color="primary-minus">settings</div>
+            <div id="dashboard"
+                (click)="openDashboard()"
+                class="button"
+                color="primary-minus">reorder</div>
+            <div id="calendar" 
+                (click)="openCalendar()" 
+                class="button" 
+                color="primary-minus">view_day</div>
+            <div id="settings" 
+                (click)="openSettings()" 
+                class="button" 
+                color="primary-minus">settings</div>
         </div>
     </nav>
     <router-outlet></router-outlet>
