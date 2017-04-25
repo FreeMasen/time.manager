@@ -7,7 +7,7 @@ import { Settings } from '../settings/component';
 import { Calendar } from '../calendar/component';
 
 const routes: Route[] = [
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+    {path: '', redirectTo: 'calendar', pathMatch: 'full'},
     {path: 'dashboard', component: Dashboard},
     {path: 'taskDetail/:id', component: TaskDetail},
     {path: 'settings', component: Settings},

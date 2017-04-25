@@ -14,36 +14,38 @@
                 <div class="button mini" color="accent" (click)="goForward()">chevron_right</div>
             </div>
         </div>
-        <div id="work-table">
+        <div id="table">
             <div id="table-header">
                 <div class="row header">
-                    <span colspan="2">Task</span>
-                    <span rowspan="2">Monday</span>
-                    <span rowspan="2">Tuesday</span>
-                    <span rowspan="2">Wednesday</span>
-                    <span rowspan="2">Thursday</span>
-                    <span rowspan="2">Friday</span>
-                    <span rowspan="2">Saturday</span>
-                    <span rowspan="2">Sunday</span>
+                    <span class="objective">Task</span>
                 </div>
-                <div class="header">
-                    <span>Client</span>
-                    <span>Category</span>
+                <div class="row header">
+                    <div class="header cell data">Client</div>
+                    <div class="header cell data">Category</div>
+                    <div class="header cell day">Mon</div>
+                    <div class="header cell day">Tues</div>
+                    <div class="header cell day">Wed</div>
+                    <div class="header cell day">Thu</div>
+                    <div class="header cell day">Fri</div>
+                    <div class="header cell day">Sat</div>
+                    <div class="header cell day">Sun</div>
+                    <div class="header cell day">Total</div>
                 </div>
             </div>
             <div>
-                <calendar-row *ngFor="let task of tasks" [task]="task"></calendar-row>
+                <calendar-row *ngFor="let task of tasks" [task]="task" [startDate]="startDate" [endDate]="endDate"></calendar-row>
             </div>
             <div>
-                <div id="total">
-                    <span id="total-header" colspan="2">Total</span>
-                    <span class="day-column">{{getTotal(1)}}</span>
-                    <span class="day-column">{{getTotal(2)}}</span>
-                    <span class="day-column">{{getTotal(3)}}</span>
-                    <span class="day-column">{{getTotal(4)}}</span>
-                    <span class="day-column">{{getTotal(5)}}</span>
-                    <span class="day-column">{{getTotal(6)}}</span>
-                    <span class="day-column">{{getTotal(0)}}</span>
+                <div class="row header" id="table-footer">
+                    <span class="header cell" id="total-header">Total</span>
+                    <span class="header cell day">{{getTotal(1)}}</span>
+                    <span class="header cell day">{{getTotal(2)}}</span>
+                    <span class="header cell day">{{getTotal(3)}}</span>
+                    <span class="header cell day">{{getTotal(4)}}</span>
+                    <span class="header cell day">{{getTotal(5)}}</span>
+                    <span class="header cell day">{{getTotal(6)}}</span>
+                    <span class="header cell day">{{getTotal(0)}}</span>
+                    <span class="header cell day">{{getTotal(0)}}</span>
                 </div>
             </div>
         </div>

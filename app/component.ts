@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { Data } from './services';
+
 @Component({
     selector: 'my-app',
     templateUrl: './template.html',
@@ -13,9 +15,9 @@ export class AppComponent {
 
     constructor(
         private location: Location,
-        private router: Router
+        private router: Router,
+        private data: Data
     ){
-        
     }
     get canGoBack():boolean {
         return this.location.path() != '/dashboard'

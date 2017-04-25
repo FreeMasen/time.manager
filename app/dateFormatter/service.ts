@@ -106,7 +106,6 @@ export class DateFormatter {
     }
 
     hoursAndMinutes(minutes: number): string {
-        console.log(`hoursAndMinutesString(${minutes})`);
         var hours = 0;
         while(minutes > 60) {
             hours++;
@@ -120,7 +119,7 @@ export class DateFormatter {
     }
 
     hoursWithDecimal(minutes: number): string {
-        return `${(minutes / 60).toFixed(2)} hours`;
+        return `${(minutes / 60).toFixed(2)} hrs`;
     }
 
     private fillWithZeros(num: number, targetLength: number = 2): string {

@@ -5,6 +5,7 @@ import { Data, Calculator, DateFormatter } from '../services';
 
 @Component({
     selector: '<calendar-row>',
+    inputs: ['task', 'startDate', 'endDate'],
     templateUrl: './template.html',
     styleUrls: ['./style.css']
 })
@@ -32,20 +33,35 @@ export class CalendarRow implements OnInit {
     }
 
     ngOnInit(): void {
-        this.data.work.find({$and: [
-                        { _id: this.task._id },
+        console.log('oninit')
+        var q = {$and: [
+                        { taskId: this.task._id },
                         { start: { $gte: this.startDate} },
                         { start: { $lte: this.endDate}}
-                        ]}, {start: 1})
+                        ]}
+        console.log('query', q)
+        this.data.work.find(q, {start: 1})
             .then(work => {
+                console.log('got work');
                 work.forEach(workItem => {
+                    var dayIndex = workItem.start.getDay();
+                    var duration = workItem.duration;
+                    console.log('Adding', duration, ' minues to', dayIndex);
                     this.work[workItem.start.getDay()] += workItem.duration;
                 })
-            })
+            }).catch(e => {
+                console.error(e)
+            }) 
     }
 
     getWorkForDay(day: number): string {
         return this.dateFormatter.hoursWithDecimal(this.work[day])
+    }
+
+    getTotalWork() {
+        return this.dateFormatter.hoursWithDecimal(this.work.reduce((a, b) => {
+            return a + b;
+        }, 0))
     }
     
 }

@@ -157,3 +157,33 @@ h1 {
 .section-item {
   border-radius: 5px;
   font-size: 14pt; }
+
+#work-table, #work-table > * {
+  width: 100%; }
+
+.objective {
+  width: 100%;
+  font-weight: bold;
+  padding-bottom: 5px; }
+
+.row {
+  display: flex;
+  flex-flow: row;
+  padding-left: 5px; }
+  .row.top {
+    padding-top: 5px; }
+  .row.bottom {
+    padding-bottom: 5px; }
+
+.cell {
+  padding-left: 5px;
+  padding-right: 5px; }
+
+.data {
+  flex-grow: 2; }
+
+.day {
+  width: 58px; }
+
+#total-header {
+  flex-grow: 2; }

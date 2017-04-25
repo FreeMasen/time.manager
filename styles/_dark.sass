@@ -72,17 +72,21 @@ html, html > *
     &.checked 
         background-color: $accent
 
-table
+table, #table
     border-collapse: collapse
     border: 1px solid $primary-minus
 
-thead, tfoot
+thead, tfoot, #table-header, #table-footer
     background-color: $primary
     border-collapse: collapse
     border: 1px solid $primary-minus
     * + *
-        border-collapse: collapse
         border-left: 1px solid $primary-minus
+        border-collapse: collapse
+
+.row 
+    &.bottom
+        border-bottom: 1px solid $primary-minus
 
 .bucket-swimlane 
     border-bottom: 1px solid $primary-minus

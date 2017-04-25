@@ -36,7 +36,9 @@ export class Seed {
                 var note = _notes[noteIndex];
                 notes.push(`${note}`);
             }
-            _mocks.push(new Task(undefined, objective, new Date(), notes, null));
+            var clientName = this.clientNames[this.rnd(0,this.clientNames.length - 1)];
+            var catName = this.categoryNames[this.rnd(0,this.categoryNames.length - 1)];
+            _mocks.push(new Task(undefined, objective, new Date(), notes, null, new Category(catName), new Client(clientName)));
         }
         console.log('returning')
         console.log(_mocks);
