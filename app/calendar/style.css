@@ -1,0 +1,15 @@
+#work-table {
+    width: 100%;
+
+}
+
+.table-header {
+    display: flex;
+    flex-flow: column;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+}
