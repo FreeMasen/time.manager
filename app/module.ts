@@ -14,6 +14,7 @@ import { TaskDetail } from './taskDetail/component';
 import { TaskListItem } from './taskListItem/component';
 import { Settings } from './settings/component';
 import { Calendar } from './calendar/component';
+import { CalendarRow } from './calendarRow/component';
 
 
 import { DateFormatter, Data, Calculator } from './services';
@@ -34,7 +35,8 @@ import './rxjs'
         TaskDetail,
         TaskListItem,
         Settings,
-        Calendar
+        Calendar,
+        CalendarRow
     ],
     providers: [
         DateFormatter,

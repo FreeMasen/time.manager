@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Data, DateFormatter, Calculator } from '../services';
+import { Task } from '../models';
 
 @Component({
     selector: '<calendar>',
@@ -9,24 +10,17 @@ import { Data, DateFormatter, Calculator } from '../services';
 })
 export class Calendar implements OnInit {
     referenceDate = new Date();
-    buckets: any[] = [];
+    tasks: Task[] = [];
 
     constructor(private data: Data,
                 private dateFormatter: DateFormatter,
                 private calculator: Calculator) {}
 
     ngOnInit() {
-        this.data.work.find({$and: [{start: { $gte: this.startDate }}, 
-                                    {start: {$lte: this.endDate}}]})
-                .then(work => {
-                    var taskIds = work.map(workItem => {
-                        return workItem.taskId
-                    })
-                    this.data.tasks.find({_id: {$in: taskIds}})
-                        .then(tasks => {
-                            
-                        })
-                })
+        this.data.tasks.find({})
+            .then(tasks => {
+                this.tasks = tasks;
+            })
     }
 
     formatHours(hours: number) {
@@ -34,10 +28,7 @@ export class Calendar implements OnInit {
     }
 
     getTotal(day: string): string {
-        var total = this.buckets.reduce((a, b) => {
-            return a + b[day];
-        }, 0);
-        return this.dateFormatter.hoursWithDecimal(total);
+        return this.dateFormatter.hoursWithDecimal(8);
     }
 
     goBack() {

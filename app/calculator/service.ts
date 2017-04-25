@@ -36,4 +36,14 @@ export class Calculator {
         }
         return ret;
     }
+
+    timeDifference(lhs: Date, rhs: Date): number {
+        var lhsUnix = this.unixTime(lhs);
+        var rhsUnix = this.unixTime(rhs);
+        return lhsUnix - rhsUnix;
+    }
+
+    unixTime(dt: Date): number {
+        return dt.getTime() / 1000;
+    }
 }

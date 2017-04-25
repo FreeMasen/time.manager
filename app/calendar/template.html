@@ -14,45 +14,38 @@
                 <div class="button mini" color="accent" (click)="goForward()">chevron_right</div>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th class="client-column">Client</th>
-                    <th class="category-column">Category</th>
-                    <th class="day-column">Monday</th>
-                    <th class="day-column">Tuesday</th>
-                    <th class="day-column">Wednesday</th>
-                    <th class="day-column">Thursday</th>
-                    <th class="day-column">Friday</th>
-                    <th class="day-column">Saturday</th>
-                    <th class="day-column">Sunday</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="bucket-swimlane" *ngFor="let bucket of buckets">
-                    <th class="client-column">{{bucket.client}}</th>
-                    <th class="category-column">{{bucket.category}}</th>
-                    <td class="day-column">{{formatHours(bucket.monday)}}</td>
-                    <td class="day-column">{{formatHours(bucket.tuesday)}}</td>
-                    <td class="day-column">{{formatHours(bucket.wednesday)}}</td>
-                    <td class="day-column">{{formatHours(bucket.thursday)}}</td>
-                    <td class="day-column">{{formatHours(bucket.friday)}}</td>
-                    <td class="day-column">{{formatHours(bucket.saturday)}}</td>
-                    <td class="day-column">{{formatHours(bucket.sunday)}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr id="total">
-                    <th id="total-header" colspan="2">Total</th>
-                    <td class="day-column">{{getTotal('monday')}}</td>
-                    <td class="day-column">{{getTotal('tuesday')}}</td>
-                    <td class="day-column">{{getTotal('wednesday')}}</td>
-                    <td class="day-column">{{getTotal('thursday')}}</td>
-                    <td class="day-column">{{getTotal('friday')}}</td>
-                    <td class="day-column">{{getTotal('saturday')}}</td>
-                    <td class="day-column">{{getTotal('sunday')}}</td>
-                </tr>
-            </tfoot>
-        </table>
+        <div id="work-table">
+            <div id="table-header">
+                <div>
+                    <span colspan="2">Task</span>
+                    <span rowspan="2">Monday</span>
+                    <span rowspan="2">Tuesday</span>
+                    <span rowspan="2">Wednesday</span>
+                    <span rowspan="2">Thursday</span>
+                    <span rowspan="2">Friday</span>
+                    <span rowspan="2">Saturday</span>
+                    <span rowspan="2">Sunday</span>
+                </div>
+                <div>
+                    <span>Client</span>
+                    <span>Category</span>
+                </div>
+            </div>
+            <div>
+                <calendar-row *ngFor="let task of tasks" [task]="task"></calendar-row>
+            </div>
+            <div>
+                <div id="total">
+                    <span id="total-header" colspan="2">Total</span>
+                    <span class="day-column">{{getTotal(1)}}</span>
+                    <span class="day-column">{{getTotal(2)}}</span>
+                    <span class="day-column">{{getTotal(3)}}</span>
+                    <span class="day-column">{{getTotal(4)}}</span>
+                    <span class="day-column">{{getTotal(5)}}</span>
+                    <span class="day-column">{{getTotal(6)}}</span>
+                    <span class="day-column">{{getTotal(0)}}</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
