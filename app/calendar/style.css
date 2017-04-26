@@ -1,6 +1,18 @@
+#week-selector {
+    height: 50px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin-bottom: 5px;
+}
 
+#week-selector > .button {
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
-
-
-
-
+.display-box {
+    line-height: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
