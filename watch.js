@@ -47,9 +47,9 @@ function compileSass(infile, outfile) {
     })
 }
 
-var theme = './styles/_dark.sass';
+var theme = './styles/dark.scss';
 if (process.argv[2] == 'light') {
-    theme = './styles/_light.sass'
+    theme = './styles/light.scss'
 }
 
 
