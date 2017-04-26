@@ -5,3 +5,11 @@
 .day-column {
     width: 100px;
 }
+
+nothing {
+    color: #546E7A; /*primary-lighter */
+    color: #37474F; /*primary-darker*/
+    color: #455A64; /*primary*/
+    color: #78909C; /* box-shadow */
+    color: #546E7A; /*box-shadow-alert*/
+}

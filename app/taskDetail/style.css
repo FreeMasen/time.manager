@@ -124,8 +124,10 @@
     width: 100px;
 }
 
-
-
 #pending-buttons {
     margin: auto;
+}
+
+.detail-list > * + * {
+    margin-top: 5px;
 }
