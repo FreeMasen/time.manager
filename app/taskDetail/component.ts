@@ -104,8 +104,10 @@ export class TaskDetail implements OnInit {
             this.task.notes = this.task.notes.filter((item, i) => {
                 return !this.selectedNotes.includes(i);
             })
-            this.selectedNotes = [];
-            this.sendUpdate();
+            this.data.tasks.update(this.task)
+                .then(_ => {
+                    this.selectedNotes = [];
+                });
         }
         
     }
@@ -116,8 +118,10 @@ export class TaskDetail implements OnInit {
 
     finalizeNote() {
         this.task.notes.push(this.pendingNote);
-        this.pendingNote = null;
-        this.sendUpdate();
+        this.data.tasks.update(this.task)
+            .then(_ => {
+                this.clearNote();
+            });
     }
 
     addWork() {
@@ -170,21 +174,6 @@ export class TaskDetail implements OnInit {
             .catch(err => {
                 console.error(err);
             });
-    }
-
-    private sendUpdate(): void {
-        this.data.tasks.update(this.task)
-            .then(_ => {
-                this.data.work.updateBulk(this.work)
-                    .then(_ => {
-                    })
-                    .catch(err => {
-                        console.error(err);
-                    })
-            })
-            .catch(err => {
-                console.error(err);
-            })
     }
 
     toggleCompletion() {
