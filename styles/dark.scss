@@ -9,4 +9,4 @@ $accent: #68b6f3;
 
 $alert: #FF5252;
 
-@include theme($main, $font, $primary, $accent, $alert);
+@include theme($main, $primary, $accent, $alert);

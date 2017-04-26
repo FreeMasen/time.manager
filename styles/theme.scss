@@ -1,6 +1,12 @@
+@function determine-font-color($color) {
+    @if(lightness($color) > 50) {
+        @return darken($color,70%);
+    } @else {
+        @return lighten($color, 90%)
+    }
+}
 
-
-@mixin theme($main, $light-font, $dark-font, $primary, $accent, $alert) {
+@mixin theme($main, $primary, $accent, $alert) {
 
     $primary-lighter: lighten($primary, 5%);
     $primary-darker: darken($primary, 5%);
@@ -8,23 +14,23 @@
     $box-shadow: desaturate($primary, 80%);
     $alert-box-shadow: desaturate($alert, 80%);
 
+
     html, html > * {
         background-color: $main;
-        color: $light-font;
+        color: determine-font-color($main)/*$light-font;*/
     }
 
     input, textarea, select {
-        color: $light-font;
+        color: determine-font-color($primary-lighter);
         background-color: $primary-lighter;
     }
 
     .title {
-        color: $dark-font;
+        color: determine-font-color($main);
     }
 
     .button {
         box-shadow: 2px 2px 1px -1px $box-shadow;
-        color: $light-font;
         &.round {
             box-shadow: 1px 2px 1px -1px $alert-box-shadow;
         }
@@ -36,12 +42,13 @@
 
     [color="primary"] {
         background-color: $primary;
-        color: $light-font;
+        color: determine-font-color($primary);
 
         &.button {
             :hover {
                 :not(.disabled) {
                     background-color: $primary-darker;
+                    color: determine-font-color($primary-darker);
                 }
             }
         }
@@ -49,11 +56,12 @@
 
     [color="primary-minus"] {
         background-color: $primary-lighter;
-        color: $light-font;
+        color: determine-font-color($primary-lighter);
         &.button {
             :hover {
                 :not(.disabled) {
                     background-color: $primary;
+                    color: determine-font-color($primary);
                 }
             }
         }
@@ -61,10 +69,12 @@
 
     [color="primary-plus"]  {
         background-color: $primary-darker;
+        color: determine-font-color($primary-darker);
         &.button {
             :hover {
                 :not(.disabled) {
                     background-color: $primary;
+                    color: determine-font-color($primary);
                 }
             }
         }
@@ -72,6 +82,7 @@
 
     [color="accent"] {
         background-color: $accent;
+        color: determine-font-color($accent);
         &.button {
             :hover {
                 :not(.disabled) {
@@ -83,18 +94,16 @@
 
     [color="alert"] {
         background-color: $alert;
+        color: determine-font-color($alert);
         box-shadow: $alert-box-shadow;
         &.button {
             :hover {
                 :not(.disabled) {
-                    background-color: darker($accent, 5%);
+                    background-color: darken($accent, 5%);
+                    color: determine-font-color(darken($accent, 5%));
                 }
             }
         }
-    }
-
-    .title {
-        border-color: $light-font;
     }
 
     .checkbox-group {
@@ -110,21 +119,16 @@
 
     table, #table {
         border-collapse: collapse;
-        border: 1px solid $primary-lighter;
-        background-color: $dark-font;
+        border: 1px solid $primary-darker;
+        background-color: desaturate($primary, 60%);
+        color: determine-font-color(desaturate($primary, 60%));
     }
 
     thead, tfoot, #table-header, #table-footer {
-        background-color: $primary;
+        background-color: $accent;
         border-collapse: collapse;
-        border: 1px solid $primary-lighter;
-        * + * {
-            border-collapse: collapse;
-            border-left: 1px solid $primary-lighter;
-        }
-        .cell {
-            border: 1px solid $primary-lighter;
-        }
+        border: 1px solid desaturate($accent, 40%);
+        color: determine-font-color($accent);
     }
 
     ::-webkit-scrollbar-track {
@@ -144,11 +148,13 @@
 
     .section {
         background-color: $primary;
+        color: determine-font-color($primary);
     }
 
     .section-item {
         background-color: $primary-lighter;
         border-radius: 5px;
+        color: determine-font-color($primary-lighter);
     }
 
     .row {

@@ -7,4 +7,4 @@ $primary: #80deea;
 $accent: #fff176;
 $alert: #ff8a65;
 
-@include theme($main, $light-font, $dark-font, $primary, $accent, $alert);
+@include theme($main, $primary, $accent, $alert);
