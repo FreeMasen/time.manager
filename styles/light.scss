@@ -1,0 +1,9 @@
+@import './theme.scss';
+
+$main: #fff;
+$font: #000;
+$primary: #80deea;
+$accent: #fff176;
+$alert: #ff8a65;
+
+@include theme($main, $font, $primary, $accent, $alert);

@@ -1,0 +1,12 @@
+@import './theme.scss';
+
+$main: #263238;
+$font: #ECEFF1;
+
+$primary: #455A64;
+
+$accent: #68b6f3;
+
+$alert: #FF5252;
+
+@include theme($main, $font, $primary, $accent, $alert);
