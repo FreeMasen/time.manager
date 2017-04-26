@@ -11,6 +11,7 @@ import { Data, DateFormatter, Calculator } from '../services';
     styleUrls: ['./style.css']
 })
 export class TaskDetail implements OnInit {
+    taskId: string;
     task: Task;
     work: Work[];
 
@@ -43,6 +44,7 @@ export class TaskDetail implements OnInit {
         this.route.params.forEach(param => {
             if (param["id"]) {
                 var id = param['id'];
+                this.taskId = id;
                 this.getTask(id);
             }
         });
@@ -143,8 +145,7 @@ export class TaskDetail implements OnInit {
     }
 
     finalizeWork() {
-        var toBeInserted = new Work(this.task._id, this._pendingWorkDate, this.pendingWorkDuration);
-        console.log('finalizeWork', toBeInserted)
+        var toBeInserted = new Work(this.taskId, this._pendingWorkDate, this.pendingWorkDuration);
         this.data.work.insert(toBeInserted)
             .then(_ => {
                 this.getWork();

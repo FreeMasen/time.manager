@@ -18,6 +18,7 @@ export class AppComponent {
         private router: Router,
         private data: Data
     ){
+        
     }
     get canGoBack():boolean {
         return this.location.path() != '/dashboard'
