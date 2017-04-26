@@ -46,4 +46,23 @@ export class Calculator {
     unixTime(dt: Date): number {
         return dt.getTime() / 1000;
     }
+    /**Returns a list of minutes worked divided by day
+     * of the week sunday being position 0
+     * @param work: Work[] list of work to divide across a week
+     */ 
+    weekOfWorkMinutes(work: Work[]): number[] {
+        var ret = [
+            0,//u
+            0,//m
+            0,//t
+            0,//w
+            0,//r
+            0,//f
+            0,//s
+        ];
+        work.forEach(element => {
+            ret[element.start.getDay()] += element.duration;
+        });
+        return ret;
+    }
 }
