@@ -5,6 +5,7 @@
         </div>
     </div>
     <div class="content">
+        <div class="section">
         <h2 class="section-title">Manage Lists</h2>
         <div id="lists" class="section">
             <table id="clients">
@@ -46,10 +47,12 @@
                 </tbody>
             </table>
         </div>
-        <h2 class="section-title">Manage Connections</h2>
-        <div id="connections" class="section">
+        </div>
+        <div class="section">
+        <h2 class="section">Manage Connections</h2>
+        <div id="connections">
             <div id="jira">
-                <h3>Jira (coming soon)</h3>
+                <h3 class="">Jira (coming soon)</h3>
                 <form class="disabled">
                     <div class="enabled">
                         <div class="checkbox" [ngClass]="{checked: false}"></div><span>enabled</span>
@@ -64,7 +67,7 @@
                 </form>
             </div>
             <div id="firebase">
-                <h3>Web sync (coming soon)</h3>
+                <h3 class="">Web sync (coming soon)</h3>
                 <div class="button wide" color="accent" [ngClass]="{disabled: true}">Link google account</div>
                 <div class="checkbox-group disabled">
                     <div class="checkbox"></div><span>Sync Clients</span>
@@ -75,16 +78,18 @@
                 <div class="checkbox-group disabled">
                     <div class="checkbox"></div><span>Sync Tasks</span>
                 </div> 
-                <!--Connect to google account, sync categories, sync clients, sync tasks-->
             </div>
         </div>
-        <h2>Theme</h2>
-        <div id="colors" class="section">
-            <div class="checkbox-group">
-            <div class="checkbox" [ngClass]="{checked: true}"></div><span>Dark</span>
-            </div>
-            <div class="checkbox-group disabled">
-            <div class="checkbox" [ngClass]="{checked: false}"></div><span>Light</span>
+        </div>
+        <div class="section">
+            <h2>Theme</h2>
+            <div id="colors" class="section-content">
+                <div class="checkbox-group">
+                <div class="checkbox" [ngClass]="{checked: true}"></div><span>Dark</span>
+                </div>
+                <div class="checkbox-group disabled">
+                <div class="checkbox" [ngClass]="{checked: false}"></div><span>Light</span>
+                </div>
             </div>
         </div>
     </div>  

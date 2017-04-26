@@ -7,7 +7,7 @@ input, textarea, select {
   background-color: #96e4ee; }
 
 .title {
-  color: #000; }
+  color: #78909c; }
 
 .button {
   box-shadow: 2px 2px 1px -1px #b5b5b5;
@@ -59,7 +59,8 @@ input, textarea, select {
 
 table, #table {
   border-collapse: collapse;
-  border: 1px solid #96e4ee; }
+  border: 1px solid #96e4ee;
+  background-color: #78909c; }
 
 thead, tfoot, #table-header, #table-footer {
   background-color: #80deea;
@@ -72,14 +73,19 @@ thead, tfoot, #table-header, #table-footer {
     border: 1px solid #96e4ee; }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px #96e4ee; }
+  -webkit-box-shadow: inset 0 0 6px #96e4ee;
+  box-shadow: inset 0 0 6px #96e4ee; }
 
 ::-webkit-scrollbar-thumb {
   background: #fff176;
-  -webkit-box-shadow: inset 0 0 6px #b5b5b5; }
+  -webkit-box-shadow: inset 0 0 6px #b5b5b5;
+  box-shadow: inset 0 0 6px #b5b5b5; }
 
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #fff6a9; }
+
+.section {
+  background-color: #80deea; }
 
 .section-item {
   background-color: #96e4ee;

@@ -13,6 +13,8 @@ import { Data, DateFormatter, Calculator } from '../services';
 export class TaskDetail implements OnInit {
     task: Task;
     work: Work[];
+
+
     get taskCreated(): string {
         return this.dateHandler.format(this.task.created, 'MM/dd/yyyy')
     }
@@ -50,14 +52,15 @@ export class TaskDetail implements OnInit {
         this.data.tasks.find({_id: taskId})
             .then(tasks => {
                 this.task = tasks[0];
-                this.getWork(this.task._id);
+                this.getWork();
             })
     }
 
-    getWork(taskId: string): void {
-        console.log('getWork', taskId);
+    getWork(): void {
+        console.log('getWork', this.task._id);
         this.data.work.find({taskId: this.task._id})
             .then(work => {
+                console.log(work)
                 this.work = work;
             })
     }
@@ -65,7 +68,7 @@ export class TaskDetail implements OnInit {
     get totalWork(): string {
         return this.dateHandler.hoursAndMinutes(
             this.calculator.totalMinutesOfWork(this.work)
-        )
+        );
     }
 
     getDateString(dt: Date) {
@@ -98,7 +101,7 @@ export class TaskDetail implements OnInit {
             this.data.work.removeBulk(toBeRemoved)
                 .then(_ => {
                     this.selectedWork = [];
-                    this.getWork(this.task._id);
+                    this.getWork();
                 })
         } else if (element == 'notes') {
             this.task.notes = this.task.notes.filter((item, i) => {
@@ -144,7 +147,7 @@ export class TaskDetail implements OnInit {
         console.log('finalizeWork', toBeInserted)
         this.data.work.insert(toBeInserted)
             .then(_ => {
-                this.getWork(this.task._id);
+                this.getWork();
                 this.clearWork();
             })
     }
