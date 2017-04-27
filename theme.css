@@ -95,3 +95,6 @@ thead, tfoot, #table-header, #table-footer {
 
 .row.bottom {
   border-bottom: 1px solid #4f6873; }
+
+.total {
+  font-weight: bold; }
