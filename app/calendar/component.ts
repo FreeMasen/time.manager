@@ -5,7 +5,6 @@ import { Task } from '../models';
 
 @Component({
     selector: '<calendar>',
-    outputs: ['task', 'startDate', 'endDate'],
     templateUrl: './template.html',
     styleUrls: ['./style.css']
 })
@@ -41,7 +40,11 @@ export class Calendar implements OnInit {
         var ids = this.tasks.map(task => {
                 return task._id;
             })
-            this.data.work.find({taskId: {$in: ids}})
+            this.data.work.find({$and: [
+                                    {taskId: {$in: ids}},
+                                    {start: {$gte: this.startDate}},
+                                    {start: {$lte: this.endDate}}
+                            ]})
                 .then(work => {
                     this.work = this.calculator.weekOfWorkMinutes(work);
                 })
@@ -52,15 +55,22 @@ export class Calendar implements OnInit {
     }
 
     getTotal(day: number): string {
-        return this.dateFormatter.hoursWithDecimal(this.work[day]);
+        var hours
+        if (day == 7) hours = this.work.reduce((a, b) => {
+            return a + b
+        }, 0);
+        else hours = this.work[day];
+        return this.dateFormatter.hoursWithDecimal(hours);
     }
 
     goBack() {
-        this.referenceDate.setDate(this.referenceDate.getDate() - 7);
+        this.referenceDate = new Date(this.referenceDate.getFullYear(), this.referenceDate.getMonth(), this.referenceDate.getDate() - 7);
+        this.getWork();
     }
 
     goForward() {
-        this.referenceDate.setDate(this.referenceDate.getDate() + 7);
+        this.referenceDate = new Date(this.referenceDate.getFullYear(), this.referenceDate.getMonth(), this.referenceDate.getDate() + 7);
+        this.getWork();
     }
 
     get startDate(): Date {
