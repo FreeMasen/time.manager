@@ -1,19 +1,26 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 
 import {Task, Work} from '../models';
 import { Data, Calculator, DateFormatter } from '../services';
 
 @Component({
     selector: '<calendar-row>',
-    inputs: ['task', 'startDate', 'endDate'],
+    inputs: ['task', 'centerDate'],
     templateUrl: './template.html',
     styleUrls: ['./style.css']
 })
 export class CalendarRow implements OnInit {
 
     @Input() task: Task;
-    @Input() startDate: Date;
-    @Input() endDate: Date;
+    startDate: Date;
+    endDate: Date;
+    @Input() 
+    set centerDate (dt: Date) {
+        this.startDate = this.calculator.getMonday(dt);
+        this.endDate = this.calculator.getSunday(dt);
+        this.getWork();
+    }
+
     work: number[] = [
         0,//u
         0,//m
@@ -33,22 +40,21 @@ export class CalendarRow implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log('oninit')
+        this.getWork();
+    }
+
+    getWork() {
+
         var q = {$and: [
                         { taskId: this.task._id },
                         { start: { $gte: this.startDate} },
                         { start: { $lte: this.endDate}}
                         ]}
-        console.log('query', q)
+        console.log('getWork', q)
         this.data.work.find(q, {start: 1})
             .then(work => {
-                console.log('got work');
-                work.forEach(workItem => {
-                    var dayIndex = workItem.start.getDay();
-                    var duration = workItem.duration;
-                    console.log('Adding', duration, ' minues to', dayIndex);
-                    this.work[workItem.start.getDay()] += workItem.duration;
-                })
+                console.log('gotWork', work)
+                this.work = this.calculator.weekOfWorkMinutes(work);
             }).catch(e => {
                 console.error(e)
             }) 
