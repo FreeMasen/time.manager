@@ -27,11 +27,11 @@
                     <div class="header cell day">Fri</div>
                     <div class="header cell day">Sat</div>
                     <div class="header cell day">Sun</div>
-                    <div class="header cell day">Total</div>
+                    <div class="header cell day total">Total</div>
                 </div>
             </div>
             <div>
-                <calendar-row *ngFor="let task of tasks" [task]="task" [startDate]="startDate" [endDate]="endDate"></calendar-row>
+                <calendar-row *ngFor="let task of tasks" [task]="task" [centerDate]="referenceDate"></calendar-row>
             </div>
             <div>
                 <div class="row header" id="table-footer">
@@ -43,7 +43,7 @@
                     <span class="header cell day">{{getTotal(5)}}</span>
                     <span class="header cell day">{{getTotal(6)}}</span>
                     <span class="header cell day">{{getTotal(0)}}</span>
-                    <span class="header cell day">{{getTotal(0)}}</span>
+                    <span class="header cell day total" id="full-total">{{getTotal(7)}}</span>
                 </div>
             </div>
         </div>
