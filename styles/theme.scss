@@ -1,5 +1,5 @@
 @function determine-font-color($color) {
-    @if(lightness($color) > 50) {
+    @if(lightness($color) > 60) {
         @return darken($color,70%);
     } @else {
         @return lighten($color, 90%)
@@ -161,5 +161,8 @@
         &.bottom {
             border-bottom: 1px solid $primary-lighter;
         }
+    }
+    .total {
+        font-weight: bold;
     }
 }
