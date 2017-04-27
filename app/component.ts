@@ -18,7 +18,12 @@ export class AppComponent {
         private router: Router,
         private data: Data
     ){
-        
+        this.data.tasks.find({})
+            .then(tasks => {
+                if (tasks.length < 1) {
+                    this.data.seed();
+                }
+            })
     }
     get canGoBack():boolean {
         return this.location.path() != '/dashboard'
