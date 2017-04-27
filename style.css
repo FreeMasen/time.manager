@@ -180,10 +180,12 @@ h1 {
   padding-right: 5px; }
 
 .data {
-  flex-grow: 2; }
+  flex-grow: 2;
+  font-size: 0.8em;
+  font-style: oblique; }
 
 .day {
-  width: 58px; }
+  width: 68px; }
 
 #total-header {
   flex-grow: 2; }
