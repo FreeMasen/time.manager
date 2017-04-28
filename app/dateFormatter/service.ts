@@ -119,6 +119,7 @@ export class DateFormatter {
     }
 
     hoursWithDecimal(minutes: number): string {
+        if (minutes <= 0) return '-';
         return `${(minutes / 60).toFixed(2)} hrs`;
     }
 
