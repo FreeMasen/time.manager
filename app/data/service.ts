@@ -10,11 +10,6 @@ export class Data {
     clients = new Collection<Client>('./app/data/clients.db');
     work = new Collection<Work>('./app/data/work.db');
 
-    constructor() {
-        this.work.find({}, {start: 1})
-            .then(work => console.log(work))
-    }
-
     seed() {
         console.warn('SEEDING DATA STORE FILES')
         var seed = new Seed();
