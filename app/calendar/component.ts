@@ -25,29 +25,28 @@ export class Calendar implements OnInit {
                 private calculator: Calculator) {}
 
     ngOnInit() {
-        this.getTasks();
+        this.getWork();
     }
 
-    getTasks(): void {
-        this.data.tasks.find({})
+    getTasks(listOfIds: string[]): void {
+        this.data.tasks.find({_id: { $in: listOfIds}})
             .then(tasks => {
                 this.tasks = tasks;
-                this.getWork();
             })
     }
 
     getWork(): void {
-        var ids = this.tasks.map(task => {
-                return task._id;
-            })
             this.data.work.find({$and: [
-                                    {taskId: {$in: ids}},
                                     {start: {$gte: this.startDate}},
                                     {start: {$lte: this.endDate}}
                             ]})
                 .then(work => {
                     this.work = this.calculator.weekOfWorkMinutes(work);
-                })
+                    var ids = work.map(element => {
+                        return element.taskId;
+                    });
+                    this.getTasks(ids);
+                });
     }
 
     formatHours(hours: number) {

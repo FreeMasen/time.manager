@@ -50,10 +50,8 @@ export class CalendarRow implements OnInit {
                         { start: { $gte: this.startDate} },
                         { start: { $lte: this.endDate}}
                         ]}
-        console.log('getWork', q)
         this.data.work.find(q, {start: 1})
             .then(work => {
-                console.log('gotWork', work)
                 this.work = this.calculator.weekOfWorkMinutes(work);
             }).catch(e => {
                 console.error(e)
