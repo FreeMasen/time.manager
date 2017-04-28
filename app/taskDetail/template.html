@@ -94,7 +94,7 @@
                 <div class="checkbox" 
                         (click)='toggleWork(i)' 
                         [ngClass]="{checked: selectedWork.includes(i)}"></div>
-                <span class="item-title">Starting at {{getDateString(workItem.start)}} for {{workItem.duration}}</span>
+                <span class="item-title">Starting at {{getDateString(workItem.start)}} for {{workItem.duration}} minutes</span>
             </div>
             <div class="pending section-item" *ngIf="pendingWorkDate != '' && pendingWorkDuration != null">
                 <div class="input-container">
