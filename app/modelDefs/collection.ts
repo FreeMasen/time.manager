@@ -62,7 +62,6 @@ export class Collection<T extends Storeable> {
         if (values.length < 1) return cb(null)
         var update = values.pop();
         var q = {_id: update._id};
-        delete update._id;
         this.store.update(q, update, {upsert: true}, (err, num) => {
             if (err) return cb(err)
             this._update(values, cb);
