@@ -107,7 +107,6 @@ export class Dashboard implements OnInit {
     }
 
     saveTask() {
-        console.log('saving');
             this.data.tasks.insert(this.pendingTask)
             .then(_ => {
                 this.pendingTask = null;
