@@ -45,15 +45,39 @@ export class Seed {
         return _mocks;
     }
 
-    work(taskId: string): Work[] {
-        var workNumber = this.rnd(0, 5);
+    work(tasks: Task[]): Work[] {
+        
+        var daysSoFar = 0;
+        var tasksSoFar = 0;
         var ret = [];
-        for (var j = 0;j<workNumber;j++) {
-            var daysInPast = this.rnd(0, 5)
-            var dt = new Date()
-            dt.setDate(new Date().getDate() - daysInPast);
-            var duration = this.rnd(0, 60);
-            ret.push(new Work(taskId, dt, duration));
+        while (daysSoFar < 30) {
+            var day = 0;
+            console.log('generating work for day ' + daysSoFar);
+            while (day < 480) {
+                var remainingTimeToday = 480 - day;
+                console.log(`${remainingTimeToday} minutes left today`)
+                var dt = new Date()
+                dt.setDate(new Date().getDate() - daysSoFar);
+                if (dt.getDay() == 0 || dt.getDay() == 6) {
+                    day = 480;
+                    continue
+                }
+                dt.setHours(this.rnd(6, 16));
+                dt.setMinutes(this.rnd(0, 59));
+                console.log(`first work today started at ${dt}`);
+
+                var duration = this.rnd(0, remainingTimeToday);
+                if (remainingTimeToday < 240) {
+                    duration = remainingTimeToday
+                }
+                console.log(`it lasted ${duration}`)
+                console.log(`and was concerning ${tasks[tasksSoFar].objective}`);
+                ret.push(new Work(tasks[tasksSoFar]._id, dt, duration));
+                day += duration;
+                tasksSoFar++
+                if (tasksSoFar >= tasks.length) tasksSoFar = 0
+            }
+            daysSoFar++
         }
         console.log('returing', ret);
         return ret;

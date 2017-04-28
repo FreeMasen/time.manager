@@ -10,6 +10,11 @@ export class Data {
     clients = new Collection<Client>('./app/data/clients.db');
     work = new Collection<Work>('./app/data/work.db');
 
+    constructor() {
+        this.work.find({}, {start: 1})
+            .then(work => console.log(work))
+    }
+
     seed() {
         console.warn('SEEDING DATA STORE FILES')
         var seed = new Seed();
@@ -27,14 +32,9 @@ export class Data {
                             .then(_ => {
                                 this.tasks.find({})
                                     .then(tasks => {
-                                        tasks.forEach(task => {
-                                            var w = seed.work(task._id);
-                                            w.forEach(wrk => {
-                                                work.push(wrk);
-                                            });
-                                        });
                                         console.warn('SEEDING WORK');
-                                        this.work.insertBulk(work)
+                                            var w = seed.work(tasks);
+                                        this.work.insertBulk(w)
                                             .then(_ => {
                                                 console.warn('SEEDING COMPLETE')
                                             })
