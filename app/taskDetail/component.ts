@@ -59,10 +59,9 @@ export class TaskDetail implements OnInit {
     }
 
     getWork(): void {
-        console.log('getWork', this.task._id);
-        this.data.work.find({taskId: this.task._id})
+        if (!this.task._id) throw new Error("ID was undefined!");
+        this.data.work.find({taskId: this.task._id}, {start: 0})
             .then(work => {
-                console.log(work)
                 this.work = work;
             })
     }
