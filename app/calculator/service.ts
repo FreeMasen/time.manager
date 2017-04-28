@@ -66,7 +66,6 @@ export class Calculator {
         ];
         work.forEach(element => {
             var elementDay = element.start.getDay();
-            console.log(elementDay, element.start);
             ret[element.start.getDay()] += element.duration;
         });
         return ret;
