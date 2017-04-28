@@ -4,7 +4,7 @@
 
 #### An Application for managing todos and billable client hours 
 
-> note: this project is a work in progress, not all functionality is complete
+> note: this project is a work in progress, not all functionality is complete.
 > currently there is not pre-built binary, see the contributions link below for information
 > on how to install and run this application
 
