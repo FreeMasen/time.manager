@@ -93,12 +93,10 @@ export class TaskListItem implements OnInit {
     }
 
     goTo(): void {
-        console.log(`goTo(${this.task._id})`);
         this.router.navigate(['taskDetail', this.task._id]);
     }
 
     animationsCallback(event): void {
-        // console.log(`**${event.phaseName}** trigger: ${event.triggerName} is going from ${event.fromState} to ${event.toState}`);
         if (event.phaseName == 'done') {
             if (event.triggerName == 'notesFader') {
                 if (event.toState == 'void') {
