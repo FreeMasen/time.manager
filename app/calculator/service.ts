@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 
 import { Data } from '../services';
-import { Work, Bucket, Task } from '../models';
+import { Work, Task } from '../models';
 
 
 @Injectable()
@@ -24,7 +24,11 @@ export class Calculator {
     }
 
     getSunday(dt: Date): Date {
-        return this.getDay(dt, 0)
+        var ret = this.getDay(dt, 0);
+        ret.setHours(23)
+        ret.setMinutes(59)
+        ret.setSeconds(59)
+        return ret;
     }
 
     getDay(dt: Date, targetDay: number, backwards: boolean = false): Date {
@@ -61,6 +65,8 @@ export class Calculator {
             0,//s
         ];
         work.forEach(element => {
+            var elementDay = element.start.getDay();
+            console.log(elementDay, element.start);
             ret[element.start.getDay()] += element.duration;
         });
         return ret;
