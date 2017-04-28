@@ -12,6 +12,8 @@ import { Storeable } from '../interfaces';
 export class Settings implements OnInit {
     clients: Client[] = [];
     categories: Category[] = [];
+    clientsSelected: Client[] = [];
+    categoriesSelected: Category[] = [];
     constructor(private data: Data) {
 
     }
@@ -46,5 +48,30 @@ export class Settings implements OnInit {
         .then(_ => {
             this.getValues();
         });
+    }
+
+    toggleClientSelection(client: Client): void {
+        var i = this.clientsSelected.indexOf(client);
+        if (i > -1) {
+            this.clientsSelected.splice(i, 1);
+        } else {
+            this.clientsSelected.push(client)
+        }
+    }
+
+    toggleCatSelection(cat: Category): void {
+        var i = this.categoriesSelected.indexOf(cat);
+        if (i > -1) {
+            this.categoriesSelected.splice(i, 1);
+        } else {
+            this.categoriesSelected.push(cat);
+        }
+    }
+
+    deleteSelected(listName: string): void {
+        this[listName] = this[listName].filter(element => {
+            return this[`${listName}Selected`].indexOf(element) > -1
+        });
+        this[`${listName}Selected`] = [];
     }
 }
