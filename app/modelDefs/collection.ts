@@ -1,39 +1,70 @@
-import { Storeable } from '../models';
+import { Storeable } from '../interfaces';
 import Ned = require('nedb');
 export class Collection<T extends Storeable> {
     private store: Ned;
-    constructor(name: string) {
+    private activityListener
+    constructor(name: string, activityListener?: (msg: any) => void) {
         this.store = new Ned({filename: name, autoload: true});
+        this.activityListener = activityListener || function(){};
     }
 
     insert(...value: T[]): Promise<T[]> {
+        this.activityListener('insert')
+        this.activityListener(value);
         return this.insertBulk(value);
     }
+
     insertBulk(value: T[]): Promise<T[]> {
+        this.activityListener('insertBulk')
+        this.activityListener(value);
         return new Promise((resolve, reject) => {
             this.store.insert(value, (err, docs: T[]) => {
+                this.activityListener(err)
+                this.activityListener(docs);
                 if (err) return reject(err);
                 resolve(docs);
             })
         })
     }
 
-    find(query: any): Promise<T[]> {
+    find(query: any, sortDescriptor?: any, projection?: any): Promise<T[]> {
+        this.activityListener('find');
+        this.activityListener(query);
         return new Promise((resolve, reject) => {
-            this.store.find(query, (err, docs: T[]) => {
-                if (err) return reject(err);
-                resolve(docs);
-            })
+                this.activityListener('finding sorted');
+                this.activityListener(sortDescriptor);
+                this.store
+                    .find(query)
+                    .sort(sortDescriptor)
+                    .exec((err, docs: T[]) => {
+                        if (err) return reject(err);
+                        resolve(docs);
+                    })
         })
     }
 
-    update(updated: T): Promise<any> {
+    update(...value: T[]): Promise<number> {
+        this.activityListener('update')
+        this.activityListener(value);
+        return this.updateBulk(value);
+    }
+
+    updateBulk(values: T[]): Promise<any> {
         return new Promise((resolve, reject) => {
-            var query = {_id: updated._id};
-            this.store.update(query, updated, (err) => {
-                if (err) return reject(err);
+            this._update(values, err => {
+                if (err) return reject(err)
                 resolve();
             })
+        })
+    }
+
+    private _update(values: T[], cb) {
+        if (values.length < 1) return cb(null)
+        var update = values.pop();
+        var q = {_id: update._id};
+        this.store.update(q, update, {upsert: true}, (err, num) => {
+            if (err) return cb(err)
+            this._update(values, cb);
         })
     }
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { Data } from './services';
+
 @Component({
     selector: 'my-app',
     templateUrl: './template.html',
@@ -9,14 +11,26 @@ import { Router } from '@angular/router';
 })
 export class AppComponent { 
 
+    listView: boolean = true
+
     constructor(
         private location: Location,
-        private router: Router
+        private router: Router,
+        private data: Data
     ){
-        
+        this.data.tasks.find({})
+            .then(tasks => {
+                if (tasks.length < 1) {
+                    this.data.seed();
+                }
+            })
     }
     get canGoBack():boolean {
-        return this.location.path() != '/dashboard';
+        return this.location.path() != '/dashboard'
+    }
+
+    get isCalendarView():boolean {
+        return this.location.path() != '/calendar';
     }
 
     goBack() {
@@ -25,5 +39,14 @@ export class AppComponent {
 
     openSettings() {
         this.router.navigate(['settings']);
+    }
+
+    openCalendar() {
+        this.router.navigate(['calendar']);
+
+    }
+
+    openDashboard() {
+        this.router.navigate(['dashboard']);
     }
 }

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Task } from '../models';
-import { Data, DateFormatter } from '../services';
-import { Work } from '../models';
+import { Task, Work } from '../models';
+import { Data, DateFormatter, Calculator } from '../services';
 
 @Component({
     selector: '<taskDetail>',
@@ -12,13 +11,17 @@ import { Work } from '../models';
     styleUrls: ['./style.css']
 })
 export class TaskDetail implements OnInit {
+    taskId: string;
     task: Task;
+    work: Work[];
+
+
     get taskCreated(): string {
         return this.dateHandler.format(this.task.created, 'MM/dd/yyyy')
     }
 
     get taskCompleted(): string {
-        if (!this.task.isComplete) {
+        if (!this.task.completed) {
             return 'Pending'
         }
         return this.dateHandler.format(this.task.created, 'MM/dd/yyyy hh:mm D');
@@ -34,28 +37,43 @@ export class TaskDetail implements OnInit {
     constructor(private route: ActivatedRoute,
                 private data: Data,
                 private router: Router,
-                private dateHandler: DateFormatter) {}
+                private dateHandler: DateFormatter,
+                private calculator: Calculator) {}
 
     ngOnInit(): void {
         this.route.params.forEach(param => {
             if (param["id"]) {
                 var id = param['id'];
-                this.data.tasks.find({_id: id})
-                    .then(task => {
-                        this.task = task[0];
-                    });
+                this.taskId = id;
+                this.getTask(id);
             }
         });
     }
 
+    getTask(taskId: string): void {
+        this.data.tasks.find({_id: taskId})
+            .then(tasks => {
+                this.task = tasks[0];
+                this.getWork();
+            })
+    }
+
+    getWork(): void {
+        if (!this.task._id) throw new Error("ID was undefined!");
+        this.data.work.find({taskId: this.task._id}, {start: 0})
+            .then(work => {
+                this.work = work;
+            })
+    }
+
     get totalWork(): string {
-        return this.dateHandler.timeString(
-            this.task.minutesOfWork()
-        )
+        return this.dateHandler.hoursAndMinutes(
+            this.calculator.totalMinutesOfWork(this.work)
+        );
     }
 
     getDateString(dt: Date) {
-        return this.dateHandler.format(dt, 'M/d/yy h:m D');
+        return this.dateHandler.format(dt);
     }
 
     toggleNote(id: number) {
@@ -78,17 +96,24 @@ export class TaskDetail implements OnInit {
 
     deleteSelected(element: string) {
         if (element == 'work') {
-            this.task.work = this.task.work.filter((item, i) => {
-                return !this.selectedWork.includes(i);
+            var toBeRemoved = this.work.filter((item, i) => {
+                return this.selectedWork.includes(i);
             })
-            this.selectedWork = [];
+            this.data.work.removeBulk(toBeRemoved)
+                .then(_ => {
+                    this.selectedWork = [];
+                    this.getWork();
+                })
         } else if (element == 'notes') {
             this.task.notes = this.task.notes.filter((item, i) => {
                 return !this.selectedNotes.includes(i);
             })
-            this.selectedNotes = [];
+            this.data.tasks.update(this.task)
+                .then(_ => {
+                    this.selectedNotes = [];
+                });
         }
-        this.sendUpdate();
+        
     }
 
     addNote() {
@@ -97,8 +122,10 @@ export class TaskDetail implements OnInit {
 
     finalizeNote() {
         this.task.notes.push(this.pendingNote);
-        this.pendingNote = null;
-        this.sendUpdate();
+        this.data.tasks.update(this.task)
+            .then(_ => {
+                this.clearNote();
+            });
     }
 
     addWork() {
@@ -117,10 +144,12 @@ export class TaskDetail implements OnInit {
     }
 
     finalizeWork() {
-        this.task.work.push(new Work(null, this._pendingWorkDate, this.pendingWorkDuration));
-        this.pendingWorkDate = null;
-        this.pendingWorkDuration = null;
-        this.sendUpdate();
+        var toBeInserted = new Work(this.taskId, this._pendingWorkDate, this.pendingWorkDuration);
+        this.data.work.insert(toBeInserted)
+            .then(_ => {
+                this.getWork();
+                this.clearWork();
+            })
     }
 
     clearWork() {
@@ -135,18 +164,30 @@ export class TaskDetail implements OnInit {
     deleteSelf() {
         this.data.tasks.remove(this.task)
             .then(_ => {
+                this.data.work
+                    .removeBulk(this.work)
+                    .then(_ => {
+
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
                 this.router.navigate(['dashboard']);
             })
             .catch(err => {
-                console.log(err);
-            })
+                console.error(err);
+            });
     }
 
-    private updating: boolean = false;
-    private sendUpdate(): void {
+    toggleCompletion() {
+        if (this.task.completed) {
+            delete this.task.completed
+        } else {
+            this.task.completed = new Date()
+        }
         this.data.tasks.update(this.task)
             .then(_ => {
-
+                
             })
             .catch(err => {
                 console.error(err);

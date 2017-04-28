@@ -63,11 +63,6 @@
     justify-content: space-between;
 }
 
-.button-group {
-    display: flex;
-    flex-flow: row;
-}
-
 .section-item {
     display: flex;
     flex-flow: row;
@@ -75,7 +70,6 @@
     margin-left: auto;
     margin-right: auto;
     word-wrap: break-word;
-    padding: 10px 0;
 }
 
 .section-item.pending {
@@ -117,7 +111,23 @@
     outline: none;
 }
 
+[name="pending-duration"] {
+    margin-bottom: 10px;
+    
+}
+
+#pending-note {
+    width: 80%;
+}
+
 #pending-duration {
     width: 100px;
 }
 
+#pending-buttons {
+    margin: auto;
+}
+
+.detail-list > * + * {
+    margin-top: 5px;
+}

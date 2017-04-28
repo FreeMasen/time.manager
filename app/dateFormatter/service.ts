@@ -3,68 +3,84 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DateFormatter {
 
-    format(dt: Date, format: string): string {
-        
-        if (format.includes('yyyy')) {
+    format(dt: Date, fmt?: string): string {
+        if (!fmt) return this.standard(dt);
+        if (fmt.includes('yyyy')) {
             
-            format = format.replace('yyyy', dt.getFullYear().toString());
-        } else if (format.includes('yy')) {
-            format = format.replace('yy', this.twoDigitString(dt.getFullYear()));
+            fmt = fmt.replace('yyyy', dt.getFullYear().toString());
+        } else if (fmt.includes('yy')) {
+            fmt = fmt.replace('yy', this.twoDigitString(dt.getFullYear()));
         }
         
-        if (format.includes('MM')) {
-            format = format.replace('MM', this.twoDigitString(dt.getMonth() + 1));
-        } else if (format.includes('M')) {
-            format = format.replace('M', (dt.getMonth() + 1).toString());
+        if (fmt.includes('MM')) {
+            fmt = fmt.replace('MM', this.twoDigitString(dt.getMonth() + 1));
+        } else if (fmt.includes('M')) {
+            fmt = fmt.replace('M', (dt.getMonth() + 1).toString());
         }
         
-        if (format.includes('dd')) {
-            format = format.replace('dd', this.twoDigitString(dt.getDate()));
-        } else if (format.includes('d')) {
-            format = format.replace('d', dt.getDate().toString());
+        if (fmt.includes('dd')) {
+            fmt = fmt.replace('dd', this.twoDigitString(dt.getDate()));
+        } else if (fmt.includes('d')) {
+            fmt = fmt.replace('d', dt.getDate().toString());
         }
         
-        if (format.includes('hh')) {
+        if (fmt.includes('hh')) {
             var hours = dt.getHours();
-            if (format.includes('D') && hours > 12) {
+            if (fmt.includes('D') && hours > 12) {
                 hours = hours - 12;
             }
-            format = format.replace('hh', this.twoDigitString(hours));
-        } else if (format.includes('h')) {
+            fmt = fmt.replace('hh', this.twoDigitString(hours));
+        } else if (fmt.includes('h')) {
             var hours = dt.getHours();
-            if (format.includes('D') && hours > 12) {
+            if (fmt.includes('D') && hours > 12) {
                 hours = hours - 12;
             }
-            format = format.replace('h', dt.getHours().toString());
+            fmt = fmt.replace('h', dt.getHours().toString());
         }
         
-        if (format.includes('mm')) {
-            format = format.replace('mm', this.twoDigitString(dt.getMinutes()));
-        } else if (format.includes('m')) {
-            format = format.replace('m', dt.getMinutes().toString());
+        if (fmt.includes('mm')) {
+            fmt = fmt.replace('mm', this.twoDigitString(dt.getMinutes()));
+        } else if (fmt.includes('m')) {
+            fmt = fmt.replace('m', dt.getMinutes().toString());
         }
         
-        if (format.includes('ss')) {
-            format = format.replace('ss', this.twoDigitString(dt.getSeconds()));
-        } else if (format.includes('s')) {
-            format = format.replace('s', dt.getSeconds.toString());
+        if (fmt.includes('ss')) {
+            fmt = fmt.replace('ss', this.twoDigitString(dt.getSeconds()));
+        } else if (fmt.includes('s')) {
+            fmt = fmt.replace('s', dt.getSeconds.toString());
         }
         
-        if (format.includes('DD')) {
+        if (fmt.includes('DD')) {
             if (dt.getHours() > 11) {
-                format = format.replace('DD', 'PM');
+                fmt = fmt.replace('DD', 'PM');
             } else {
-                format = format.replace('DD', 'AM');
+                fmt = fmt.replace('DD', 'AM');
             }
-        } else if(format.includes('D')) {
+        } else if(fmt.includes('D')) {
             if (dt.getHours() > 11) {
-                format = format.replace('D', 'P');
+                fmt = fmt.replace('D', 'P');
             } else {
-                format = format.replace('D', 'A');
+                fmt = fmt.replace('D', 'A');
             }
         }
         
-        return format;
+        return fmt;
+    }
+
+    standard(dt: Date): string {
+        var month = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var year = dt.getFullYear().toString().substr(-2);
+        var hour = dt.getHours();
+        var minutes = this.twoDigitString(dt.getMinutes());
+        var timeOfDay
+        if (hour > 11) {
+            if (hour > 12) hour = hour -12;
+            timeOfDay = "PM" ;
+        } else {
+            timeOfDay = "AM";
+        }
+        return `${month}/${day}/${year} ${hour}:${minutes} ${timeOfDay}`
     }
 
     toDateTimeLocal(dt: Date): string {
@@ -89,8 +105,7 @@ export class DateFormatter {
         return new Date(year, month - 1, day, hour, minute);
     }
 
-    timeString(minutes: number): string {
-        console.log(`timeString(${minutes})`);
+    hoursAndMinutes(minutes: number): string {
         var hours = 0;
         while(minutes > 60) {
             hours++;
@@ -101,6 +116,15 @@ export class DateFormatter {
         if (minutes > 0) ret += `${minutes} minutes`;
         if (ret.length == 0) return `0 minutes`;
         return ret.trim();
+    }
+
+    hoursWithDecimal(minutes: number): string {
+        if (minutes <= 0) return '-';
+        return `${(minutes / 60).toFixed(2)} hrs`;
+    }
+
+    private fillWithZeros(num: number, targetLength: number = 2): string {
+        return `${'0'.repeat(targetLength)}${num}`.substr(-targetLength);
     }
 
     private twoDigitString(num: number) {

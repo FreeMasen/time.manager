@@ -1,0 +1,15 @@
+<div class="row top">
+    <span class="objective">{{task.objective}}</span>
+</div>
+<div class="row bottom">
+    <span class="cell data">{{task.client.name}}</span>
+    <span class="cell data">{{task.category.name}}</span>
+    <span class="cell day">{{ getWorkForDay(1) }}</span>
+    <span class="cell day">{{ getWorkForDay(2) }}</span>
+    <span class="cell day">{{ getWorkForDay(3) }}</span>
+    <span class="cell day">{{ getWorkForDay(4) }}</span>
+    <span class="cell day">{{ getWorkForDay(5) }}</span>
+    <span class="cell day">{{ getWorkForDay(6) }}</span>
+    <span class="cell day">{{ getWorkForDay(0) }}</span>
+    <span class="cell day total">{{ getTotalWork() }}</span>
+</div>

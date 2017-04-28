@@ -8,11 +8,24 @@
                 {{taskCreated}} - {{taskCompleted}}
             </span>
         </div>
-        <div title="Delete this task" 
-            class="button round" 
-            (click)="deleteSelf()"
-            color="alert">
-            delete
+        <div class="button-group">
+            <div title="Complete task"
+                class="button round"
+                (click)="toggleCompletion()"
+                color="accent"
+                *ngIf="!task.isComplete">done
+            </div>
+            <div title="Uncomplete task"
+                class="button round"
+                (click)="toggleCompletion()"
+                color="accent"
+                *ngIf="task.isComplete"></div>
+            <div title="Delete this task" 
+                class="button round" 
+                (click)="deleteSelf()"
+                color="alert">
+                delete
+            </div>
         </div>
     </div>
     <div id="task-details">
@@ -40,16 +53,14 @@
                 <span class="item-title">{{note}}</span>
             </div>
             <div class="pending section-item" *ngIf="pendingNote != null">
-                <div class="input-container">
+                <div class="input-container" id="pending-note" >
                     <label for="pending-note" 
                             class="input-label">Note</label>
-                    <input id="pending-note" 
-                            type="text" 
+                    <textarea rows="4"
                             [(ngModel)]="pendingNote" 
-                            name="pending-duration" 
-                            class="input"/>
+                            name="pending-duration" ></textarea>
                 </div>
-                <div class="button-group">
+                <div class="button-group" id="pending-buttons">
                     <div 
                         title="Add note"  
                         (click)="finalizeNote()"
@@ -73,17 +84,17 @@
                         add
                     </div>
                     <div class="button round mini" 
-                        (click)="deleteSelected('notes')"
+                        (click)="deleteSelected('work')"
                         color="alert">
                         delete 
                     </div>
                 </div>
             </div>
-            <div class="section-item" *ngFor="let work of task.work;let i = index">
+            <div class="section-item" *ngFor="let workItem of work;let i = index">
                 <div class="checkbox" 
                         (click)='toggleWork(i)' 
                         [ngClass]="{checked: selectedWork.includes(i)}"></div>
-                <span class="item-title">{{getDateString(work.start)}} {{work.duration}}</span>
+                <span class="item-title">Starting at {{getDateString(workItem.start)}} for {{workItem.duration}} minutes</span>
             </div>
             <div class="pending section-item" *ngIf="pendingWorkDate != '' && pendingWorkDuration != null">
                 <div class="input-container">
@@ -95,14 +106,14 @@
                             class="input" />
                 </div>
                 <div class="input-container">
-                    <label for="pending-duration" class="input-label">Duration</label>
+                    <label for="pending-duration" class="input-label">Duration (minutes)</label>
                     <input id="pending-duration" 
                             type="number" 
                             [(ngModel)]="pendingWorkDuration" 
                             name="pending-duration" 
                             class="input"/>
                 </div>
-                <div class="button-group">
+                <div class="button-group"  id="pending-buttons">
                     <div 
                         title="Add work" 
                         class="button micro round" 

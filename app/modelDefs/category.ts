@@ -1,10 +1,10 @@
-import { Task } from './task';
-export class Category {
+import { Storeable } from '../interfaces';
+export class Category implements Storeable {
     _id: string;
     name: string;
-    isQuickCategory: boolean;
-    constructor(name: string) {
+    isQuick: boolean;
+    constructor(name: string = '') {
         this.name = name;
-        this.isQuickCategory = false;
+        this.isQuick = false;
     }
 }

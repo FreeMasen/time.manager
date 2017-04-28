@@ -1,35 +1,24 @@
 import { Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
-import {trigger, state, style, 
-            transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { Form } from '@angular/forms';
 
-import { Task } from '../models';
+import { Task, Category, Client } from '../models';
 import { Data } from '../services';
 
 @Component({
     selector:'<dashboard>',
-    animations: [
-    trigger('displayToggle', [
-      state('displayed', style({
-        transform: 'rotate(90)'
-      })),
-      state('hidden',   style({
-        transform: 'rotate(-90)'
-      })),
-      transition('displayed => hidden', animate('100ms ease-in')),
-      transition('hidden => displayed', animate('100ms ease-out'))
-    ])],
     templateUrl: './template.html',
     styleUrls: ['./style.css']
 })
 export class Dashboard implements OnInit {
     tasks: Task[];
     selected: string[];
+
+    categories: Category[] = [];
+    clients: Client[] = [];
     
     constructor(private router: Router,
-                private data: Data,
-                private dective: ChangeDetectorRef) {
+                private data: Data) {
                     this.selected = [];
                     this.selected = [];
                 }
@@ -39,34 +28,43 @@ export class Dashboard implements OnInit {
 
     ngOnInit():void {
         this.getTasks(this.selectedFilter)
-    }
-
-    toggleSelected(change: [string, boolean]) {
-        if (change[1]) {
-            this.selected.push(change[0])
-        } else {
-            this.selected = this.selected.filter(selectedId => {
-                return change[0] != selectedId;
+        this.data.categories.find({}, {isQuick: -1, name: 1})
+            .then(categories => {
+                this.categories = categories;
             })
-        }
+        this.data.clients.find({}, {isQuick: -1, name: 1})
+            .then(clients => {
+                this.clients = clients;
+            })
     }
 
     getTasks(value: number) {
             var query;
             switch (value) {
                 case 0:
-                    query = { complete: { $exists: false } };
+                    query = { completed: { $exists: false } };
                 break;
                 case 1:
-                    query = { complete: { $exists: true } };
+                    query = { completed: { $exists: true } };
                 break;
                 default:
                     query = {};
             }
-            this.data.tasks.find(query)
-            .then(tasks => {
-                this.tasks = tasks;
+            this.data.tasks
+                .find(query, {created: -1})
+                .then(tasks => {
+                    this.tasks = tasks;
+                })
+    }
+
+    toggleSelected(change: [string, boolean]) {
+        if (change[1]) {
+            this.selected.push(change[0]);
+        } else {
+            this.selected = this.selected.filter(selectedId => {
+                return change[0] != selectedId;
             })
+        }
     }
 
     deleteSelected() {
@@ -85,12 +83,30 @@ export class Dashboard implements OnInit {
         }) 
     }
 
+    completeSelected() {
+        var selectedTasks = this.tasks.filter(task => {
+            var ret = this.selected.includes(task._id);
+            if (ret) {
+                if (!task.completed) {
+                    task.completed = new Date();
+                } else {
+                    delete task.completed
+                }
+            } 
+            return ret;
+        })
+        this.data.tasks.updateBulk(selectedTasks)
+        .then(_ => {
+            this.selected = [];
+            this.getTasks(this.selectedFilter);
+        })
+    }
+
     createdNewTask(): void {
         this.pendingTask = new Task();
     }
 
     saveTask() {
-        console.log('saving');
             this.data.tasks.insert(this.pendingTask)
             .then(_ => {
                 this.pendingTask = null;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 
 import { Data } from '../services';
 import { Client, Category } from '../models';
+import { Storeable } from '../interfaces';
 
 @Component({
     selector: '<settings>',
@@ -19,33 +20,29 @@ export class Settings implements OnInit {
     }
 
     getValues() {
-        this.data.clients.find({})
+        var sort = {isQuick: -1, name: 1}
+        this.data.clients.find({}, sort)
             .then((clients: Client[]) => {
                 this.clients = clients;
             })
-        this.data.categories.find({})
+        this.data.categories.find({}, sort)
             .then((categories: Category[]) => {
                 this.categories = categories;
             })
     }
 
-    toggleQuickCategory(id: string) {
-        var category = this.categories.filter(client => {
-            return id == client._id
-        })[0];
-        category.isQuickCategory = !category.isQuickCategory;
-        this.data.clients.update(category)
-        .then(_ => {
-            this.getValues();
-        });
+    toggleQuickCategory(element: Category) {
+        element.isQuick = !element.isQuick;
+        this.toggleQuick(element, 'categories');
     }
 
-        toggleQuickClient(id: string) {
-        var client = this.clients.filter(client => {
-            return id == client._id
-        })[0];
-        client.isQuickClient = !client.isQuickClient;
-        this.data.clients.update(client)
+    toggleQuickClient(element: Client) {
+        element.isQuick = !element.isQuick;
+        this.toggleQuick(element, 'clients');
+    }
+
+    toggleQuick(element: Storeable, collection: string) {
+        this.data[collection].update(element)
         .then(_ => {
             this.getValues();
         });

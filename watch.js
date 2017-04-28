@@ -12,7 +12,7 @@ function watch(theme) {
         {aggregareTimeout: 300,
         poll: true},
         (err, stats) => {
-            console.log('webpack cb')
+            console.log(stats.toString("errors-only"))
         }
     )
 
@@ -37,7 +37,7 @@ function compileSass(infile, outfile) {
 
     sass.render({
         file: infile,
-        outputStyle: 'compressed'
+        // outputStyle: 'compressed'
     }, (err, result) => {
         if (err) return console.error('error rendering', infile, err);
         fs.writeFile(outfile, result.css, (err) => {
@@ -47,9 +47,9 @@ function compileSass(infile, outfile) {
     })
 }
 
-var theme = './styles/_dark.sass';
+var theme = './styles/dark.scss';
 if (process.argv[2] == 'light') {
-    theme = './styles/_light.sass'
+    theme = './styles/light.scss'
 }
 
 

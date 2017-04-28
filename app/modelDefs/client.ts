@@ -1,10 +1,10 @@
-import { Storeable } from '../models';
+import { Storeable } from '../interfaces';
 export class Client implements Storeable {
     _id: string;
     name: string;
-    isQuickClient: boolean;
-    constructor(name: string) {
+    isQuick: boolean;
+    constructor(name: string = '') {
         this.name = name;
-        this.isQuickClient = false;
+        this.isQuick = false;
     }
 }
