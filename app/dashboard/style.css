@@ -1,7 +1,7 @@
 #pending-task {
     display: flex;
     flex-flow: row;
-    justify-content: space-between
+    justify-content: flex-start;
 }
 
 #pending-task-inputs {
@@ -24,4 +24,8 @@
 
 [name="objective"] {
     width: 100%;
+}
+
+#pending-buttons {
+    margin-left: 25px;
 }
