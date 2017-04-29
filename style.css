@@ -38,23 +38,25 @@ select {
   border-radius: 5px;
   height: 50px;
   width: 50px;
-  font-size: 1.75rem;
+  font-size: 2rem;
   line-height: 50px;
   text-align: center;
   cursor: pointer;
-  font-weight: lighter; }
+  font-weight: lighter;
+  overflow: visible;
+  display: block; }
   .button.round {
     border-radius: 50%; }
   .button.mini {
     width: 30px;
     height: 30px;
     line-height: 30px;
-    font-size: 1em; }
+    font-size: 0.53em; }
   .button.micro {
     width: 25px;
     height: 25px;
     line-height: 25px;
-    font-size: 0.4em; }
+    font-size: 1em; }
   .button.wide {
     width: 150px;
     font-family: sans-serif;
