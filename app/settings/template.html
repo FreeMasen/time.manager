@@ -9,6 +9,10 @@
         <h2 class="section-title">Manage Lists</h2>
         <div id="lists" class="section">
             <table id="clients">
+                <summary>
+                    <div class="micro button wide" (click)="deleteSelectedClients()" color="alert">Delete Clients</div>
+                    <div class="micro button wide" (click)="newClient()" color="accent">New Clients</div>
+                </summary>
                 <thead>
                     <tr>
                         <th class="col1"><i>done</i></th>
@@ -18,15 +22,26 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let client of clients">
-                        <td class="col1"><div class="checkbox" [ngClass]="{checked: false}" (click)="toggleClientSelection(client)"></div>
+                        <td class="col1"><div class="checkbox" [ngClass]="{checked: clientsSelected.includes(client)}" (click)="toggleClientSelection(client)"></div>
                         <td class="col2">{{client.name}}</td>
                         <td class="col3">
                             <div class="checkbox" [ngClass]="{checked: client.isQuick}" (click)="toggleQuickClient(client)"></div>
                         </td>
                     </tr>
                 </tbody>
+                <tfoot *ngIf="pendingClientName != null">
+                    <input type="text" placeholder="Client" name="client" [(ngModel)]="pendingClientName" />
+                    <div class="button-group">
+                        <div class="button micro" color="accent" (click)="finalizeClient()">done</div>
+                        <div class="button micro" color="alert" (click)="clearClient()">clear</div>
+                    </div>
+                </tfoot>
             </table>
             <table id="categories">
+                <summary>
+                    <div class="button micro wide" (click)="deleteSelectedCategories()" color="alert">Delete Categories</div>
+                    <div class="button micro wide" (click)="newCategory()" color="accent">New Categories</div>
+                </summary>
                 <thead>
                     <tr>
                         <th class="col1"><i>done</i></th>
@@ -37,7 +52,7 @@
                 <tbody>
                     <tr *ngFor="let category of categories">
                         <td class="col1">
-                            <div class="checkbox" [ngClass]="{checked: false}" (click)="toggleCatSelection(category)"></div>
+                            <div class="checkbox" [ngClass]="{checked: categoriesSelected.includes(category)}" (click)="toggleCatSelection(category)"></div>
                         </td>
                         <td class="col2">{{category.name}}</td>
                         <td class="col3">
@@ -45,6 +60,13 @@
                         </td>
                     </tr>
                 </tbody>
+                <tfoot *ngIf="pendingCategoryName != null">
+                    <input type="text" placeholder="Category" name="category" [(ngModel)]="pendingCategoryName" />
+                    <div class="button-group">
+                        <div class="button micro" color="accent" (click)="finalizeCategory()">done</div>
+                        <div class="button micro" color="alert">clear</div>
+                    </div>
+                </tfoot>
             </table>
         </div>
         </div>

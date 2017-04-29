@@ -68,10 +68,57 @@ export class Settings implements OnInit {
         }
     }
 
-    deleteSelected(listName: string): void {
-        this[listName] = this[listName].filter(element => {
-            return this[`${listName}Selected`].indexOf(element) > -1
-        });
-        this[`${listName}Selected`] = [];
+    deleteSelectedClients(): void {
+        this.data.clients.removeBulk(this.clientsSelected)
+            .then(_ => {
+                this.clients = this.clients.filter(element => {
+                    return !this.clientsSelected.includes(element);
+                });
+                this.clientsSelected = [];
+            });
+    }
+
+    deleteSelectedCategories(): void {
+        this.data.categories.removeBulk(this.categoriesSelected)
+            .then(_ => {
+                this.categories = this.categories.filter(element => {
+                    return !this.categoriesSelected.includes(element);
+                });
+                this.categoriesSelected = [];
+            });
+    }
+
+    pendingClientName?: string;
+    newClient(): void {
+        this.pendingClientName = '';
+    }
+
+    finalizeClient(): void {
+        this.data.clients.insert(new Client(this.pendingClientName))
+            .then(docs => { 
+                this.clients.push(docs[0]);
+                this.pendingClientName = null;
+            })
+    }
+
+    clearClient(): void {
+        this.pendingClientName = null;
+    }
+
+    pendingCategoryName?: string;
+    newCategory(): void {
+        this.pendingCategoryName = '';
+    }
+
+    finalizeCategory(): void {
+        this.data.categories.insert(new Category(this.pendingCategoryName))
+            .then(docs => {
+                this.categories.push(docs[0]);
+                this.pendingCategoryName = null
+            })
+    }
+
+    clearCategory(): void {
+        this.pendingCategoryName = null;
     }
 }
