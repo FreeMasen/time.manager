@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -20,6 +20,8 @@ import { CalendarRow } from './calendarRow/component';
 import { DateFormatter, Data, Calculator } from './services';
 
 import './rxjs'
+
+enableProdMode();
 
 @NgModule({
     imports: [
