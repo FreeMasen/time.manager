@@ -1,14 +1,42 @@
 const { Menu } = require('electron');
-const db = require('./database.js');
 
-var menuList;
+var menuTemplate = [
+    {
+        label: 'File',
+        submenu: [
+            {
+                label: 'Reload',
+                accelerator: 'CmdOrCtrl+R',
+                click(item, win) {
+                    win.webContents.loadURL(win.baseURL);
+                }
+            },
+            {
+                role: 'close'
+            },
+            {
+                role: 'quit'
+            }
+        ]
+    },
+    {
+        label: 'Edit',
+        submenu: [
+            {
+                role: 'undo'
+            },
+            {
+                role: 'redo'
+            }
+        ]
+    },
+    {
+        label: 'View',
+        submenu: [
+        ]
+    }
+]
 
-function getMenu(cb) {
-    db.menu.find({}, (err, docs) => {
-        if (err) throw err;
-        console.log(docs);
-        cb(docs);
-    })
-}
+var m = Menu.buildFromTemplate(menuTemplate)
 
-module.exports = getMenu;
+module.exports = m;
