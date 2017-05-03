@@ -3,12 +3,8 @@ const path = require('path');
 const url = require('url');
 const Positioner = require('electron-positioner');
 const debug = require('debug')('main');
-var Database = require('./src/database.js');
-const db = new Database('time.manager', [
-                            'menu'
-                          ])
 
-const getMenu = require('./src/menuItems.js');
+const menuItems = require('./src/menuItems.js');
 const getTray = require('./src/windows/trayWindow');
 const getTasks = require('./src/windows/taskWindow.js');
 let menu;
@@ -18,16 +14,14 @@ let trayWindow;
 let settingsWindow;
 
 app.on('ready', () => {
-  db.menu.find({}, (err, docs) => {
-    Menu.setApplicationMenu(Menu.buildFromTemplate(docs));
-    taskWindow = getTasks();
+  Menu.setApplicationMenu(menuItems);
+  taskWindow = getTasks();
 
-    taskWindow.on('closed', _ => {
-      taskWindow = null;
-    })
-    taskWindow.on('ready-to-show', _ => {
-      taskWindow.show();
-    })
+  taskWindow.on('closed', _ => {
+    taskWindow = null;
+  })
+  taskWindow.on('ready-to-show', _ => {
+    taskWindow.show();
   })
 });
 

@@ -14,7 +14,7 @@ function createTaskWindow() {
     })
     win.baseURL = u;
     win.loadURL(u);
-    win.webContents.openDevTools('bottom');
+    // win.webContents.openDevTools('bottom');
     return win;
 }
 

@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import {Task, Category, Client, Collection, Work} from '../models';
 import { Seed } from './seed';
 
+
 @Injectable()
 export class Data {
-    tasks = new Collection<Task>('./app/data/tasks.db');
-    categories = new Collection<Category>('./app/data/categories.db');
-    clients = new Collection<Client>('./app/data/clients.db');
-    work = new Collection<Work>('./app/data/work.db');
+    tasks = new Collection<Task>('tasks.db');
+    categories = new Collection<Category>('categories.db');
+    clients = new Collection<Client>('clients.db');
+    work = new Collection<Work>('work.db');
 
     seed() {
         console.warn('SEEDING DATA STORE FILES')

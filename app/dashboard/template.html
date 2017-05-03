@@ -31,15 +31,15 @@
                     </select>
                 </div>
             </div>
-            <div class="button-group">
+            <div class="button-group" id="pending-buttons">
                 <div 
                 (click)="saveTask()" 
-                class="button mini round"
+                class="button"
                 color="accent">done</div>
                 <div
                 (click)="clearTask()"
-                class="button mini round"
-                color="alert">cancel</div>
+                class="button"
+                color="alert">clear</div>
             </div>
         </div>
         <task-list-item 

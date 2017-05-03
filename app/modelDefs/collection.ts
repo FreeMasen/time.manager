@@ -1,10 +1,12 @@
 import { Storeable } from '../interfaces';
 import Ned = require('nedb');
+import Electron = require('electron');
 export class Collection<T extends Storeable> {
     private store: Ned;
     private activityListener
     constructor(name: string, activityListener?: (msg: any) => void) {
-        this.store = new Ned({filename: name, autoload: true});
+        var basePath = Electron.remote.app.getPath('userData');
+        this.store = new Ned({filename: `${basePath}/${name}`, autoload: true});
         this.activityListener = activityListener || function(){};
     }
 
